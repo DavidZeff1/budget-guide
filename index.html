@@ -1,1251 +1,2671 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="he" dir="rtl">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>דוח תקצוב והתחשבנות — מדריך עומק</title>
-<meta name="description" content="מדריך מקיף ומעמיק לדוח תקצוב והתחשבנות של משרד הרווחה">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<button class="menu-toggle" onclick="document.querySelector('.sidebar').classList.toggle('open')">☰</button>
-<nav class="sidebar">
-<div class="sidebar-logo">📊 מדריך דוח תקצוב</div>
-<div class="sidebar-section-title">יסודות</div>
-<a href="#overview">סקירה כללית</a>
-<a href="#big-picture" class="sub">ההקשר הגדול</a>
-<a href="#resident-journey" class="sub">מסע התושב</a>
-<a href="#systems" class="sub">4 מערכות דיווח</a>
-<a href="#code-structure" class="sub">מבנה קוד תקציבי</a>
-<a href="#departments" class="sub">חלוקה לפי מינהלים</a>
-<div class="sidebar-section-title">סוגי סעיפים</div>
-<a href="#item-types">סוגי סעיפים תקציביים</a>
-<a href="#financial-items" class="sub">סעיפים כספיים</a>
-<a href="#quantity-items" class="sub">סעיפים כמותיים</a>
-<a href="#units-explained" class="sub">יחידות ≠ אנשים</a>
-<div class="sidebar-section-title">מבנה הדוח</div>
-<a href="#report-structure">שלושת חלקי הדוח</a>
-<a href="#part1">חלק 1: הוצאה חודשית</a>
-<a href="#part2">חלק 2: בקרה תקציבית</a>
-<a href="#part3">חלק 3: מעקב ביצוע</a>
-<div class="sidebar-section-title">מסלולי תשלום</div>
-<a href="#payment-tracks">תשלומי ממשלה / רשות</a>
-<a href="#poa" class="sub">ייפוי כוח</a>
-<div class="sidebar-section-title">מנגנונים מיוחדים</div>
-<a href="#special">ילדי חוץ והפרשים</a>
-<a href="#visut">ויסותים</a>
-<div class="sidebar-section-title">פיקוח ובקרה</div>
-<a href="#supervision">מבנה הפיקוח במשרד</a>
-<a href="#monthly-cycle">מחזור דיווח חודשי</a>
-<a href="#control-questions">שאלות בקרה</a>
-<div class="sidebar-section-title">יישום מעשי</div>
-<a href="#check-status">בדיקת חריגה/יתרה</a>
-<a href="#workflow">סדר עבודה חודשי</a>
-<a href="#example">דוגמה מספרית</a>
-<a href="#legal" class="sub">ההקשר המשפטי</a>
-</nav>
-<main class="main">
-<!-- HERO -->
-<section class="hero">
-<div class="hero-content animate-in">
-<h1>דוח תקצוב והתחשבנות</h1>
-<p class="subtitle">מדריך עומק מקיף — כל מה שצריך לדעת על הדוח, מבנהו, חישוביו ואופן הקריאה שלו</p>
-<div class="hero-badges">
-<span class="hero-badge">📋 4 מערכות דיווח</span>
-<span class="hero-badge">🔢 4 סוגי סעיפים</span>
-<span class="hero-badge">📊 3 חלקי דוח</span>
-<span class="hero-badge">💰 חלוקה 75/25</span>
-</div>
-</div>
-</section>
-
-<!-- SECTION 1: OVERVIEW -->
-<section class="section" id="overview">
-<div class="section-header animate-in">
-<div class="section-number">פרק 01</div>
-<h2>סקירה <span class="highlight">כללית</span></h2>
-<p class="section-desc">דוח "תקצוב והתחשבנות" הוא דוח חודשי שמשרד הרווחה שולח למחלקת השירותים החברתיים ברשות המקומית. הוא בעצם "חשבון" כספי בין שני גופים: המשרד הממשלתי והרשות המקומית. הוא מתעד מה הוצא, מה המשרד אמור לשלם בחזרה, וכמה כבר הועבר בפועל.</p>
-</div>
-<div class="info-box info">
-<div class="box-title">💡 עקרון היסוד</div>
-מדינת ישראל מאצילה את הפעלת שירותי הרווחה לרשויות המקומיות, אך שומרת על האחריות התקציבית. המערכת מנוהלת דרך מערכת <strong>מרכבה</strong> — מערכת ה-ERP הממשלתית. פרק 23 בחוק התקציב הוא של משרד הרווחה. המילה "תקצוב" פירושה כמה כסף הוקצה מראש לכל סעיף. המילה "התחשבנות" פירושה כמה בפועל הוצא וכמה צריך להחזיר.
-</div>
-<div class="info-box warning">
-<div class="box-title">⚠️ למה זה חשוב לתפקידך</div>
-<ul style="padding-right:18px;margin:8px 0;color:var(--text-secondary);font-size:0.9rem">
-<li>אם המשרד לא העביר את חלקו — המועצה נושאת לבד בהוצאה, ויש חור בתקציב המחלקה</li>
-<li>אם דיווחתם פחות יחידות שירות מהמותר — איבדתם הכנסה שמגיעה לרשות לפי החוק</li>
-<li>אם דיווחתם יותר ממה שאושר — תיתבעו להחזיר עודפים, ואולי תיכנסו לבקרת חריגים</li>
-<li>אם הסעיפים מסווגים שגוי — חישוב אחוז ההשתתפות של המשרד יוצא לא נכון</li>
-<li>אם תפספסו "מועד תשלום סופי" (מת"ס) — אחרי הנעילה כבר אי אפשר לתקן</li>
-</ul>
-</div>
-<h3>אופן המימון — 1/12 מצטבר</h3>
-<p>המימון הוא <strong>מצטבר</strong>, כלומר 1/12 מהתקציב השנתי בכל חודש. החישוב הוא <strong>לינארי</strong> — ללא קשר לעונתיות, חגים או מספר ימים בחודש. כל חודש שווה ל-8.33% מהשנה.</p>
-<div class="chart-container">
-<div class="chart-title">אחוז מימון מצטבר לפי חודש</div>
-<div class="bar-chart">
-<div class="bar-row"><span class="bar-label">ינואר</span><div class="bar-track"><div class="bar-fill blue" style="width:8.33%">8.33%</div></div></div>
-<div class="bar-row"><span class="bar-label">פברואר</span><div class="bar-track"><div class="bar-fill blue" style="width:16.67%">16.67%</div></div></div>
-<div class="bar-row"><span class="bar-label">מרץ</span><div class="bar-track"><div class="bar-fill blue" style="width:25%">25%</div></div></div>
-<div class="bar-row"><span class="bar-label">אפריל</span><div class="bar-track"><div class="bar-fill cyan" style="width:33.33%">33.33%</div></div></div>
-<div class="bar-row"><span class="bar-label">מאי</span><div class="bar-track"><div class="bar-fill blue" style="width:41.67%">41.67%</div></div></div>
-<div class="bar-row"><span class="bar-label">יוני</span><div class="bar-track"><div class="bar-fill blue" style="width:50%">50%</div></div></div>
-<div class="bar-row"><span class="bar-label">יולי</span><div class="bar-track"><div class="bar-fill blue" style="width:58.33%">58.33%</div></div></div>
-<div class="bar-row"><span class="bar-label">אוגוסט</span><div class="bar-track"><div class="bar-fill blue" style="width:66.67%">66.67%</div></div></div>
-<div class="bar-row"><span class="bar-label">ספטמבר</span><div class="bar-track"><div class="bar-fill blue" style="width:75%">75%</div></div></div>
-<div class="bar-row"><span class="bar-label">אוקטובר</span><div class="bar-track"><div class="bar-fill blue" style="width:83.33%">83.33%</div></div></div>
-<div class="bar-row"><span class="bar-label">נובמבר</span><div class="bar-track"><div class="bar-fill blue" style="width:91.67%">91.67%</div></div></div>
-<div class="bar-row"><span class="bar-label">דצמבר</span><div class="bar-track"><div class="bar-fill green" style="width:100%">100%</div></div></div>
-</div>
-</div>
-<div class="formula">
-<span class="formula-label">נוסחת המימון המצטבר</span>
-חודש ÷ 12 × 100 = אחוז מימון מצטבר
-</div>
-</section>
-
-<!-- SECTION 1B: BIG PICTURE -->
-<section class="section" id="big-picture">
-<div class="section-header animate-in">
-<div class="section-number">פרק 02</div>
-<h2>ההקשר <span class="highlight">הגדול</span></h2>
-<p class="section-desc">בלי להבין את חלוקת התפקידים בין המשרד לרשות, הדוח לא יהיה מובן. כאן נבין איך מערכת הרווחה בישראל בנויה.</p>
-</div>
-<h3>מי אחראי על מה</h3>
-<p>משרד הרווחה הוא הגוף המדיני שקובע מדיניות, מתקצב, מפקח ורושם זכאויות. אבל המשרד עצמו <strong>לא מספק שירותים ישירות לתושב</strong> — הוא לא מפעיל מעונות, לא שולח עו"סים לבתים, לא מנהל מקלטים. את כל זה עושות <strong>הרשויות המקומיות</strong>. הרשות קרובה לתושב, מכירה אותו, ויש לה מחלקת רווחה עם עובדים סוציאליים בשטח. חלוקה זו מעוגנת ב<strong>חוק שירותי הסעד, התשי"ח-1958</strong>.</p>
-<h3>מודל המימון המשותף</h3>
-<p>הרשות מספקת את השירות, אך אינה יכולה לממן הכל לבד. לכן יש מודל של <strong>"מימון משותף"</strong> — המשרד מממן 75% מההוצאה, והרשות מממנת 25%. היחס יכול להשתנות: שירותים קריטיים כמו אומנה — לפעמים 90/10. שירותי קהילה — בדרך כלל 75/25. שירותים "מקומיים" — לפעמים 50/50. האחוזים נקבעים בקוד של כל סעיף שירות בנהלי המשרד (הוראות <strong>תע"ס</strong> — תקנות עובדים סוציאליים).</p>
-<div class="info-box tip">
-<div class="box-title">💡 למה היחס 75/25 כל כך נפוץ</div>
-היחס מאזן שני שיקולים: מצד אחד, השירות חיוני וצריך מימון לאומי משמעותי. מצד שני, הרשות צריכה "להיות בעור" — אם היא לא משלמת כלום, אין לה תמריץ לבקר עלויות. רבע מהעלות מספיק כדי לשמור על אחריות תקציבית.
-</div>
-<h3>שני סוגי השתתפות</h3>
-<div class="compare-grid">
-<div class="compare-card">
-<h4>השתתפות לפי סיווג כמותי</h4>
-<p>המשרד משלם לפי <strong>כמות יחידות שירות שדווחו</strong>. אין תקרה כספית קשיחה — אם הצורך גדל ויש אישור, התקציב גדל איתו. דוגמה: "אחזקה במעונות".</p>
-</div>
-<div class="compare-card">
-<h4>השתתפות לפי סיווג כספי</h4>
-<p>המשרד משלם עד <strong>תקרה שנתית קבועה בשקלים</strong>, ללא קשר לכמות הפעולות. דוגמה: "הערכות חירום" — תקרה של 3,000 ₪ לשנה.</p>
-</div>
-</div>
-</section>
-
-<!-- SECTION 1C: RESIDENT JOURNEY -->
-<section class="section" id="resident-journey">
-<div class="section-header animate-in">
-<div class="section-number">פרק 03</div>
-<h2>מסע <span class="highlight">התושב</span></h2>
-<p class="section-desc">הדוח הוא נקודת הסוף של תהליך ארוך. כדי להבין מה כל מספר מייצג, צריך לעקוב אחרי הסיפור של איך מקרה אחד הופך לשורה בדוח.</p>
-</div>
-<div class="steps">
-<div class="step-item">
-<div class="step-num">1</div>
-<div class="step-content">
-<h4>פנייה לרשות</h4>
-<p>ההורים/הפונה פונים למחלקת הרווחה. עו"ס פותח תיק במערכת ומעריך את הצורך. אם נדרשת מסגרת חוץ-ביתית — מתחיל תהליך הפניה רשמי.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">2</div>
-<div class="step-content">
-<h4>ועדת השמה</h4>
-<p>ועדה מקצועית (פסיכולוג, עו"ס, ולעיתים רופא) בודקת את התיק ומחליטה על מסגרת. <strong>בלי החלטת ועדה — אין מימון מהמשרד.</strong></p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">3</div>
-<div class="step-content">
-<h4>אישור תקציבי — "הרשאה"</h4>
-<p>הרשות מקבלת "הרשאה תקציבית" מהמשרד — קוד אישור שאומר: "המשרד יחזיר לרשות 75% מעלות השירות". בלי קוד — הרשות נושאת לבד בכל העלות.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">4</div>
-<div class="step-content">
-<h4>הפעלת השירות</h4>
-<p>הפונה מתחיל לקבל שירות. המסגרת שולחת חשבונית לרשות. הרשות משלמת את כל הסכום, ואחר כך המשרד מחזיר לרשות 75%.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">5</div>
-<div class="step-content">
-<h4>השתתפות צד ג'</h4>
-<p>במקרים רבים, גם "צד שלישי" משלם — לרוב ההורים (לפי "מבחן הכנסה"), או המוסד לביטוח לאומי. סכום זה מופיע בעמודה "השתתפות צד ג'" בדוח.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">6</div>
-<div class="step-content">
-<h4>דיווח חודשי</h4>
-<p>הרשות מזינה למערכת המשרד את ההוצאות בפועל — לפי סעיף, לפי לקוח, ולפי סוג שירות. זהו "דיווח רשות".</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">7</div>
-<div class="step-content">
-<h4>התחשבנות והעברה</h4>
-<p>המשרד מבצע "התחשבנות" — מחשב כמה הוא חייב, מקזז, ומעביר כסף. הסכום שמועבר בפועל מופיע בעמודות "זיכוי / חיוב" בדוח.</p>
-</div>
-</div>
-</div>
-<div class="info-box tip">
-<div class="box-title">💡 הרשות "מקדימה" את הכסף</div>
-הרשות משלמת קודם את כל הסכום ורק אחר כך מקבלת החזר. לכן יש <strong>פיגור של חודשיים-שלושה</strong> בין מועד התשלום למעון לבין מועד החזר הכספים מהמשרד. בכל רגע נתון יש "חוב פתוח" של המשרד לרשות.
-</div>
-</section>
-<!-- SECTION 2: 4 REPORTING SYSTEMS -->
-<section class="section" id="systems">
-<div class="section-header animate-in">
-<div class="section-number">פרק 04</div>
-<h2>ארבע מערכות <span class="highlight">הדיווח</span></h2>
-<p class="section-desc">הדוח אינו מגיע ממקור אחד — הוא מורכב מנתונים של 4 מערכות שונות, כל אחת עם פיגור דיווח משלה. זו מורכבות קריטית להבנת הדוח.</p>
-</div>
-<div class="cards-grid">
-<div class="card">
-<div class="card-icon red">👤</div>
-<h4>כ"א — כוח אדם</h4>
-<p>מדווחת על העסקת עובדים סוציאליים בסעיפי הרווחה. כשמועצה מעסיקה עובד סוציאלי בסעיף ספציפי, הנתון נכנס דרך מערכת זו.</p>
-<span class="badge delay-2">⏱ פיגור: חודשיים</span>
-</div>
-<div class="card">
-<div class="card-icon orange">📋</div>
-<h4>מס"ר</h4>
-<p>מערכת דיווח ספציפית של משרד הרווחה. מדווחת על נתוני שירותים ומסגרות שונות.</p>
-<span class="badge delay-1">⏱ פיגור: חודש אחד</span>
-</div>
-<div class="card">
-<div class="card-icon purple">💳</div>
-<h4>מת"ס</h4>
-<p>מערכת המתעדת תשלומים בצ'קים. אם צ'ק לא נפדה תוך 4 חודשים — הוא מתבטל ותופיע שורה במינוס בדוח.</p>
-<span class="badge delay-1">⏱ פיגור: חודש אחד</span>
-</div>
-<div class="card">
-<div class="card-icon green">🏛️</div>
-<h4>דיווח רשות</h4>
-<p>דיווח ישיר שהרשות עצמה מזינה למערכת. זהו המקור העדכני ביותר, ללא פיגור.</p>
-<span class="badge delay-0">⏱ עדכני — אותו חודש</span>
-</div>
-</div>
-
-<div class="info-box warning">
-<div class="box-title">⚠️ השלכה מעשית חשובה</div>
-דוח של <strong>אפריל 2026</strong> כולל: נתוני כ"א של <strong>פברואר</strong>, נתוני מס"ר של <strong>מרץ</strong>, נתוני מת"ס של <strong>אפריל</strong>, ודיווחי רשות של <strong>אפריל</strong>. חלק מהשורות "טריות" וחלק "ישנות".
-</div>
-
-<div class="info-box danger">
-<div class="box-title">🔴 הערה ספציפית למת"ס — צ'קים שלא נפדו</div>
-אם צ'ק לא נפדה בתוך <strong>4 חודשים</strong>, הוא למעשה מתבטל ואז בדוח תקצוב התחשבנות <strong>תופיע שורה במינוס</strong>. שורה שלילית בדוח לא בהכרח אומרת שמשהו רע קרה — ייתכן שזה תיקון אוטומטי של צ'ק שלא נפדה. יש לבדוק במחלקת הגביה.
-</div>
-</section>
-
-<!-- SECTION 3: CODE STRUCTURE -->
-<section class="section" id="code-structure">
-<div class="section-header animate-in">
-<div class="section-number">פרק 05</div>
-<h2>מבנה <span class="highlight">קוד תקציבי</span></h2>
-<p class="section-desc">כל סעיף תקציבי מזוהה בקוד ייחודי. הבנת מבנה הקוד מאפשרת לזהות במבט את המשרד, סוג התקצוב והמינהל.</p>
-</div>
-
-<div class="tree">
-<div class="tree-node l0">
-<span class="tree-label">2300</span>
-<span class="tree-code">פרק 23</span>
-<div class="tree-desc">תקציב מרכבה — משרד הרווחה (פרק 23 בחוק התקציב)</div>
-</div>
-<div class="tree-node l1">
-<span class="tree-label">9</span>
-<span class="tree-code">23009</span>
-<div class="tree-desc">תקצוב רשויות מקומיות (להבדיל מתקציב פנימי של המשרד)</div>
-</div>
-<div class="tree-node l2">
-<span class="tree-label">XX</span>
-<span class="tree-code">23009XX</span>
-<div class="tree-desc">קוד המינהל — מזהה את היחידה הארגונית האחראית (ראו טבלה למטה)</div>
-</div>
-<div class="tree-node l3">
-<span class="tree-label">XXXXX</span>
-<span class="tree-code">23009XXXXXXX</span>
-<div class="tree-desc">מספר הסעיף הספציפי — מזהה את סוג השירות הייחודי</div>
-</div>
-</div>
-
-<h3 id="departments">חלוקה לפי מינהלים</h3>
-<div class="table-wrap">
-<table>
-<thead>
-<tr><th>קוד</th><th>מינהל</th><th>תחום אחריות</th><th>דוגמאות שירותים</th></tr>
-</thead>
-<tbody>
-<tr><td class="num">01</td><td><strong>חירום</strong></td><td>הערכות ותגובה לחירום</td><td>הערכות חירום, מוקד חירום, ציוד</td></tr>
-<tr><td class="num">02</td><td><strong>אזרחים ותיקים</strong></td><td>שירותים לקשישים</td><td>מעונות יום, סיעוד, דיור מוגן</td></tr>
-<tr><td class="num">05</td><td><strong>רשויות מקומיות</strong></td><td>שירותים כלליים לרשויות</td><td>תמיכה מוניציפלית, פיתוח שירותים</td></tr>
-<tr><td class="num">07</td><td><strong>מינהל מוגבלויות</strong></td><td>שירותים לאנשים עם מוגבלויות</td><td>מעונות, דיור, שיקום, אוטיזם</td></tr>
-<tr><td class="num">10</td><td><strong>מינהל שח"א</strong></td><td>שירותים אישיים-חברתיים</td><td>ילדים ונוער, משפחות, אומנה</td></tr>
-<tr><td class="num">11</td><td><strong>מינהל של"מ</strong></td><td>שירות לאומי-מקצועי</td><td>שירותים קהילתיים, התמכרויות</td></tr>
-</tbody>
-</table>
-</div>
-
-<h3>דוגמאות פענוח קודים</h3>
-<div class="cards-grid">
-<div class="card">
-<div class="card-icon blue">🔍</div>
-<h4>230090120214</h4>
-<ul>
-<li><strong>2300</strong> — משרד הרווחה</li>
-<li><strong>9</strong> — רשויות מקומיות</li>
-<li><strong>01</strong> — מינהל חירום</li>
-<li><strong>20214</strong> — סעיף הערכות חירום</li>
-</ul>
-</div>
-<div class="card">
-<div class="card-icon purple">🔍</div>
-<h4>230090242410</h4>
-<ul>
-<li><strong>2300</strong> — משרד הרווחה</li>
-<li><strong>9</strong> — רשויות מקומיות</li>
-<li><strong>02</strong> — אזרחים ותיקים</li>
-<li><strong>42410</strong> — אחזקה במעונות א.ותי</li>
-</ul>
-</div>
-</div>
-</section>
-<!-- SECTION 4: ITEM TYPES -->
-<section class="section" id="item-types">
-<div class="section-header animate-in">
-<div class="section-number">פרק 06</div>
-<h2>סוגי סעיפים <span class="highlight">תקציביים</span></h2>
-<p class="section-desc">ישנם 4 סוגי סעיפים תקציביים, מחולקים לשתי קטגוריות עיקריות: כספיים וכמותיים. כל סוג מתנהג אחרת מבחינת אופן הניצול.</p>
-</div>
-
-<h3 id="financial-items">1. סעיפים כספיים — הגבלה בסכום כספי</h3>
-
-<div class="compare-grid">
-<div class="compare-card">
-<h4>א. כספי רשות — 1/12</h4>
-<p>הקצבה כספית שמתחלקת באופן לינארי: <strong>1/12 לכל חודש</strong>.</p>
-<div class="info-box info" style="margin-top:12px">
-<div class="box-title">דוגמה מספרית</div>
-הקצבה שנתית: 16,000 ₪ ברוטו (12,000 ₪ נטו).<br>
-הרשות תקבל בכל חודש: 16,000 ÷ 12 = <strong>1,333 ₪</strong>.<br>
-<strong>אם הרשות תנצל פחות — היא גם תזוכה בפחות.</strong>
-</div>
-</div>
-<div class="compare-card">
-<h4>ב. כספי שנתי — ללא מגבלת 1/12</h4>
-<p>הקצבה כספית שנתית שאינה מחולקת. <strong>כל הסכום זמין מהיום הראשון</strong> של השנה.</p>
-<div class="info-box success" style="margin-top:12px">
-<div class="box-title">הבדל מהותי</div>
-בניגוד לכספי רשות, כאן אין מגבלת קצב. הרשות יכולה לנצל את כל הסכום בבת אחת בכל שלב של השנה.
-</div>
-</div>
-</div>
-
-<h3 id="quantity-items">2. סעיפים כמותיים — מכסות (12 חודשי סידור)</h3>
-
-<div class="compare-grid">
-<div class="compare-card">
-<h4>א. כמותי ארצי</h4>
-<p>מסגרות ממשלתיות שהמשרד עצמו מעסיק את העובדים.</p>
-<ul>
-<li><strong>הרשות לא מוגבלת</strong> — המסגרת היא המוגבלת</li>
-<li>נדיר יחסית בדוחות שגרתיים</li>
-<li>המשרד נושא באחריות ישירה על ההפעלה</li>
-</ul>
-</div>
-<div class="compare-card highlight">
-<h4>ב. כמותי רשות ⭐</h4>
-<p><strong>הנפוץ ביותר בדוחות.</strong> הרשות מקבלת 1/12 בכל חודש כי מדובר ב-12 חודשי סידור.</p>
-<ul>
-<li>מכסה = 12 חודשי סידור לשנה</li>
-<li>1 חודש סידור = 1 יחידה</li>
-<li>חובת דיווח — מי שלא מדווח מפסיד</li>
-</ul>
-<div class="info-box danger" style="margin-top:12px">
-<div class="box-title">⚠️ דוגמה לאיחור בדיווח</div>
-אם ספטמבר תחילת שנה אך הרשות התחילה לדווח רק בדצמבר — <strong>הרשות תיכנס למינוס של 3 חודשי סידור</strong>. מי שלא מדווח בזמן, מפסיד מכסות.
-</div>
-</div>
-</div>
-
-<h3>השוואה מהירה בין סוגי הסעיפים</h3>
-<div class="table-wrap">
-<table>
-<thead>
-<tr><th>מאפיין</th><th>כספי רשות</th><th>כספי שנתי</th><th>כמותי ארצי</th><th>כמותי רשות</th></tr>
-</thead>
-<tbody>
-<tr><td>סוג הגבלה</td><td>סכום כספי</td><td>סכום כספי</td><td>מכסות</td><td>מכסות</td></tr>
-<tr><td>חלוקה חודשית</td><td>1/12 לחודש</td><td>הכל בבת אחת</td><td>לא רלוונטי</td><td>1/12 לחודש</td></tr>
-<tr><td>מי מוגבל?</td><td>הרשות</td><td>הרשות</td><td>המסגרת</td><td>הרשות</td></tr>
-<tr><td>תת-ניצול</td><td>זיכוי מופחת</td><td>ללא הגבלה</td><td>—</td><td>מכסות לא מנוצלות</td></tr>
-<tr><td>שכיחות</td><td>בינוני</td><td>נמוך</td><td>נדיר</td><td><strong>גבוה מאוד</strong></td></tr>
-</tbody>
-</table>
-</div>
-
-<h3 id="units-explained">יחידות = חודשי סידור, <span style="color:var(--accent-red)">לא</span> אנשים!</h3>
-<p>זו ההבחנה הכי קריטית להבנה נכונה של הדוח. "יחידות שדווחו" מייצגות <strong>חודשי סידור</strong>, לא מספר אנשים.</p>
-
-<div class="cards-grid">
-<div class="card">
-<div class="card-icon cyan">📊</div>
-<h4>12 יחידות שנתי — מה זה יכול להיות?</h4>
-<ul>
-<li>ילד אחד × 12 חודשים = 12 ח"ס</li>
-<li>2 ילדים × 6 חודשים = 12 ח"ס</li>
-<li>12 ילדים × חודש אחד = 12 ח"ס</li>
-<li>כל שילוב שמסתכם ב-12</li>
-</ul>
-</div>
-<div class="card">
-<div class="card-icon orange">🔄</div>
-<h4>29 חודשי סידור — דוגמה מהמסמך</h4>
-<p>29 ח"ס = 20 פונים + 9 חודשים רטרו לאותו פונה. <strong>לא 29 פונים!</strong></p>
-<p style="margin-top:8px">דיווח רטרואקטיבי על חודשים קודמים נכלל בחודש הנוכחי ויכול לנפח את המספרים.</p>
-</div>
-<div class="card">
-<div class="card-icon green">📋</div>
-<h4>איך לדעת כמה אנשים בפועל?</h4>
-<p>יש <strong>דוח נפרד</strong> בשם <strong>"דוח אחזקת חניכים"</strong> שמראה את מספר האנשים בפועל. דוח התקצוב מודד שירות, לא אנשים.</p>
-</div>
-</div>
-
-<h3>משמעות "יחידות" לפי סוג מערכת</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>סוג שירות / מערכת</th><th>משמעות "יחידה"</th><th>דוגמה</th></tr></thead>
-<tbody>
-<tr><td>סמך מקצועי</td><td><strong>מספר שעות</strong></td><td>10 שעות טיפול = 10 יחידות</td></tr>
-<tr><td>מסגרת</td><td><strong>מספר חודשי סידור</strong></td><td>3 חודשים במעון = 3 יחידות</td></tr>
-<tr><td>מת"ס</td><td><strong>מספר צ'קים</strong></td><td>5 צ'קים שנפדו = 5 יחידות</td></tr>
-<tr><td>נופשון / יומיות</td><td><strong>מספר ימים</strong></td><td>7 ימי נופש = 7 יחידות</td></tr>
-</tbody>
-</table>
-</div>
-</section>
-<!-- SECTION 5: REPORT STRUCTURE - 3 PARTS -->
-<section class="section" id="report-structure">
-<div class="section-header animate-in">
-<div class="section-number">פרק 07</div>
-<h2>שלושת חלקי <span class="highlight">הדוח</span></h2>
-<p class="section-desc">הדוח מחולק ל-3 חלקים מובנים. כל חלק עונה על שאלה אחרת: מה קרה החודש? האם מאוזן? ואיפה אנחנו מול השנה?</p>
-</div>
-
-<!-- PART 1 -->
-<h3 id="part1">חלק ראשון — הוצאה חודשית</h3>
-<p><strong>השאלה:</strong> מה קרה החודש הזה?</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr><th>עמודה</th><th>הסבר מפורט</th><th>דוגמה</th></tr></thead>
-<tbody>
-<tr><td><strong>א. מערכת דיווח</strong></td><td>מאיזו מערכת הנתון הגיע: כ"א, מס"ר, מת"ס, או דיווח רשות</td><td>מס"ר</td></tr>
-<tr><td><strong>ב. מסלול תשלום</strong></td><td>תשלומי ממשלה (המשרד משלם 100% ואז גובה 25% מהרשות) או תשלומי רשות (הרשות משלמת ומקבלת חזרה 75%)</td><td>תש. ממשלה</td></tr>
-<tr><td><strong>ג. אופן סיווג</strong></td><td>כמותי או כספי — קובע את אופן ההתחשבנות</td><td>כמותי</td></tr>
-<tr><td><strong>ד. יחידות שדווחו</strong></td><td>חודשי סידור / שעות / צ'קים / ימים (תלוי במערכת)</td><td class="num">1.0</td></tr>
-<tr><td><strong>ה. סה"כ הוצאה</strong></td><td>השתתפות צד ג' + הוצאה להתחשבנות</td><td class="num">12,468 ₪</td></tr>
-<tr><td><strong>ו. השתתפות צד ג'</strong></td><td>הסכום שהרשות צריכה לגבות מהפונים בהתאם לחישוב זכאות על פי הוראות התע"ס</td><td class="num">484 ₪</td></tr>
-<tr><td><strong>ז. הוצאה להתחשבנות</strong></td><td>סה"כ הוצאה <strong>פחות</strong> השתתפות פונים</td><td class="num">11,984 ₪</td></tr>
-<tr><td><strong>ח. חלק המשרד</strong></td><td><strong>75%</strong> מההוצאה להתחשבנות</td><td class="num">8,988 ₪</td></tr>
-<tr><td><strong>ט. חלק הרשות</strong></td><td><strong>25%</strong> מההוצאה להתחשבנות</td><td class="num">2,996 ₪</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="formula">
-<span class="formula-label">נוסחת חישוב חלק ראשון</span>
-סה"כ הוצאה − השתתפות צד ג' = הוצאה להתחשבנות<br>
-הוצאה להתחשבנות × 75% = חלק המשרד<br>
-הוצאה להתחשבנות × 25% = חלק הרשות
-</div>
-
-<div class="donut-container">
-<div class="donut" style="background: conic-gradient(var(--accent-blue) 0deg 270deg, var(--accent-orange) 270deg 342deg, var(--accent-pink) 342deg 360deg);">
-<div class="donut-center">
-<span class="pct">100%</span>
-<span class="lbl">הוצאה</span>
-</div>
-</div>
-<div class="donut-legend">
-<div class="legend-item"><span class="legend-dot" style="background:var(--accent-blue)"></span>חלק המשרד — 75%</div>
-<div class="legend-item"><span class="legend-dot" style="background:var(--accent-orange)"></span>חלק הרשות — 25% (פחות צד ג')</div>
-<div class="legend-item"><span class="legend-dot" style="background:var(--accent-pink)"></span>השתתפות צד ג' (פונים)</div>
-</div>
-</div>
-
-<!-- PART 2 -->
-<h3 id="part2">חלק שני — בקרה תקציבית</h3>
-<p><strong>השאלה:</strong> האם המצב מאוזן? האם יש חריגה או יתרה?</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr><th>עמודה</th><th>הסבר</th><th>נוסחה / חישוב</th></tr></thead>
-<tbody>
-<tr><td><strong>א. חלק המשרד בתקציב מצטבר</strong></td><td>מה הרשות הייתה <strong>יכולה</strong> לקבל על פי התקציב עד כה</td><td class="num">הקצבה שנתית × % מצטבר × 75%</td></tr>
-<tr><td><strong>ב. חלק המשרד בהוצאות מצטבר</strong></td><td>מה הרשות <strong>יכולה לקבל</strong> בהתאם להוצאה בפועל</td><td>לפי סיכום הוצאות בפועל</td></tr>
-<tr><td><strong>ג. זיכוי / חיוב מצטבר</strong></td><td>כמה הרשות <strong>קיבלה בפועל</strong> עד כה</td><td>סכום כל הזיכויים/חיובים</td></tr>
-<tr><td><strong>ד. זיכוי / חיוב בחודש זה</strong></td><td>מה התקציב שהרשות קיבלה בפועל <strong>בחודש הנוכחי</strong></td><td>—</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="formula">
-<span class="formula-label">נוסחת חלק המשרד בתקציב מצטבר</span>
-הקצבה שנתית (₪) × אחוז מימון מצטבר × 75%
-</div>
-<div class="formula">
-<span class="formula-label">דוגמה: אפריל, הקצבה 140,772 ₪</span>
-140,772 × 33.33% × 75% = 35,193 ₪
-</div>
-
-<div class="info-box info">
-<div class="box-title">💡 הערה לגבי סעיפי 100% מימון</div>
-הנוסחה לעיל מניחה 75% מימון. אם מדובר בסעיף של <strong>100% מימון</strong>, אז הנוסחה היא: הקצבה שנתית × אחוז מצטבר × <strong>100%</strong>.
-</div>
-
-<!-- PART 3 -->
-<h3 id="part3">חלק שלישי — מעקב אחר ביצוע התקציב</h3>
-<p><strong>השאלה:</strong> איפה אנחנו מול התקציב השנתי?</p>
-
-<div class="table-wrap">
-<table>
-<thead><tr><th>עמודה</th><th>הסבר מפורט</th><th>חישוב</th></tr></thead>
-<tbody>
-<tr><td><strong>א. הקצבה ביחידות שנתי</strong></td><td>סה"כ המכסות לשנה. חלקי 12 = מכסה חודשית</td><td class="num">12 ÷ 12 = 1/חודש</td></tr>
-<tr><td><strong>ב. יחידות ביצוע מצטבר</strong></td><td>מה בוצע מינואר עד עכשיו. חלקי מספר חודשים = ממוצע</td><td class="num">153.8 ÷ 5 = 30.76</td></tr>
-<tr><td><strong>ג. הקצבה שנתית בשקלים 100%</strong></td><td>רלוונטי <strong>רק לסעיפים כספיים</strong>. בכמותיים אין משמעות</td><td class="num">140,772 ₪</td></tr>
-<tr><td><strong>ד. הוצאה להתחשבנות מצטברת</strong></td><td>כמה הרשות הוציאה ב-100% (ברוטו) מתחילת השנה</td><td class="num">45,924 ₪</td></tr>
-<tr><td><strong>ה. השתתפות צד ג' מצטברת</strong></td><td>כמה הרשות נדרשת לגבות מפונים כהשתתפות עצמית עד כה</td><td class="num">1,936 ₪</td></tr>
-<tr><td><strong>ו. יתרת הקצבה כספית</strong></td><td>כמה תקציב נשאר עד סוף השנה</td><td>הקצבה שנתית − הוצאה מצטברת</td></tr>
-<tr><td><strong>ז. יתרת הקצבה כמותית</strong></td><td>כמה מכסות נותרו עד סוף שנה</td><td>הקצבה ביחידות − ביצוע מצטבר</td></tr>
-<tr><td><strong>ח. חיוב בחודש זה</strong></td><td>אם מינוס — המשרד יזכה את הרשות</td><td>סה"כ הוצאה − זיכוי/חיוב חודשי</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="info-box tip">
-<div class="box-title">💡 טריק לבדיקת מגמה תקציבית</div>
-קח את <strong>יחידות ביצוע מצטבר</strong> וחלק במספר החודשים שעברו — תקבל ממוצע חודשי. השווה לממוצע החודשי הצפוי (הקצבה שנתית ÷ 12). אם הממוצע שלך גבוה — אתה במגמת חריגה. אם נמוך — תת-ניצול.
-</div>
-</section>
-<!-- SECTION 6: PAYMENT TRACKS -->
-<section class="section" id="payment-tracks">
-<div class="section-header animate-in">
-<div class="section-number">פרק 08</div>
-<h2>מסלולי <span class="highlight">תשלום</span></h2>
-<p class="section-desc">ישנם שני מסלולים שונים לתזרים הכספי בין המשרד, הרשות והמסגרת. כל סעיף בדוח מציין באיזה מסלול הוא מתנהל.</p>
-</div>
-
-<div class="compare-grid">
-<div class="compare-card">
-<h4>🏛️ מסלול א': תשלומי ממשלה</h4>
-<p>המשרד משלם <strong>100%</strong> ישירות למסגרות. אחר כך, בדוח ההתחשבנות, נגבה מהרשות <strong>25%</strong> + השתתפות פונים.</p>
-<div class="flow" style="margin-top:16px">
-<div class="flow-step"><div class="step-icon">🏛️</div><div class="step-label">המשרד</div><div class="step-sub">משלם 100%</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">🏢</div><div class="step-label">המסגרת</div><div class="step-sub">מקבלת תשלום</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">📊</div><div class="step-label">התחשבנות</div><div class="step-sub">בדוח</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">🏘️</div><div class="step-label">הרשות</div><div class="step-sub">מחזירה 25%</div></div>
-</div>
-</div>
-<div class="compare-card">
-<h4>🏘️ מסלול ב': תשלומי רשות</h4>
-<p>הרשות משלמת ישירות למסגרת/ספק ומקבלת חזרה <strong>75%</strong> מהמשרד, כולל דיווחי רשות.</p>
-<div class="flow" style="margin-top:16px">
-<div class="flow-step"><div class="step-icon">🏘️</div><div class="step-label">הרשות</div><div class="step-sub">משלמת 100%</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">🏢</div><div class="step-label">הספק</div><div class="step-sub">מקבל תשלום</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">📋</div><div class="step-label">דיווח</div><div class="step-sub">הרשות מדווחת</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">🏛️</div><div class="step-label">המשרד</div><div class="step-sub">מחזיר 75%</div></div>
-</div>
-</div>
-</div>
-
-<div class="info-box info">
-<div class="box-title">💡 למה ההבחנה חשובה?</div>
-המסלול משפיע ישירות על <strong>תזרים המזומנים</strong> של המועצה. בתשלומי ממשלה — הכסף זורם ישירות מהמשרד, הרשות רק "מחזירה" 25%. בתשלומי רשות — הרשות צריכה <strong>להקדים</strong> את הכסף ולחכות להחזר 75%.
-</div>
-</section>
-
-<!-- SECTION 6B: POWER OF ATTORNEY -->
-<section class="section" id="poa">
-<div class="section-header animate-in">
-<div class="section-number">פרק 09</div>
-<h2>ייפוי <span class="highlight">כוח</span></h2>
-<p class="section-desc">ייפוי כוח הוא הסמכה רשמית של הרשות המקומית למשרד הרווחה לשלם ישירות לנותן השירות, במקום שהרשות תשלם ראשונה ואחר כך תקבל החזר. זה הופך את כיוון הזרימה של הכסף.</p>
-</div>
-
-<h3>השיטה המסורתית מול ייפוי כוח</h3>
-<div class="compare-grid">
-<div class="compare-card">
-<h4>🔄 השיטה המסורתית</h4>
-<p>נותן השירות שולח חשבונית לרשות → הרשות בודקת, מאשרת ומשלמת <strong>100%</strong> מקופתה → הרשות מדווחת למשרד → המשרד מחזיר <strong>75%</strong> לרשות.</p>
-<div class="info-box info" style="margin-top:12px">
-<div class="box-title">יתרון</div>
-שליטה מלאה — הרשות בודקת כל חשבונית ומאשרת.
-</div>
-<div class="info-box danger" style="margin-top:8px">
-<div class="box-title">חסרון</div>
-<strong>תזרים מזומנים</strong> — הרשות מוציאה 100% ומחכה חודשיים-שלושה להחזר 75%.
-</div>
-</div>
-<div class="compare-card highlight">
-<h4>📝 ייפוי כוח</h4>
-<p>הרשות <strong>מסמיכה</strong> את המשרד (במסמך רשמי) לשלם ישירות לנותן השירות → המשרד משלם <strong>100%</strong> לספק → המשרד <strong>מקזז</strong> מהרשות את ה-25% דרך מענקי איזון.</p>
-<div class="info-box success" style="margin-top:12px">
-<div class="box-title">יתרון לרשות</div>
-שיפור משמעותי של תזרים — הרשות לא מקדימה 100%. מוציאה רק 25% (או שמקוזז ממענקים).
-</div>
-<div class="info-box success" style="margin-top:8px">
-<div class="box-title">יתרון לספק</div>
-מקבל כסף ישירות מהמשרד, מהר יותר ובלי תלות במצב הרשות.
-</div>
-</div>
-</div>
-
-<h3>זרימת הכסף בייפוי כוח</h3>
-<div class="flow">
-<div class="flow-step"><div class="step-icon">🏘️</div><div class="step-label">הרשות</div><div class="step-sub">חותמת ייפוי כוח</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">🏛️</div><div class="step-label">המשרד</div><div class="step-sub">משלם 100% לספק</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">🏢</div><div class="step-label">נותן השירות</div><div class="step-sub">מקבל תשלום ישיר</div></div>
-<div class="flow-arrow">→</div>
-<div class="flow-step"><div class="step-icon">📊</div><div class="step-label">קיזוז</div><div class="step-sub">25% מהרשות</div></div>
-</div>
-
-<h3>מה כולל מסמך ייפוי כוח</h3>
-<div class="cards-grid">
-<div class="card">
-<div class="card-icon blue">📋</div>
-<h4>הצהרת הרשות</h4>
-<p>"הרשות מייפה את כוחה של המדינה לשלם במקומה את <strong>מלוא התשלומים</strong> ישירות לנותני השירותים, ולקזז מהרשות את ההשתתפות המגיעה ממנה."</p>
-</div>
-<div class="card">
-<div class="card-icon orange">⏰</div>
-<h4>תקופה מוגדרת</h4>
-<p>ייפוי הכוח תקף לתקופה מוגדרת (בדרך כלל שנה). אחרי שפג — צריך לחתום על חדש. <strong>אין תשלומים בדיעבד</strong> — השירות חייב להתחיל אחרי האישור.</p>
-</div>
-<div class="card">
-<div class="card-icon purple">🏛️</div>
-<h4>מופנה למינהל ספציפי</h4>
-<p>ייפוי הכוח מופנה למינהל הספציפי במשרד שאחראי על השירות: שירותים אישיים וחברתיים, מוגבלויות, סיוע לבתי משפט, או אזרחים ותיקים.</p>
-</div>
-<div class="card">
-<div class="card-icon red">✋</div>
-<h4>זכות עצירת תשלום</h4>
-<p>המשרד שומר לעצמו זכות <strong>להפסיק את התשלום</strong> אם הספק לא עומד בתנאי ההסכם או בהוראות תע"ס. שכבת בקרה נוספת.</p>
-</div>
-</div>
-
-<h3>חתימות נדרשות</h3>
-<p>מסמך ייפוי כוח דורש חתימות של: <strong>ראש המועצה</strong>, <strong>גזבר המועצה</strong>, ו<strong>היועץ המשפטי של הרשות</strong>. חתימת היועמ"ש חיונית — היא מעידה שהמסמך נבדק ועומד בדרישות החוק.</p>
-
-<div class="info-box danger">
-<div class="box-title">🔴 אזהרה חמורה — אין תשלומים בדיעבד</div>
-אם הרשות התחילה לקבל שירותים מהספק <strong>לפני</strong> שייפוי הכוח אושר במשרד — <strong>המשרד לא ישתתף במימון</strong>. הרשות תשלם 100% לבד. חובה לוודא שייפוי הכוח חתום ומאושר <strong>לפני</strong> שהשירות מתחיל.
-</div>
-
-<h3>השפעה על הדוח</h3>
-<p>סעיפים שמתנהלים בייפוי כוח מופיעים בדוח <strong>בצורה שונה</strong>. במקום שתראו "הוצאה" של 100% ו"החזר" של 75% — תראו רק את ה-25% שלכם, או רישום מיוחד שמראה שהמשרד שילם ישירות. המסלול יכול להופיע כ"תשלומי ממשלה" או "ייפוי כוח".</p>
-
-<div class="info-box info">
-<div class="box-title">💡 כתב התחייבות בנקאי של נותן השירות</div>
-כדי שהמשרד ישלם ישירות, נותן השירות חייב לחתום על <strong>כתב התחייבות</strong> — שאם ישולם ביתר, הוא יחזיר את הכסף תוך 14 יום. צריך גם <strong>אישור רואה חשבון</strong> ופרטי חשבון בנק מאומתים.
-</div>
-</section>
-
-<!-- SECTION 7: SPECIAL MECHANISMS -->
-<section class="section" id="special">
-<div class="section-header animate-in">
-<div class="section-number">פרק 10</div>
-<h2>מנגנונים <span class="highlight">מיוחדים</span></h2>
-<p class="section-desc">שני מנגנונים מיוחדים שמסבכים את הדוח ויש להבין אותם: ילדי חוץ והפרשים.</p>
-</div>
-
-<div class="compare-grid">
-<div class="compare-card">
-<h4>👦 ילדי חוץ — הכנסות מתושבי רשויות אחרות</h4>
-<p>כשמסגרת שהרשות מפעילה מקבלת פונים מרשויות אחרות, הרשות שבה הילד <strong>גר</strong> משלמת <strong>100% תעריף</strong> לרשות הקולטת.</p>
-<ul>
-<li>מקור הכנסה חשוב למועצות עם מסגרות איכותיות</li>
-<li>100% תעריף — לא רק 75%</li>
-<li>תמריץ להפעלת מסגרות איכותיות שמושכות פונים מבחוץ</li>
-</ul>
-<div class="info-box success" style="margin-top:12px">
-<div class="box-title">✅ דוגמה</div>
-ילד מירושלים מגיע למועדונית באפרת → ירושלים משלמת 100% תעריף לגוש עציון.
-</div>
-</div>
-<div class="compare-card">
-<h4>📐 הפרשים — מימון מכמה משרדים</h4>
-<p>כשיש מימון מיותר ממשרד ממשלתי אחד, <strong>מערכת המרכבה מנכה אוטומטית</strong> כדי למנוע כפילות.</p>
-<ul>
-<li><strong>מועדונית משותפת:</strong> חינוך נותן 686 ₪ → המרכבה מפחיתה לפני חישוב חלק הרווחה</li>
-<li><strong>שירותי התמכרויות:</strong> בריאות משתתף → תיאום אוטומטי עם רווחה</li>
-<li>שורות "הפרשים" בדוח = תיאומים בין-משרדיים</li>
-</ul>
-<div class="info-box warning" style="margin-top:12px">
-<div class="box-title">⚠️ שימו לב</div>
-מספרים "מוזרים" בשורות הפרשים הם תקינים — הם משקפים מצב מימון מורכב מכמה מקורות ממשלתיים.
-</div>
-</div>
-</div>
-</section>
-
-<!-- SECTION 8: VISUT -->
-<section class="section" id="visut">
-<div class="section-header animate-in">
-<div class="section-number">פרק 11</div>
-<h2>מנגנון <span class="highlight">הוויסות</span></h2>
-<p class="section-desc">ויסות תקציבי = העברת תקציב לא מנוצל מרשות אחת לרשות אחרת. זה גם סכנה וגם הזדמנות.</p>
-</div>
-
-<div class="compare-grid">
-<div class="compare-card" style="border-color:var(--accent-red)">
-<h4 style="color:var(--accent-red)">⚠️ הסכנה: אתם יכולים להפסיד</h4>
-<p>אם המועצה בתת-ניצול (יתרה גדולה) — ייתכן שבסוף השנה המשרד <strong>יוויסת את היתרה לרשות אחרת</strong>. תאבדו את התקציב.</p>
-</div>
-<div class="compare-card" style="border-color:var(--accent-green)">
-<h4 style="color:var(--accent-green)">✅ ההזדמנות: אתם יכולים לקבל יותר</h4>
-<p>אם רשות אחרת לא ניצלה ואתם זקוקים ליותר — ייתכן ש<strong>תקבלו תוספת מהוויסות</strong>. בתנאי שפניתם בזמן.</p>
-</div>
-</div>
-
-<div class="info-box danger">
-<div class="box-title">🔴 כלל זהב: אסור לחכות לסוף השנה!</div>
-<ul>
-<li>חריגה? → <strong>בקשו תוספת מוקדם</strong>, לפני עונת הוויסותים</li>
-<li>יתרה? → <strong>נצלו מהר</strong> או הסבירו למה זמני — כדי לא לאבד תקציב</li>
-<li>סעיפים בסטטוס "תת ביצוע" = <strong>התרעה</strong> שתקציב יכול ללכת</li>
-</ul>
-</div>
-</section>
-
-<!-- SECTION: SUPERVISION STRUCTURE -->
-<section class="section" id="supervision">
-<div class="section-header animate-in">
-<div class="section-number">פרק 12</div>
-<h2>מבנה <span class="highlight">הפיקוח</span> במשרד</h2>
-<p class="section-desc">לכל תחום שירות יש מפקח/ת ייעודי/ת במשרד. הבנת מבנה הפיקוח חיונית לתקשורת נכונה ולפתרון בעיות.</p>
-</div>
-
-<h3>ארבעת המינהלים</h3>
-<p>משרד הרווחה מחולק לארבעה <strong>מינהלים</strong> מקצועיים. ייפוי כוח, בקשות הרחבה, ושאלות מקצועיות — כולם צריכים להיות מופנים למינהל הנכון:</p>
-<div class="cards-grid">
-<div class="card" style="border-top:3px solid var(--accent-blue)">
-<div class="card-icon blue">👥</div>
-<h4>מינהל שירותים אישיים וחברתיים</h4>
-<p>המינהל הגדול ביותר. מטפל בילדים ונוער, משפחה, אלימות, פגיעות מיניות, אומנה, פנימיות, תכניות קהילתיות.</p>
-</div>
-<div class="card" style="border-top:3px solid var(--accent-purple)">
-<div class="card-icon purple">♿</div>
-<h4>מינהל מוגבלויות</h4>
-<p>אנשים עם מוגבלות שכלית, אוטיזם, מוגבלות פיזית וחושית. מעונות, דיור בקהילה, שיקום.</p>
-</div>
-<div class="card" style="border-top:3px solid var(--accent-orange)">
-<div class="card-icon orange">⚖️</div>
-<h4>מינהל סיוע לבתי משפט ותיקון</h4>
-<p>עבריינות, נוער בסיכון בהליכים פליליים, שירותי מבחן.</p>
-</div>
-<div class="card" style="border-top:3px solid var(--accent-green)">
-<div class="card-icon green">👴</div>
-<h4>אגף אזרחים ותיקים</h4>
-<p>קשישים, ניצולי שואה, מעונות יום, סיעוד, דיור מוגן.</p>
-</div>
-</div>
-
-<h3>חלוקת מפקחים</h3>
-<p>בתוך כל מינהל יש <strong>שירותים</strong> מקצועיים, ובכל שירות — צוות מפקחים. המפקחים מחולקים לפי שני קריטריונים:</p>
-<div class="compare-grid">
-<div class="compare-card">
-<h4>🎯 התמחות מקצועית</h4>
-<p>מפקח/ת על אלימות במשפחה, מפקח/ת על פגיעות מיניות, מפקח/ת על אומנה — כל אחד/ת מתמחה בתת-תחום ספציפי.</p>
-</div>
-<div class="compare-card">
-<h4>🗺️ חלוקה גיאוגרפית</h4>
-<p>לרוב יש מפקח/ת לכל מחוז (צפון, חיפה, ת"א, ירושלים, דרום, יו"ש). מפקח/ת על אומנה בירושלים ≠ מפקח/ת על אומנה בצפון.</p>
-</div>
-</div>
-
-<div class="info-box info">
-<div class="box-title">💡 כמה מפקחים יש למועצה ממוצעת?</div>
-מועצה אזורית מתנהלת מול בערך <strong>6-12 מפקחים שונים</strong> מהמשרד. מ-שח"א: ילד ונוער, אומנה, פנימיות, אלימות, פגיעות מיניות, מעונות יום. מ-מוגבלויות: מעונות, דיור בקהילה, שיקום. מ-אזרחים ותיקים: שירותי קשישים.
-</div>
-
-<h3>היררכיה מעל המפקחים</h3>
-<p>אם מפקח/ת לא מאשר/ת בקשה או יש מחלוקת, ניתן לפנות:</p>
-<div class="steps">
-<div class="step-item">
-<div class="step-num">1</div>
-<div class="step-content"><h4>מפקח/ת ארצי/ת על התחום</h4><p>יושב/ת במטה המשרד בירושלים, אחראי/ת על התחום בכל הארץ.</p></div>
-</div>
-<div class="step-item">
-<div class="step-num">2</div>
-<div class="step-content"><h4>מנהל/ת המחוז</h4><p>מנהל/ת המחוז של המשרד באזור שלכם.</p></div>
-</div>
-<div class="step-item">
-<div class="step-num">3</div>
-<div class="step-content"><h4>מנהל/ת השירות הארצי</h4><p>למשל מנהלת השירות לרווחת הפרט והמשפחה.</p></div>
-</div>
-<div class="step-item">
-<div class="step-num">4</div>
-<div class="step-content"><h4>מנהל/ת המינהל ← מנכ"ל המשרד</h4><p>רמה עליונה — פניה חריגה בלבד, בד"כ דרך ראש המועצה.</p></div>
-</div>
-</div>
-
-<div class="info-box tip">
-<div class="box-title">💡 מפת מפקחים — כלי חיוני</div>
-כדאי שיהיה לכם רשימה מסודרת: שם הסעיף, שם המפקח/ת, פרטי קשר, מחוז. <strong>מפקחים מתחלפים</strong> — עדכנו את המפה אחת לחצי שנה. <strong>בניית מערכת יחסים אישית טובה</strong> עם המפקחים היא אולי המשאב המקצועי הכי חשוב.
-</div>
-</section>
-
-<!-- SECTION: MONTHLY CYCLE -->
-<section class="section" id="monthly-cycle">
-<div class="section-header animate-in">
-<div class="section-number">פרק 13</div>
-<h2>מחזור דיווח <span class="highlight">חודשי</span></h2>
-<p class="section-desc">הדוח לא מופק "מאליו" — מאחוריו תהליך עבודה חודשי. אם משלב כלשהו נופל, הדוח החודש הבא יצא שגוי או חלקי.</p>
-</div>
-
-<h3>תחילת החודש</h3>
-<div class="info-box info">
-<div class="box-title">📋 משימות</div>
-<ul style="padding-right:18px;color:var(--text-secondary);font-size:0.9rem">
-<li>לוודא שכל הלקוחות במסגרות רשומים נכון במערכת</li>
-<li>אם לקוח עזב מסגרת — לעדכן מיידית, אחרת ימשיכו לחייב</li>
-<li>אם לקוח חדש נכנס — להזין פרטיו וקוד הסעיף הרלוונטי</li>
-<li>לבדוק הרשאות תקציב לכל הלקוחות הפעילים</li>
-</ul>
-</div>
-
-<h3>אמצע החודש</h3>
-<div class="info-box info">
-<div class="box-title">📋 משימות</div>
-<ul style="padding-right:18px;color:var(--text-secondary);font-size:0.9rem">
-<li>קבלת חשבוניות מנותני השירות (מעונות, פנימיות, אומנות)</li>
-<li>בקרה: האם החשבונית תואמת את החודש שדווח? את התעריף בהסכם?</li>
-<li>אישור החשבוניות והעברתן לגזברות לתשלום</li>
-<li>גביית השתתפות צד ג' מההורים — מעקב אחרי הוראות קבע, גביית פערים</li>
-</ul>
-</div>
-
-<h3>סוף החודש</h3>
-<div class="info-box info">
-<div class="box-title">📋 משימות</div>
-<ul style="padding-right:18px;color:var(--text-secondary);font-size:0.9rem">
-<li>הזנת כל ההוצאות בפועל למערכת המשרד — לפי סעיף, לקוח, וסיווג</li>
-<li>בדיקת התאמה בין מערכת המועצה (ERP) לבין הדיווח שמועבר למשרד</li>
-<li>תיעוד חריגות וסטיות במסמך פנימי לבקרה</li>
-</ul>
-</div>
-
-<h3>תחילת החודש הבא</h3>
-<div class="info-box info">
-<div class="box-title">📋 משימות</div>
-<ul style="padding-right:18px;color:var(--text-secondary);font-size:0.9rem">
-<li>הגשת הדיווח הסופי למשרד ("דיווח רשות")</li>
-<li>בדיקת הדוח שמתקבל — האם המספרים תואמים?</li>
-<li>מעקב אחר העברות שהמשרד מבצע לבנק (להצליב עם הגזברות)</li>
-<li>תיעוד חיובים פתוחים שלא נסגרו, להמשך טיפול</li>
-</ul>
-</div>
-
-<div class="info-box tip">
-<div class="box-title">💡 יומן עבודה חודשי</div>
-מומלץ לתחזק יומן של כל פעולות הדיווח, כולל תאריכים שבהם הוזנו נתונים, מספרי אישור, וזיהוי בעיות. זה מציל אתכם בבדיקות בסוף שנה ובביקורות.
-</div>
-
-<h3>ציר הזמן של מקרה בודד</h3>
-<div class="steps">
-<div class="step-item">
-<div class="step-num">1</div>
-<div class="step-content"><h4>פברואר 2026</h4><p>הילד נמצא במעון. השירות ניתן בפועל.</p></div>
-</div>
-<div class="step-item">
-<div class="step-num">2</div>
-<div class="step-content"><h4>סוף פברואר / תחילת מרץ</h4><p>המעון סוגר את חשבונית פברואר ושולח לרשות.</p></div>
-</div>
-<div class="step-item">
-<div class="step-num">3</div>
-<div class="step-content"><h4>מרץ 2026</h4><p>הרשות בודקת את החשבונית, מאשרת, ומעבירה תשלום למעון.</p></div>
-</div>
-<div class="step-item">
-<div class="step-num">4</div>
-<div class="step-content"><h4>סוף מרץ / תחילת אפריל</h4><p>הרשות מזינה את התשלום למערכת המשרד (דיווח רשות).</p></div>
-</div>
-<div class="step-item">
-<div class="step-num">5</div>
-<div class="step-content"><h4>אפריל 2026</h4><p>המשרד מעבד את הדיווח, מחשב את חלקו, ומפיק את הדוח.</p></div>
-</div>
-<div class="step-item">
-<div class="step-num">6</div>
-<div class="step-content"><h4>אפריל-מאי 2026</h4><p>המשרד מעביר את הכסף לרשות.</p></div>
-</div>
-</div>
-</section>
-
-<!-- SECTION: CONTROL QUESTIONS -->
-<section class="section" id="control-questions">
-<div class="section-header animate-in">
-<div class="section-number">פרק 14</div>
-<h2>שאלות <span class="highlight">בקרה</span></h2>
-<p class="section-desc">רשימת בדיקה תפעולית — 7 בדיקות שיש לבצע בכל פעם שמגיע דוח חודשי.</p>
-</div>
-
-<div class="steps">
-<div class="step-item">
-<div class="step-num">1</div>
-<div class="step-content">
-<h4>התאמת ההוצאה החודשית</h4>
-<p>האם "סה"כ הוצאה" בדוח תואם למה ששילמתם בפועל? הוציאו דוח מ-ERP של המועצה לאותו חודש וסעיף, וודאו שהסכומים זהים.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">2</div>
-<div class="step-content">
-<h4>כמות יחידות</h4>
-<p>מספר היחידות שדווחו צריך להתאים ללקוחות הפעילים. 3 ילדים פעילים אבל בדוח "1"? מאבדים מימון על שניים. "5" אבל באמת 3? חריגה.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">3</div>
-<div class="step-content">
-<h4>סטטוס תקצוב מצטבר</h4>
-<p>צריך להיות 0 או קרוב. חיובי גדול = יתרה לא מנוצלת. שלילי = חריגה. בשני המקרים — לבדוק.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">4</div>
-<div class="step-content">
-<h4>התאמת קצב לאחוז השנה</h4>
-<p>אם 33% מהשנה עברו, הביצוע המצטבר ביחידות אמור להיות ~33% מהתקצוב השנתי. סטייה משמעותית = בדיקה.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">5</div>
-<div class="step-content">
-<h4>חיובים פתוחים</h4>
-<p>האם "חיוב מצטבר" גדל ולא קטן? סימן שהמשרד מעכב העברות. צריך לפנות.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">6</div>
-<div class="step-content">
-<h4>צד ג'</h4>
-<p>הסכום בדוח צריך להתאים למה שגביתם בפועל. דיווחתם 484 ₪ אבל גביתם 300? חור תקציבי שלכם.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">7</div>
-<div class="step-content">
-<h4>יתרת תקציב</h4>
-<p>חישוב: יתרה ÷ ממוצע חודשי = כמה חודשים נשארו. אם פחות ממה שנשאר עד סוף שנה — בקשו הרחבה.</p>
-</div>
-</div>
-</div>
-
-<div class="info-box success">
-<div class="box-title">✅ דוח תקין נראה ככה</div>
-המספרים בקבוצה A מתאימים ל-ERP, היחידות תואמות ללקוחות, סטטוס תקצוב = 0, ביצוע מצטבר תואם לאחוז השנה, חיובים מצטברים מתאזנים בהדרגה, וצד ג' תואם לגבייה בפועל.
-</div>
-</section>
-
-<!-- SECTION: CHECK STATUS -->
-<section class="section" id="check-status">
-<div class="section-header animate-in">
-<div class="section-number">פרק 15</div>
-<h2>בדיקת חריגה <span class="highlight">או יתרה</span></h2>
-<p class="section-desc">הכלי המרכזי לאבחון מצב תקציבי — השוואת שתי עמודות קריטיות בחלק השני של הדוח.</p>
-</div>
-
-<div class="info-box success">
-<div class="box-title">📌 הכלל הפשוט</div>
-<strong>השווה שתי עמודות:</strong><br>
-1. חלק המשרד בהוצאות מצטבר<br>
-2. זיכוי / חיוב מצטבר<br><br>
-<strong>זהים ושווים = תקין ✅</strong><br>
-<strong>לא זהים = יש לבדוק ⚠️</strong>
-</div>
-
-<div class="cards-grid">
-<div class="card" style="border-color:var(--accent-green)">
-<div class="card-icon green">✅</div>
-<h4>הסכומים זהים — תקין</h4>
-<p>הרשות מקבלת את מה שהיא מוציאה. יש איזון מלא בין ההוצאה לזיכוי. אין צורך בפעולה.</p>
-</div>
-<div class="card" style="border-color:var(--accent-red)">
-<div class="card-icon red">📈</div>
-<h4>זיכוי נמוך מהוצאות — חריגה</h4>
-<p>הרשות הוציאה יותר מהתקציב. ייתכן שבחודשים הבאים החריגה תצומצם, אך יש לעקוב ולבדוק אם נדרשת בקשת הרחבה.</p>
-</div>
-<div class="card" style="border-color:var(--accent-orange)">
-<div class="card-icon orange">📉</div>
-<h4>זיכוי גבוה מהוצאות — יתרה</h4>
-<p>הרשות לא ניצלה את מלוא התקציב. <strong>שימו לב:</strong> אם קיימת יתרה, ייתכן שבמועד ויסותים ניתן יהיה להעביר בין רשויות.</p>
-</div>
-</div>
-
-<h3>בדיקה נוספת — מעקב כמותי</h3>
-<p>ניתן גם לבדוק חריגה מבחינת מכסות. כל עוד הרשות <strong>לא חורגת מחודשי הסידור</strong>, מקבלים את מלוא 75% מהתעריף.</p>
-<div class="formula">
-<span class="formula-label">בדיקת ממוצע חודשי מול מכסה</span>
-יחידות ביצוע מצטבר ÷ מספר חודשים = ממוצע חודשי<br>
-ממוצע חודשי > (הקצבה שנתית ÷ 12) → מגמת חריגה!
-</div>
-</section>
-
-<!-- SECTION 10: WORKFLOW -->
-<section class="section" id="workflow">
-<div class="section-header animate-in">
-<div class="section-number">פרק 16</div>
-<h2>סדר עבודה <span class="highlight">חודשי</span></h2>
-<p class="section-desc">כשמגיע דוח חודשי — הנה סדר העבודה המעשי המומלץ, צעד אחר צעד.</p>
-</div>
-
-<div class="steps">
-<div class="step-item">
-<div class="step-num">1</div>
-<div class="step-content">
-<h4>סקירה כללית של הסטטוסים</h4>
-<p>רוץ עם העיניים על העמודה האחרונה. סמן כל מה שלא תקין — חריגות, שורות מינוס, סטטוס "תת ביצוע".</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">2</div>
-<div class="step-content">
-<h4>בדיקת תקינות לכל סעיף</h4>
-<p>לכל סעיף, השווה: <strong>חלק המשרד בהוצאות מצטבר</strong> מול <strong>זיכוי/חיוב מצטבר</strong>. זהים = תקין. שונים = לבדוק.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">3</div>
-<div class="step-content">
-<h4>ניתוח חריגות</h4>
-<p>לכל חריגה: מתי התחילה? אירוע חד-פעמי או מגמה? סיבה אובייקטיבית? צריך בקשת הרחבת הרשאה?</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">4</div>
-<div class="step-content">
-<h4>ניתוח תת-ניצול</h4>
-<p>באמת תת-ניצול או טעות דיווח? הצורך פחת? בעיה בהפעלת השירות? סכנה לוויסות בסוף השנה?</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">5</div>
-<div class="step-content">
-<h4>בדיקת שורות מינוס</h4>
-<p>תיקון צ'ק שלא נפדה (4 חודשים)? זיכוי על שירות שדווח בעבר ומתוקן? לבדוק מול מחלקת גביה.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">6</div>
-<div class="step-content">
-<h4>השוואה לתקופות קודמות</h4>
-<p>שמור את הדוח. בחודש הבא השווה. סעיפים שהולכים ומידרדרים → טיפול דחוף.</p>
-</div>
-</div>
-<div class="step-item">
-<div class="step-num">7</div>
-<div class="step-content">
-<h4>תקשורת עם המפקחים</h4>
-<p>לפני שמטפלים בחריגה — ידעו את המפקח/ת הרלוונטי/ת. גם נימוס מקצועי וגם הזדמנות לקבל עצה.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- SECTION 11: NUMERICAL EXAMPLE -->
-<section class="section" id="example">
-<div class="section-header animate-in">
-<div class="section-number">פרק 17</div>
-<h2>דוגמה מספרית <span class="highlight">מלאה</span></h2>
-<p class="section-desc">סעיף 242410 (אחזקה במעונות א.ותי) — חודש אפריל 2026. דוגמה מלאה עם כל החישובים.</p>
-</div>
-
-<div class="info-box info">
-<div class="box-title">📋 הנתונים הבסיסיים</div>
-סוג סיווג: <strong>כמותי רשות</strong> (1/12 לחודש) &nbsp;|&nbsp;
-הקצבה שנתית: <strong>12 חודשי סידור</strong> &nbsp;|&nbsp;
-הקצבה כספית: <strong>140,772 ₪</strong> &nbsp;|&nbsp;
-מסלול: <strong>תשלומי ממשלה</strong> &nbsp;|&nbsp;
-אחוז מצטבר באפריל: <strong>33.33%</strong>
-</div>
-
-<h3>חלק ראשון — הוצאה חודשית (אפריל)</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>שדה</th><th>חישוב</th><th>תוצאה</th></tr></thead>
-<tbody>
-<tr><td>יחידות שדווחו</td><td>1 חודש סידור</td><td class="num">1.0</td></tr>
-<tr><td>סה"כ הוצאה</td><td>עלות השירות החודשית</td><td class="num">12,468 ₪</td></tr>
-<tr><td>השתתפות צד ג'</td><td>חלק הפונים (לפי הוראות התע"ס)</td><td class="num">484 ₪</td></tr>
-<tr><td>הוצאה להתחשבנות</td><td>12,468 − 484</td><td class="num"><strong>11,984 ₪</strong></td></tr>
-<tr><td>חלק המשרד (75%)</td><td>11,984 × 75%</td><td class="num"><strong>8,988 ₪</strong></td></tr>
-<tr><td>חלק הרשות (25%)</td><td>11,984 × 25%</td><td class="num"><strong>2,996 ₪</strong></td></tr>
-<tr><td>סה"כ חלק הרשות בפועל</td><td>2,996 + 484 (צד ג')</td><td class="num"><strong>3,480 ₪</strong></td></tr>
-</tbody>
-</table>
-</div>
-
-<h3>חלק שני — בקרה תקציבית</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>שדה</th><th>חישוב</th><th>תוצאה</th><th>סטטוס</th></tr></thead>
-<tbody>
-<tr><td>חלק המשרד בתקציב מצטבר</td><td>140,772 × 33.33% × 75%</td><td class="num">35,193 ₪</td><td><span class="tag ok">—</span></td></tr>
-<tr><td>חלק המשרד בהוצאות מצטבר</td><td>סיכום הוצאות בפועל</td><td class="num">35,193 ₪</td><td><span class="tag ok">—</span></td></tr>
-<tr><td>זיכוי/חיוב מצטבר</td><td>מה שהרשות קיבלה בפועל</td><td class="num">35,193 ₪</td><td><span class="tag ok">תקין ✅</span></td></tr>
-</tbody>
-</table>
-</div>
-<div class="info-box success">
-<div class="box-title">✅ שלושת המספרים זהים — 35,193 ₪</div>
-כל שלושת הערכים שווים. זה מצב <strong>תקין מושלם</strong>: הרשות מקבלת בדיוק את מה שמגיע לה לפי ההוצאה.
-</div>
-
-<h3>חלק שלישי — מעקב תקציבי</h3>
-<div class="table-wrap">
-<table>
-<thead><tr><th>שדה</th><th>ערך</th><th>הסבר</th></tr></thead>
-<tbody>
-<tr><td>הקצבה ביחידות שנתי</td><td class="num">12</td><td>12 חודשי סידור (לא 12 ילדים!)</td></tr>
-<tr><td>יחידות ביצוע מצטבר</td><td class="num">4</td><td>4 ח"ס באפריל — מתאים לצפוי</td></tr>
-<tr><td>הוצאה להתחשבנות מצטברת</td><td class="num">45,924 ₪</td><td>4 × ~11,481 ₪ ממוצע</td></tr>
-<tr><td>יתרת הקצבה כמותית</td><td class="num">8</td><td>12 − 4 = 8 חודשי סידור נותרו</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="chart-container">
-<div class="chart-title">ניצול תקציב — סעיף 242410 באפריל</div>
-<div class="bar-chart">
-<div class="bar-row"><span class="bar-label">ניצול כמותי</span><div class="bar-track"><div class="bar-fill cyan" style="width:33.33%">4/12 = 33%</div></div></div>
-<div class="bar-row"><span class="bar-label">ניצול כספי</span><div class="bar-track"><div class="bar-fill green" style="width:32.6%">45,924/140,772 = 33%</div></div></div>
-<div class="bar-row"><span class="bar-label">אחוז מצטבר</span><div class="bar-track"><div class="bar-fill purple" style="width:33.33%">33.33%</div></div></div>
-</div>
-</div>
-<div class="info-box success">
-<div class="box-title">✅ סיכום: הסעיף בדיוק במקום הנכון</div>
-כל המדדים — כמותיים, כספיים, ואחוז מצטבר — מיושרים ב-33%. ביצוע תקין לחלוטין.
-</div>
-</section>
-
-<!-- SECTION: LEGAL CONTEXT -->
-<section class="section" id="legal">
-<div class="section-header animate-in">
-<div class="section-number">פרק 18</div>
-<h2>ההקשר <span class="highlight">המשפטי</span></h2>
-<p class="section-desc">הדוח התקציבי אינו רק מסמך כספי, אלא ביטוי של מערכת יחסים חוקית ומשפטית מורכבת בין המדינה, הרשות המקומית, ונותן השירות.</p>
-</div>
-
-<h3>חוק שירותי הסעד, התשי"ח-1958</h3>
-<p>זהו חוק הבסיס המגדיר שכל רשות מקומית חייבת לקיים לשכת סעד (מחלקת שירותים חברתיים). החוק קובע את חלוקת האחריות: המדינה קובעת מדיניות ומתקצבת, הרשות מבצעת. זוהי חובה חוקית לספק את השירות, ולא בחירה וולונטרית של הרשות.</p>
-
-<h3>תע"ס - תקנון עובדים סוציאליים</h3>
-<p>אלו הן ה"תקנות" של משרד הרווחה. התע"ס מגדיר את אמות המידה, התנאים לזכאות, הסטנדרטים הנדרשים למתן שירות, וגם את העלויות המוכרות והתעריפים שמותר לשלם או לגבות. התע"ס מהווה את הבסיס החוקי לכל קוד שמופיע בדוח התקצוב. אם ספק לא עומד בהוראות תע"ס – המשרד רשאי לעצור תשלומים.</p>
-
-<div class="compare-grid">
-<div class="compare-card">
-<h4>⚖️ האחריות נשארת ברשות</h4>
-<p>גם במקרים של ייפוי כוח (כשהמשרד משלם ישירות לספק), <strong>האחריות המקצועית והמשפטית נשארת על הרשות</strong>. אם השירות שניתן ללקוח אינו טוב או גרם לנזק, התביעה תהיה נגד הרשות שאחראית לפרקטיקה. ייפוי הכוח מסדיר רק את "הצינור הכספי".</p>
-</div>
-<div class="compare-card">
-<h4>📄 מכרז לעומת פטור ממכרז</h4>
-<p>במערכת הרווחה, ספקים לרוב נבחרים דרך מכרז פומבי של המועצה, או נרשמים ל"מאגר ספקים" באמצעות הליך של "קול קורא". במקרים מסוימים של התקשרויות מיוחדות, ייתכן אישור של "פטור ממכרז". כל ספק חייב להיות מאושר כדין ברשות לפני שהמשרד יאשר להעביר אליו כספים.</p>
-</div>
-</div>
-
-<div class="info-box danger">
-<div class="box-title">⚠️ המשמעות החשבונאית של חוזים</div>
-כל דיווח במערכת מתבסס על חוזים שנחתמו כדין. חובה על הרשות להבטיח שלכל הוצאה יש גיבוי חוזי בתוקף, אישור יועמ"ש, ואישור תקציבי (הרשאה). תשלום ללא גיבויים אלו עלול להוביל לבקשת החזר מהמדינה, ואף לחיוב אישי של נושאי משרה ברשות המקומית.
-</div>
-</section>
-
-<!-- SECTION 16: SUMMARY -->
-<section class="section" id="summary">
-<div class="section-header animate-in">
-<div class="section-number">פרק 19</div>
-<h2>סיכום <span class="highlight">ותזכורות</span></h2>
-<p class="section-desc">חמישה דברים שחובה לזכור — העיקרי מכל מה שנלמד.</p>
-</div>
-
-<div class="cards-grid">
-<div class="card" style="border-top:3px solid var(--accent-blue)">
-<div class="card-icon blue">1️⃣</div>
-<h4>הדוח = 4 מקורות</h4>
-<p>הדוח משלב כ"א (פיגור חודשיים), מס"ר (חודש), מת"ס (חודש), ודיווח רשות (עדכני). לכל שורה עדכניות שונה.</p>
-</div>
-<div class="card" style="border-top:3px solid var(--accent-cyan)">
-<div class="card-icon cyan">2️⃣</div>
-<h4>יחידות ≠ אנשים</h4>
-<p>יחידות = חודשי סידור. 29 יחידות יכולים להיות 20 פונים + 9 חודשים רטרו. לספירת אנשים → דוח אחזקת חניכים.</p>
-</div>
-<div class="card" style="border-top:3px solid var(--accent-purple)">
-<div class="card-icon purple">3️⃣</div>
-<h4>4 סוגי סיווג</h4>
-<p>כספי רשות (1/12), כספי שנתי (הכל בבת אחת), כמותי ארצי (המסגרת מוגבלת), כמותי רשות (1/12, הנפוץ ביותר).</p>
-</div>
-<div class="card" style="border-top:3px solid var(--accent-green)">
-<div class="card-icon green">4️⃣</div>
-<h4>בדיקת תקינות = 2 עמודות</h4>
-<p>חלק המשרד בהוצאות מצטבר vs. זיכוי/חיוב מצטבר. שווים = תקין. שונים = לבדוק.</p>
-</div>
-<div class="card" style="border-top:3px solid var(--accent-orange)">
-<div class="card-icon orange">5️⃣</div>
-<h4>ויסות = סכנה + הזדמנות</h4>
-<p>אסור לחכות לסוף השנה. חריגה? בקשו תוספת מוקדם. יתרה? נצלו מהר או שתאבדו אותה.</p>
-</div>
-</div>
-</section>
-
-</main>
-
-<script>
-// Animate elements on scroll
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('animate-in');
-    }
-  });
-}, { threshold: 0.1 });
-
-document.querySelectorAll('.section-header, .card, .step-item').forEach(el => {
-  observer.observe(el);
-});
-
-// Active sidebar link on scroll
-const sections = document.querySelectorAll('.section[id]');
-const navLinks = document.querySelectorAll('.sidebar a[href^="#"]');
-window.addEventListener('scroll', () => {
-  let current = '';
-  sections.forEach(section => {
-    const top = section.offsetTop - 100;
-    if (pageYOffset >= top) current = section.getAttribute('id');
-  });
-  navLinks.forEach(link => {
-    link.classList.remove('active');
-    if (link.getAttribute('href') === '#' + current) link.classList.add('active');
-  });
-});
-
-// Close sidebar on mobile when clicking a link
-document.querySelectorAll('.sidebar a').forEach(link => {
-  link.addEventListener('click', () => {
-    if (window.innerWidth <= 900) {
-      document.querySelector('.sidebar').classList.remove('open');
-    }
-  });
-});
-</script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>דוח תקצוב והתחשבנות — מדריך עומק</title>
+    <meta
+      name="description"
+      content="מדריך מקיף ומעמיק לדוח תקצוב והתחשבנות של משרד הרווחה"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <button
+      class="menu-toggle"
+      onclick="document.querySelector('.sidebar').classList.toggle('open')"
+    >
+      ☰
+    </button>
+    <nav class="sidebar">
+      <div class="sidebar-logo">📊 מדריך דוח תקצוב</div>
+      <div class="sidebar-section-title">יסודות</div>
+      <a href="#overview">סקירה כללית</a>
+      <a href="#big-picture" class="sub">ההקשר הגדול</a>
+      <a href="#resident-journey" class="sub">מסע התושב</a>
+      <a href="#systems" class="sub">4 מערכות דיווח</a>
+      <a href="#code-structure" class="sub">מבנה קוד תקציבי</a>
+      <a href="#departments" class="sub">חלוקה לפי מינהלים</a>
+      <div class="sidebar-section-title">סוגי סעיפים</div>
+      <a href="#item-types">סוגי סעיפים תקציביים</a>
+      <a href="#financial-items" class="sub">סעיפים כספיים</a>
+      <a href="#quantity-items" class="sub">סעיפים כמותיים</a>
+      <a href="#units-explained" class="sub">יחידות ≠ אנשים</a>
+      <a href="#funding-rate" class="sub">קצב מימון מצטבר</a>
+      <div class="sidebar-section-title">מבנה הדוח</div>
+      <a href="#report-structure">שלושת חלקי הדוח</a>
+      <a href="#part1">חלק 1: הוצאה חודשית</a>
+      <a href="#part2">חלק 2: בקרה תקציבית</a>
+      <a href="#part3">חלק 3: מעקב ביצוע</a>
+      <a href="#two-reports">שני הדוחות החשובים</a>
+      <div class="sidebar-section-title">מסלולי תשלום</div>
+      <a href="#payment-tracks">תשלומי ממשלה / רשות</a>
+      <a href="#poa" class="sub">ייפוי כוח</a>
+      <div class="sidebar-section-title">דיווח רשות</div>
+      <a href="#reporting-rules">5 כללי דיווח רשות</a>
+      <a href="#asmachta-types" class="sub">סוגי אסמכתאות</a>
+      <a href="#reporting-deadlines" class="sub">מועדי הגשה</a>
+      <div class="sidebar-section-title">מנגנונים מיוחדים</div>
+      <a href="#special">ילדי חוץ והפרשים</a>
+      <a href="#visut">ויסותים</a>
+      <div class="sidebar-section-title">פיקוח ובקרה</div>
+      <a href="#supervision">מבנה הפיקוח במשרד</a>
+      <a href="#monthly-cycle">מחזור דיווח חודשי</a>
+      <a href="#control-questions">שאלות בקרה</a>
+      <div class="sidebar-section-title">יישום מעשי</div>
+      <a href="#check-status">בדיקת חריגה/יתרה</a>
+      <a href="#workflow">סדר עבודה חודשי</a>
+      <a href="#example">דוגמה מספרית</a>
+      <a href="#legal" class="sub">ההקשר המשפטי</a>
+      <a href="#contacts">אנשי קשר</a>
+    </nav>
+    <main class="main">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-content animate-in">
+          <h1>דוח תקצוב והתחשבנות</h1>
+          <p class="subtitle">
+            מדריך עומק מקיף — כל מה שצריך לדעת על הדוח, מבנהו, חישוביו ואופן
+            הקריאה שלו
+          </p>
+          <div class="hero-badges">
+            <span class="hero-badge">📋 4 מערכות דיווח</span>
+            <span class="hero-badge">🔢 4 סוגי סעיפים</span>
+            <span class="hero-badge">📊 3 חלקי דוח</span>
+            <span class="hero-badge">💰 חלוקה 75/25</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: OVERVIEW -->
+      <section class="section" id="overview">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 01</div>
+          <h2>סקירה <span class="highlight">כללית</span></h2>
+          <p class="section-desc">
+            דוח "תקצוב והתחשבנות" הוא דוח חודשי שמשרד הרווחה שולח למחלקת
+            השירותים החברתיים ברשות המקומית. הוא בעצם "חשבון" כספי בין שני
+            גופים: המשרד הממשלתי והרשות המקומית. הוא מתעד מה הוצא, מה המשרד אמור
+            לשלם בחזרה, וכמה כבר הועבר בפועל.
+          </p>
+        </div>
+        <div class="info-box info">
+          <div class="box-title">💡 עקרון היסוד</div>
+          מדינת ישראל מאצילה את הפעלת שירותי הרווחה לרשויות המקומיות, אך שומרת
+          על האחריות התקציבית. המערכת מנוהלת דרך מערכת <strong>מרכבה</strong> —
+          מערכת ה-ERP הממשלתית. פרק 23 בחוק התקציב הוא של משרד הרווחה. המילה
+          "תקצוב" פירושה כמה כסף הוקצה מראש לכל סעיף. המילה "התחשבנות" פירושה
+          כמה בפועל הוצא וכמה צריך להחזיר.
+        </div>
+        <div class="info-box warning">
+          <div class="box-title">⚠️ למה זה חשוב לתפקידך</div>
+          <ul
+            style="
+              padding-right: 18px;
+              margin: 8px 0;
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+            "
+          >
+            <li>
+              אם המשרד לא העביר את חלקו — המועצה נושאת לבד בהוצאה, ויש חור
+              בתקציב המחלקה
+            </li>
+            <li>
+              אם דיווחתם פחות יחידות שירות מהמותר — איבדתם הכנסה שמגיעה לרשות
+              לפי החוק
+            </li>
+            <li>
+              אם דיווחתם יותר ממה שאושר — תיתבעו להחזיר עודפים, ואולי תיכנסו
+              לבקרת חריגים
+            </li>
+            <li>
+              אם הסעיפים מסווגים שגוי — חישוב אחוז ההשתתפות של המשרד יוצא לא
+              נכון
+            </li>
+            <li>
+              אם תפספסו "מועד תשלום סופי" (מת"ס) — אחרי הנעילה כבר אי אפשר לתקן
+            </li>
+            <li>
+              אם תאחרו דיווח מעבר ל-3 חודשים — לא תוכלו לדווח רטרו ותאבדו את
+              המימון
+            </li>
+          </ul>
+        </div>
+        <h3>אופן המימון — 1/12 מצטבר</h3>
+        <p>
+          המימון הוא <strong>מצטבר</strong>, כלומר 1/12 מהתקציב השנתי בכל חודש.
+          החישוב הוא <strong>לינארי</strong> — ללא קשר לעונתיות, חגים או מספר
+          ימים בחודש. כל חודש שווה ל-8.33% מהשנה.
+        </p>
+        <div class="chart-container">
+          <div class="chart-title">אחוז מימון מצטבר לפי חודש</div>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <span class="bar-label">ינואר</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 8.33%">8.33%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">פברואר</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 16.67%">16.67%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">מרץ</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 25%">25%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">אפריל</span>
+              <div class="bar-track">
+                <div class="bar-fill cyan" style="width: 33.33%">33.33%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">מאי</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 41.67%">41.67%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">יוני</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 50%">50%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">יולי</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 58.33%">58.33%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">אוגוסט</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 66.67%">66.67%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">ספטמבר</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 75%">75%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">אוקטובר</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 83.33%">83.33%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">נובמבר</span>
+              <div class="bar-track">
+                <div class="bar-fill blue" style="width: 91.67%">91.67%</div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">דצמבר</span>
+              <div class="bar-track">
+                <div class="bar-fill green" style="width: 100%">100%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="formula">
+          <span class="formula-label">נוסחת המימון המצטבר</span>
+          חודש ÷ 12 × 100 = אחוז מימון מצטבר
+        </div>
+      </section>
+
+      <!-- SECTION 1B: BIG PICTURE -->
+      <section class="section" id="big-picture">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 02</div>
+          <h2>ההקשר <span class="highlight">הגדול</span></h2>
+          <p class="section-desc">
+            בלי להבין את חלוקת התפקידים בין המשרד לרשות, הדוח לא יהיה מובן. כאן
+            נבין איך מערכת הרווחה בישראל בנויה.
+          </p>
+        </div>
+        <h3>מי אחראי על מה</h3>
+        <p>
+          משרד הרווחה הוא הגוף המדיני שקובע מדיניות, מתקצב, מפקח ורושם זכאויות.
+          אבל המשרד עצמו <strong>לא מספק שירותים ישירות לתושב</strong> — הוא לא
+          מפעיל מעונות, לא שולח עו"סים לבתים, לא מנהל מקלטים. את כל זה עושות
+          <strong>הרשויות המקומיות</strong>. הרשות קרובה לתושב, מכירה אותו, ויש
+          לה מחלקת רווחה עם עובדים סוציאליים בשטח. חלוקה זו מעוגנת ב<strong
+            >חוק שירותי הסעד, התשי"ח-1958</strong
+          >.
+        </p>
+        <h3>מודל המימון המשותף</h3>
+        <p>
+          הרשות מספקת את השירות, אך אינה יכולה לממן הכל לבד. לכן יש מודל של
+          <strong>"מימון משותף"</strong> — המשרד מממן 75% מההוצאה, והרשות מממנת
+          25%. היחס יכול להשתנות: שירותים קריטיים כמו אומנה — לפעמים 90/10.
+          שירותי קהילה — בדרך כלל 75/25. שירותים "מקומיים" — לפעמים 50/50.
+          האחוזים נקבעים בקוד של כל סעיף שירות בנהלי המשרד (הוראות
+          <strong>תע"ס</strong> — תקנות עובדים סוציאליים).
+        </p>
+        <div class="info-box tip">
+          <div class="box-title">💡 למה היחס 75/25 כל כך נפוץ</div>
+          היחס מאזן שני שיקולים: מצד אחד, השירות חיוני וצריך מימון לאומי
+          משמעותי. מצד שני, הרשות צריכה "להיות בעור" — אם היא לא משלמת כלום, אין
+          לה תמריץ לבקר עלויות. רבע מהעלות מספיק כדי לשמור על אחריות תקציבית.
+        </div>
+        <h3>שני סוגי השתתפות</h3>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>השתתפות לפי סיווג כמותי</h4>
+            <p>
+              המשרד משלם לפי <strong>כמות יחידות שירות שדווחו</strong>. אין תקרה
+              כספית קשיחה — אם הצורך גדל ויש אישור, התקציב גדל איתו. דוגמה:
+              "אחזקה במעונות".
+            </p>
+          </div>
+          <div class="compare-card">
+            <h4>השתתפות לפי סיווג כספי</h4>
+            <p>
+              המשרד משלם עד <strong>תקרה שנתית קבועה בשקלים</strong>, ללא קשר
+              לכמות הפעולות. דוגמה: "הערכות חירום" — תקרה של 3,000 ₪ לשנה.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1C: RESIDENT JOURNEY -->
+      <section class="section" id="resident-journey">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 03</div>
+          <h2>מסע <span class="highlight">התושב</span></h2>
+          <p class="section-desc">
+            הדוח הוא נקודת הסוף של תהליך ארוך. כדי להבין מה כל מספר מייצג, צריך
+            לעקוב אחרי הסיפור של איך מקרה אחד הופך לשורה בדוח.
+          </p>
+        </div>
+        <div class="steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>פנייה לרשות</h4>
+              <p>
+                ההורים/הפונה פונים למחלקת הרווחה. עו"ס פותח תיק במערכת ומעריך את
+                הצורך. אם נדרשת מסגרת חוץ-ביתית — מתחיל תהליך הפניה רשמי.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>ועדת השמה</h4>
+              <p>
+                ועדה מקצועית (פסיכולוג, עו"ס, ולעיתים רופא) בודקת את התיק
+                ומחליטה על מסגרת.
+                <strong>בלי החלטת ועדה — אין מימון מהמשרד.</strong>
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>אישור תקציבי — "הרשאה"</h4>
+              <p>
+                הרשות מקבלת "הרשאה תקציבית" מהמשרד — קוד אישור שאומר: "המשרד
+                יחזיר לרשות 75% מעלות השירות". בלי קוד — הרשות נושאת לבד בכל
+                העלות.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>הפעלת השירות</h4>
+              <p>
+                הפונה מתחיל לקבל שירות. המסגרת שולחת חשבונית לרשות. הרשות משלמת
+                את כל הסכום, ואחר כך המשרד מחזיר לרשות 75%.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>השתתפות צד ג'</h4>
+              <p>
+                במקרים רבים, גם "צד שלישי" משלם — לרוב ההורים (לפי "מבחן
+                הכנסה"), או המוסד לביטוח לאומי. סכום זה מופיע בעמודה "השתתפות צד
+                ג'" בדוח.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>דיווח חודשי</h4>
+              <p>
+                הרשות מזינה למערכת המשרד את ההוצאות בפועל — לפי סעיף, לפי לקוח,
+                ולפי סוג שירות. זהו "דיווח רשות".
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">7</div>
+            <div class="step-content">
+              <h4>התחשבנות והעברה</h4>
+              <p>
+                המשרד מבצע "התחשבנות" — מחשב כמה הוא חייב, מקזז, ומעביר כסף.
+                הסכום שמועבר בפועל מופיע בעמודות "זיכוי / חיוב" בדוח.
+              </p>
+            </div>
+          </div>
+        </div>
+        <div class="info-box tip">
+          <div class="box-title">💡 הרשות "מקדימה" את הכסף</div>
+          הרשות משלמת קודם את כל הסכום ורק אחר כך מקבלת החזר. לכן יש
+          <strong>פיגור של חודשיים-שלושה</strong> בין מועד התשלום למעון לבין
+          מועד החזר הכספים מהמשרד. בכל רגע נתון יש "חוב פתוח" של המשרד לרשות.
+        </div>
+      </section>
+      <!-- SECTION 2: 4 REPORTING SYSTEMS -->
+      <section class="section" id="systems">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 04</div>
+          <h2>ארבע מערכות <span class="highlight">הדיווח</span></h2>
+          <p class="section-desc">
+            הדוח אינו מגיע ממקור אחד — הוא מורכב מנתונים של 4 מערכות שונות, כל
+            אחת עם פיגור דיווח משלה ועם תפקיד שונה. זו מורכבות קריטית להבנת
+            הדוח.
+          </p>
+        </div>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon red">👤</div>
+            <h4>כ"א — כוח אדם</h4>
+            <p>
+              מערכת שבה מדווח <strong>כל נושא השכר</strong> של העובדים שהינם
+              במימון משרדי. עו"סים, עובדי מסגרות, ועוד.
+            </p>
+            <span class="badge delay-2">⏱ פיגור: חודשיים</span>
+          </div>
+          <div class="card">
+            <div class="card-icon orange">📋</div>
+            <h4>מס"ר — השמות</h4>
+            <p>
+              מערכת שבה הרשות מבצעת <strong>השמות (אוהדות)</strong> למסגרות
+              הרווחה — גם בקהילה וגם חוץ ביתי.
+              <strong>עיבוד המערכת מתבצע בסביבות ה-20 לחודש.</strong>
+            </p>
+            <span class="badge delay-1">⏱ פיגור: חודש אחד</span>
+          </div>
+          <div class="card">
+            <div class="card-icon purple">💳</div>
+            <h4>מת"ס — צ'קים</h4>
+            <p>
+              מערכת שבה הרשות מדווחת הוצאות
+              <strong>בעבור פעולות מוגדרות מראש</strong> במערכת. בעת הכנת שובר
+              מת"ס מתבצעת <strong>מיידית התחשבנות של 75-25</strong>.
+            </p>
+            <span class="badge delay-1">⏱ התחשבנות מיידית</span>
+          </div>
+          <div class="card">
+            <div class="card-icon green">🏛️</div>
+            <h4>דיווח רשות (ט.ז)</h4>
+            <p>
+              מערכת שבה הרשות מדווחת על הוצאות
+              <strong>לאחר שכבר שולמו והתקיימו</strong>. דיווחים שיוגשו עד ה-25
+              לחודש, ייבדקו עד ל-15 בחודש העוקב.
+            </p>
+            <span class="badge delay-0">⏱ עדכני — אותו חודש</span>
+          </div>
+        </div>
+
+        <div class="info-box warning">
+          <div class="box-title">⚠️ השלכה מעשית חשובה</div>
+          דוח של <strong>אפריל 2026</strong> כולל: נתוני כ"א של
+          <strong>פברואר</strong>, נתוני מס"ר של <strong>מרץ</strong>, נתוני
+          מת"ס של <strong>אפריל</strong>, ודיווחי רשות של
+          <strong>אפריל</strong>. חלק מהשורות "טריות" וחלק "ישנות".
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">
+            💡 בקרה חודשית חשובה — מס"ר מול אחזקת חניכים
+          </div>
+          בכל הנוגע להשמות (מס"ר), חשוב לבצע <strong>השוואה חודשית</strong> בין
+          דוח אחזקת חניכים לבין ההשמות הקלוטות בדוח תקצוב התחשבנות. אם יש פער —
+          חלק מההשמות לא נקלטו, ויש לבדוק.
+        </div>
+
+        <div class="info-box danger">
+          <div class="box-title">🔴 הערה ספציפית למת"ס — צ'קים שלא נפדו</div>
+          אם צ'ק לא נפדה בתוך <strong>4 חודשים</strong>, הוא למעשה מתבטל ואז
+          בדוח תקצוב התחשבנות <strong>תופיע שורה במינוס</strong>. שורה שלילית
+          בדוח לא בהכרח אומרת שמשהו רע קרה — ייתכן שזה תיקון אוטומטי של צ'ק שלא
+          נפדה. יש לבדוק במחלקת הגביה.
+        </div>
+      </section>
+
+      <!-- SECTION 3: CODE STRUCTURE -->
+      <section class="section" id="code-structure">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 05</div>
+          <h2>מבנה <span class="highlight">קוד תקציבי</span></h2>
+          <p class="section-desc">
+            כל סעיף תקציבי מזוהה בקוד של 12 ספרות. הבנת מבנה הקוד מאפשרת לזהות
+            במבט את המשרד, סוג התקצוב, המינהל, השירות הספציפי, וקוד התקנה.
+          </p>
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">
+            📋 דוגמה: 230091039440 — משפחות וילדים בקהילה
+          </div>
+          הקוד מתפרק כך: <strong>23</strong> (סמל משרד הרווחה במרכבה) |
+          <strong>009</strong> (תקצוב רשויות מקומיות) |
+          <strong>10</strong> (מינהל שח"א) | <strong>39</strong> (שיוך שירות —
+          משי"ק) | <strong>440</strong> (תקנות המשרד).
+        </div>
+
+        <div class="tree">
+          <div class="tree-node l0">
+            <span class="tree-label">23</span>
+            <span class="tree-code">פרק 23</span>
+            <div class="tree-desc">
+              סמל משרד הרווחה במרכבה (פרק 23 בחוק התקציב)
+            </div>
+          </div>
+          <div class="tree-node l1">
+            <span class="tree-label">009</span>
+            <span class="tree-code">23009</span>
+            <div class="tree-desc">
+              תקצוב רשויות מקומיות (להבדיל מתקציב פנימי של המשרד)
+            </div>
+          </div>
+          <div class="tree-node l2">
+            <span class="tree-label">XX</span>
+            <span class="tree-code">23009XX</span>
+            <div class="tree-desc">
+              קוד המינהל — מזהה את היחידה הארגונית האחראית (ראו טבלה למטה)
+            </div>
+          </div>
+          <div class="tree-node l3">
+            <span class="tree-label">XX</span>
+            <span class="tree-code">23009XXXX</span>
+            <div class="tree-desc">
+              שיוך שירות (משי"ק) — מזהה את סוג השירות הספציפי בתוך המינהל
+            </div>
+          </div>
+          <div class="tree-node l3">
+            <span class="tree-label">XXX</span>
+            <span class="tree-code">23009XXXXXXX</span>
+            <div class="tree-desc">תקנות המשרד — קוד התקנה הספציפית</div>
+          </div>
+        </div>
+
+        <h3 id="departments">חלוקה לפי מינהלים</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>קוד</th>
+                <th>מינהל</th>
+                <th>תחום אחריות</th>
+                <th>דוגמאות שירותים</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="num">02</td>
+                <td><strong>מינהל אזרחים ותיקים</strong></td>
+                <td>שירותים לקשישים</td>
+                <td>מעונות יום, סיעוד, דיור מוגן</td>
+              </tr>
+              <tr>
+                <td class="num">05</td>
+                <td><strong>אגף בכיר רשויות מקומיות</strong></td>
+                <td>שירותים כלליים לרשויות</td>
+                <td>תמיכה מוניציפלית, פיתוח שירותים</td>
+              </tr>
+              <tr>
+                <td class="num">07</td>
+                <td><strong>מינהל מוגבלויות</strong></td>
+                <td>שירותים לאנשים עם מוגבלויות</td>
+                <td>מעונות, דיור, שיקום, אוטיזם</td>
+              </tr>
+              <tr>
+                <td class="num">10</td>
+                <td><strong>מינהל שח"א</strong></td>
+                <td>שירותים אישיים-חברתיים</td>
+                <td>ילדים ונוער, משפחות, אומנה</td>
+              </tr>
+              <tr>
+                <td class="num">11</td>
+                <td><strong>מינהל של"מ</strong></td>
+                <td>שירות לאומי-מקצועי</td>
+                <td>שירותים קהילתיים, התמכרויות</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>דוגמאות פענוח קודים</h3>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon blue">🔍</div>
+            <h4>230091039440</h4>
+            <ul>
+              <li><strong>23</strong> — משרד הרווחה</li>
+              <li><strong>009</strong> — רשויות מקומיות</li>
+              <li><strong>10</strong> — מינהל שח"א</li>
+              <li><strong>39</strong> — שיוך שירות (משי"ק)</li>
+              <li><strong>440</strong> — משפחות וילדים בקהילה</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-icon purple">🔍</div>
+            <h4>230090242410</h4>
+            <ul>
+              <li><strong>23</strong> — משרד הרווחה</li>
+              <li><strong>009</strong> — רשויות מקומיות</li>
+              <li><strong>02</strong> — אזרחים ותיקים</li>
+              <li><strong>42410</strong> — אחזקה במעונות א.ותי</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-box tip">
+          <div class="box-title">💡 הקפדה על דיווח לסעיף הנכון</div>
+          המשרד מבקש להקפיד על דיווח ההוצאות מהסעיף התקציבי המתאים במערכת. סיווג
+          שגוי משבש את חישוב חלק המשרד וחלק הרשות, ועלול לגרום לדחיית הדיווח.
+        </div>
+      </section>
+      <!-- SECTION 4: ITEM TYPES -->
+      <section class="section" id="item-types">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 06</div>
+          <h2>סוגי סעיפים <span class="highlight">תקציביים</span></h2>
+          <p class="section-desc">
+            ישנם 4 סוגי סעיפים תקציביים, מחולקים לשתי קטגוריות עיקריות: כספיים
+            (נמדדים בשקלים) וכמותיים (נמדדים בחודשי סידור). כל סוג מתנהג אחרת
+            מבחינת אופן הניצול.
+          </p>
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">📊 כמה סעיפים מכל סוג קיימים במערכת</div>
+          <ul
+            style="
+              padding-right: 18px;
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+              margin: 8px 0;
+            "
+          >
+            <li>
+              <strong>כספי לרשות</strong> — כ-100 סעיפי תקציב (הרוב המוחלט!)
+            </li>
+            <li><strong>כמותי לרשות</strong> — כ-30 סעיפי תקציב</li>
+            <li><strong>כספי שנתי</strong> — כ-10 סעיפי תקציב</li>
+            <li><strong>כמותי ארצי</strong> — רק 4 סעיפי תקציב (נדיר מאוד)</li>
+          </ul>
+        </div>
+
+        <h3 id="financial-items">1. סעיפים כספיים — הגבלה בסכום כספי</h3>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>א. כספי לרשות — 1/12</h4>
+            <p>
+              הקצבה כספית שמתחלקת באופן לינארי: <strong>1/12 לכל חודש</strong>.
+              ההקצבה בכל חודש נעשית על פי קצב המימון המצטבר.
+              <strong>חריגה מקצב המימון תהיה 100% על חשבון הרשות.</strong>
+            </p>
+            <div class="info-box info" style="margin-top: 12px">
+              <div class="box-title">דוגמה מספרית</div>
+              הקצבה שנתית: 16,000 ₪ ברוטו (12,000 ₪ נטו).<br />
+              הרשות תקבל בכל חודש: 16,000 ÷ 12 = <strong>1,333 ₪</strong>.<br />
+              <strong>אם הרשות תנצל פחות — היא גם תזוכה בפחות.</strong>
+            </div>
+            <p
+              style="
+                margin-top: 8px;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+              "
+            >
+              <em>רובם המוחלט של הסעיפים הכספיים (כ-100) הם מסוג זה.</em>
+            </p>
+          </div>
+          <div class="compare-card">
+            <h4>ב. כספי שנתי — ללא מגבלת 1/12</h4>
+            <p>
+              סעיפים <strong>שאינם מוגבלים בקצב המימון המצטבר</strong>. כל הוצאה
+              תזוכה עד לגובה ההקצבה השנתית.
+            </p>
+            <div class="info-box success" style="margin-top: 12px">
+              <div class="box-title">דוגמאות</div>
+              פרויקטים כגון פעולות ארגוניות, חליפת מיגון, מקלטים לנשים מוכות,
+              היערכות חירום וכו'. <strong>כ-10 סעיפי תקציב</strong>.
+            </div>
+          </div>
+        </div>
+
+        <h3 id="quantity-items">2. סעיפים כמותיים — מכסות (12 חודשי סידור)</h3>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>א. כמותי ארצי</h4>
+            <p>
+              סעיפים הנמדדים ביחידות (חודשי סידור),
+              <strong>אין הגבלה במספר המכסות</strong>, המשרד מזכה בהתאם להוצאה
+              בפועל. מדובר במסגרות ממשלתיות.
+            </p>
+            <ul>
+              <li>הפעלת מעונות ממשלתיים — שיקום</li>
+              <li>הפעלת מעונות ממשלתיים — מש"ה</li>
+              <li>סידור ילדים קדם אימוץ</li>
+              <li>מעונות חסות ממשלתיים</li>
+            </ul>
+            <p
+              style="
+                margin-top: 8px;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+              "
+            >
+              <em>סך הכל רק 4 סעיפי תקציב — נדיר מאוד.</em>
+            </p>
+          </div>
+          <div class="compare-card highlight">
+            <h4>ב. כמותי לרשות ⭐</h4>
+            <p>
+              סעיפים הנמדדים ביחידות (חודשי סידור), המיועדים
+              <strong>לסידורים חוץ ביתיים וסידורים במסגרות יומיות בקהילה</strong
+              >. מכסה אחת = 12 חודשי סידור. התחשבנות על פי המימון המצטבר (1/12).
+            </p>
+            <ul>
+              <li>מעונות יום שיקומיים</li>
+              <li>סידור במעונות מש"ה</li>
+              <li>אחזקה במעונות (כמו בדוגמה שלכם)</li>
+            </ul>
+            <p
+              style="
+                margin-top: 8px;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+              "
+            >
+              <em>כ-30 סעיפי תקציב.</em>
+            </p>
+            <div class="info-box danger" style="margin-top: 12px">
+              <div class="box-title">⚠️ דוגמה לאיחור בדיווח</div>
+              אם ספטמבר תחילת שנה אך הרשות התחילה לדווח רק בדצמבר —
+              <strong>הרשות תיכנס למינוס של 3 חודשי סידור</strong>. מי שלא מדווח
+              בזמן, מפסיד מכסות.
+            </div>
+          </div>
+        </div>
+
+        <h3>השוואה מהירה בין סוגי הסעיפים</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>מאפיין</th>
+                <th>כספי לרשות</th>
+                <th>כספי שנתי</th>
+                <th>כמותי ארצי</th>
+                <th>כמותי לרשות</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>סוג הגבלה</td>
+                <td>סכום כספי</td>
+                <td>סכום כספי</td>
+                <td>מכסות</td>
+                <td>מכסות</td>
+              </tr>
+              <tr>
+                <td>חלוקה חודשית</td>
+                <td>1/12 לחודש</td>
+                <td>הכל בבת אחת</td>
+                <td>לא רלוונטי</td>
+                <td>1/12 לחודש</td>
+              </tr>
+              <tr>
+                <td>מי מוגבל?</td>
+                <td>הרשות</td>
+                <td>הרשות</td>
+                <td>המסגרת</td>
+                <td>הרשות</td>
+              </tr>
+              <tr>
+                <td>תת-ניצול</td>
+                <td>זיכוי מופחת</td>
+                <td>ללא הגבלה</td>
+                <td>—</td>
+                <td>מכסות לא מנוצלות</td>
+              </tr>
+              <tr>
+                <td>מספר סעיפים</td>
+                <td><strong>~100</strong></td>
+                <td>~10</td>
+                <td>4</td>
+                <td>~30</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- FUNDING RATE SECTION -->
+        <h3 id="funding-rate">קצב המימון המצטבר — שלושה תרחישים</h3>
+        <p>
+          חוק התקציב מנחה את מערכות הדיווח לפעול מדי חודש על פי "קצב מימון
+          מצטבר" של 1/12 לחודש. בוא נראה איך זה משפיע בפועל.
+          <strong>דוגמה: סכום שנתי 12,000 ₪ נטו, 1/12 = 1,000 ₪ לחודש.</strong>
+        </p>
+
+        <div class="cards-grid">
+          <div class="card" style="border-color: var(--accent-orange)">
+            <div class="card-icon orange">📉</div>
+            <h4>מקרה 1: ניצול 500 ₪</h4>
+            <p><strong>הרשות ניצלה רק 500 ₪ בחודש הראשון.</strong></p>
+            <p>
+              המשרד ישפה במלוא הסכום (500 ₪) משום שהוא נמוך מקצב המימון המצטבר.
+              בידי הרשות תישאר <strong>יתרה בלתי מנוצלת של 500 ₪</strong> נטו
+              לניצול בחודשים הבאים.
+            </p>
+          </div>
+          <div class="card" style="border-color: var(--accent-red)">
+            <div class="card-icon red">📈</div>
+            <h4>מקרה 2: ניצול 1,500 ₪</h4>
+            <p><strong>הרשות ניצלה 1,500 ₪ בחודש הראשון.</strong></p>
+            <p>
+              המשרד ישפה בסך של <strong>1,000 ₪ בלבד</strong>. הרשות תיכנס
+              לחריגה בגובה 500 ₪.
+              <strong>500 ₪ אלו יהיו ב-100% על חשבון הרשות</strong>. ניתן לצמצם
+              את הפער ע"י ניצול נמוך יותר בחודשים הבאים.
+            </p>
+          </div>
+          <div class="card" style="border-color: var(--accent-green)">
+            <div class="card-icon green">✅</div>
+            <h4>מקרה 3: ניצול 1,000 ₪ (מיטבי)</h4>
+            <p><strong>הרשות ניצלה בדיוק 1,000 ₪ בחודש הראשון.</strong></p>
+            <p>
+              המשרד ישפה במלוא הסכום שהרי הוא עומד
+              <strong>בהלימה מלאה לקצב המימון המצטבר</strong>. ניצול תקציבי
+              מיטבי, לא תישאר יתרה בלתי מנוצלת והרשות לא תיכנס לגירעון.
+            </p>
+          </div>
+        </div>
+
+        <h3 id="units-explained">
+          יחידות = חודשי סידור,
+          <span style="color: var(--accent-red)">לא</span> אנשים!
+        </h3>
+        <p>
+          זו ההבחנה הכי קריטית להבנה נכונה של הדוח. "יחידות שדווחו" מייצגות
+          <strong>חודשי סידור</strong>, לא מספר אנשים.
+        </p>
+
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon cyan">📊</div>
+            <h4>12 יחידות שנתי — מה זה יכול להיות?</h4>
+            <ul>
+              <li>ילד אחד × 12 חודשים = 12 ח"ס</li>
+              <li>2 ילדים × 6 חודשים = 12 ח"ס</li>
+              <li>12 ילדים × חודש אחד = 12 ח"ס</li>
+              <li>כל שילוב שמסתכם ב-12</li>
+            </ul>
+          </div>
+          <div class="card">
+            <div class="card-icon orange">🔄</div>
+            <h4>29 חודשי סידור — דוגמה מהמסמך</h4>
+            <p>
+              29 ח"ס = 20 פונים + 9 חודשים רטרו לאותו פונה.
+              <strong>לא 29 פונים!</strong>
+            </p>
+            <p style="margin-top: 8px">
+              דיווח רטרואקטיבי על חודשים קודמים נכלל בחודש הנוכחי ויכול לנפח את
+              המספרים.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon green">📋</div>
+            <h4>איך לדעת כמה אנשים בפועל?</h4>
+            <p>
+              יש <strong>דוח נפרד</strong> בשם
+              <strong>"דוח אחזקת חניכים"</strong> שמראה את מספר האנשים בפועל.
+              דוח התקצוב מודד שירות, לא אנשים.
+            </p>
+          </div>
+        </div>
+
+        <h3>משמעות "יחידות" לפי סוג מערכת</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>סוג שירות / מערכת</th>
+                <th>משמעות "יחידה"</th>
+                <th>דוגמה</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>סמך מקצועי</td>
+                <td><strong>מספר שעות</strong></td>
+                <td>10 שעות טיפול = 10 יחידות</td>
+              </tr>
+              <tr>
+                <td>מסגרת</td>
+                <td><strong>מספר חודשי סידור</strong></td>
+                <td>3 חודשים במעון = 3 יחידות</td>
+              </tr>
+              <tr>
+                <td>מת"ס</td>
+                <td><strong>מספר צ'קים</strong></td>
+                <td>5 צ'קים שנפדו = 5 יחידות</td>
+              </tr>
+              <tr>
+                <td>נופשון / יומיות</td>
+                <td><strong>מספר ימים</strong></td>
+                <td>7 ימי נופש = 7 יחידות</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+      <!-- SECTION 5: REPORT STRUCTURE - 3 PARTS -->
+      <section class="section" id="report-structure">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 07</div>
+          <h2>שלושת חלקי <span class="highlight">הדוח</span></h2>
+          <p class="section-desc">
+            הדוח מחולק ל-3 חלקים מובנים. כל חלק עונה על שאלה אחרת: מה קרה החודש?
+            האם מאוזן? ואיפה אנחנו מול השנה?
+          </p>
+        </div>
+
+        <!-- PART 1 -->
+        <h3 id="part1">חלק ראשון — הוצאה חודשית</h3>
+        <p><strong>השאלה:</strong> מה קרה החודש הזה?</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>עמודה</th>
+                <th>הסבר מפורט</th>
+                <th>דוגמה</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>א. מערכת דיווח</strong></td>
+                <td>מאיזו מערכת הנתון הגיע: כ"א, מס"ר, מת"ס, או דיווח רשות</td>
+                <td>מס"ר</td>
+              </tr>
+              <tr>
+                <td><strong>ב. מסלול תשלום</strong></td>
+                <td>
+                  תשלומי ממשלה (המשרד משלם 100% ואז גובה 25% מהרשות) או תשלומי
+                  רשות (הרשות משלמת ומקבלת חזרה 75%)
+                </td>
+                <td>תש. ממשלה</td>
+              </tr>
+              <tr>
+                <td><strong>ג. אופן סיווג</strong></td>
+                <td>כמותי או כספי — קובע את אופן ההתחשבנות</td>
+                <td>כמותי</td>
+              </tr>
+              <tr>
+                <td><strong>ד. יחידות שדווחו</strong></td>
+                <td>חודשי סידור / שעות / צ'קים / ימים (תלוי במערכת)</td>
+                <td class="num">1.0</td>
+              </tr>
+              <tr>
+                <td><strong>ה. סה"כ הוצאה</strong></td>
+                <td>השתתפות צד ג' + הוצאה להתחשבנות</td>
+                <td class="num">12,468 ₪</td>
+              </tr>
+              <tr>
+                <td><strong>ו. השתתפות צד ג'</strong></td>
+                <td>
+                  הסכום שהרשות צריכה לגבות מהפונים בהתאם לחישוב זכאות על פי
+                  הוראות התע"ס
+                </td>
+                <td class="num">484 ₪</td>
+              </tr>
+              <tr>
+                <td><strong>ז. הוצאה להתחשבנות</strong></td>
+                <td>סה"כ הוצאה <strong>פחות</strong> השתתפות פונים</td>
+                <td class="num">11,984 ₪</td>
+              </tr>
+              <tr>
+                <td><strong>ח. חלק המשרד</strong></td>
+                <td><strong>75%</strong> מההוצאה להתחשבנות</td>
+                <td class="num">8,988 ₪</td>
+              </tr>
+              <tr>
+                <td><strong>ט. חלק הרשות</strong></td>
+                <td><strong>25%</strong> מההוצאה להתחשבנות</td>
+                <td class="num">2,996 ₪</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="formula">
+          <span class="formula-label">נוסחת חישוב חלק ראשון</span>
+          סה"כ הוצאה − השתתפות צד ג' = הוצאה להתחשבנות<br />
+          הוצאה להתחשבנות × 75% = חלק המשרד<br />
+          הוצאה להתחשבנות × 25% = חלק הרשות
+        </div>
+
+        <div class="donut-container">
+          <div
+            class="donut"
+            style="
+              background: conic-gradient(
+                var(--accent-blue) 0deg 270deg,
+                var(--accent-orange) 270deg 342deg,
+                var(--accent-pink) 342deg 360deg
+              );
+            "
+          >
+            <div class="donut-center">
+              <span class="pct">100%</span>
+              <span class="lbl">הוצאה</span>
+            </div>
+          </div>
+          <div class="donut-legend">
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style="background: var(--accent-blue)"
+              ></span
+              >חלק המשרד — 75%
+            </div>
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style="background: var(--accent-orange)"
+              ></span
+              >חלק הרשות — 25% (פחות צד ג')
+            </div>
+            <div class="legend-item">
+              <span
+                class="legend-dot"
+                style="background: var(--accent-pink)"
+              ></span
+              >השתתפות צד ג' (פונים)
+            </div>
+          </div>
+        </div>
+
+        <!-- PART 2 -->
+        <h3 id="part2">חלק שני — בקרה תקציבית</h3>
+        <p><strong>השאלה:</strong> האם המצב מאוזן? האם יש חריגה או יתרה?</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>עמודה</th>
+                <th>הסבר</th>
+                <th>נוסחה / חישוב</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>א. חלק המשרד בתקציב מצטבר</strong></td>
+                <td>
+                  מה הרשות הייתה <strong>יכולה</strong> לקבל על פי התקציב עד כה
+                </td>
+                <td class="num">הקצבה שנתית × % מצטבר × 75%</td>
+              </tr>
+              <tr>
+                <td><strong>ב. חלק המשרד בהוצאות מצטבר</strong></td>
+                <td>מה הרשות <strong>יכולה לקבל</strong> בהתאם להוצאה בפועל</td>
+                <td>לפי סיכום הוצאות בפועל</td>
+              </tr>
+              <tr>
+                <td><strong>ג. זיכוי / חיוב מצטבר</strong></td>
+                <td>כמה הרשות <strong>קיבלה בפועל</strong> עד כה</td>
+                <td>סכום כל הזיכויים/חיובים</td>
+              </tr>
+              <tr>
+                <td><strong>ד. זיכוי / חיוב בחודש זה</strong></td>
+                <td>
+                  מה התקציב שהרשות קיבלה בפועל <strong>בחודש הנוכחי</strong>
+                </td>
+                <td>—</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="formula">
+          <span class="formula-label">נוסחת חלק המשרד בתקציב מצטבר</span>
+          הקצבה שנתית (₪) × אחוז מימון מצטבר × 75%
+        </div>
+        <div class="formula">
+          <span class="formula-label">דוגמה: אפריל, הקצבה 140,772 ₪</span>
+          140,772 × 33.33% × 75% = 35,193 ₪
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">💡 הערה לגבי סעיפי 100% מימון</div>
+          הנוסחה לעיל מניחה 75% מימון. אם מדובר בסעיף של
+          <strong>100% מימון</strong>, אז הנוסחה היא: הקצבה שנתית × אחוז מצטבר ×
+          <strong>100%</strong>.
+        </div>
+
+        <!-- PART 3 -->
+        <h3 id="part3">חלק שלישי — מעקב אחר ביצוע התקציב</h3>
+        <p><strong>השאלה:</strong> איפה אנחנו מול התקציב השנתי?</p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>עמודה</th>
+                <th>הסבר מפורט</th>
+                <th>חישוב</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>א. הקצבה ביחידות שנתי</strong></td>
+                <td>סה"כ המכסות לשנה. חלקי 12 = מכסה חודשית</td>
+                <td class="num">12 ÷ 12 = 1/חודש</td>
+              </tr>
+              <tr>
+                <td><strong>ב. יחידות ביצוע מצטבר</strong></td>
+                <td>מה בוצע מינואר עד עכשיו. חלקי מספר חודשים = ממוצע</td>
+                <td class="num">153.8 ÷ 5 = 30.76</td>
+              </tr>
+              <tr>
+                <td><strong>ג. הקצבה שנתית בשקלים 100%</strong></td>
+                <td>
+                  רלוונטי <strong>רק לסעיפים כספיים</strong>. בכמותיים אין
+                  משמעות
+                </td>
+                <td class="num">140,772 ₪</td>
+              </tr>
+              <tr>
+                <td><strong>ד. הוצאה להתחשבנות מצטברת</strong></td>
+                <td>כמה הרשות הוציאה ב-100% (ברוטו) מתחילת השנה</td>
+                <td class="num">45,924 ₪</td>
+              </tr>
+              <tr>
+                <td><strong>ה. השתתפות צד ג' מצטברת</strong></td>
+                <td>כמה הרשות נדרשת לגבות מפונים כהשתתפות עצמית עד כה</td>
+                <td class="num">1,936 ₪</td>
+              </tr>
+              <tr>
+                <td><strong>ו. יתרת הקצבה כספית</strong></td>
+                <td>כמה תקציב נשאר עד סוף השנה</td>
+                <td>הקצבה שנתית − הוצאה מצטברת</td>
+              </tr>
+              <tr>
+                <td><strong>ז. יתרת הקצבה כמותית</strong></td>
+                <td>כמה מכסות נותרו עד סוף שנה</td>
+                <td>הקצבה ביחידות − ביצוע מצטבר</td>
+              </tr>
+              <tr>
+                <td><strong>ח. חיוב בחודש זה</strong></td>
+                <td>אם מינוס — המשרד יזכה את הרשות</td>
+                <td>סה"כ הוצאה − זיכוי/חיוב חודשי</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box tip">
+          <div class="box-title">💡 טריק לבדיקת מגמה תקציבית</div>
+          קח את <strong>יחידות ביצוע מצטבר</strong> וחלק במספר החודשים שעברו —
+          תקבל ממוצע חודשי. השווה לממוצע החודשי הצפוי (הקצבה שנתית ÷ 12). אם
+          הממוצע שלך גבוה — אתה במגמת חריגה. אם נמוך — תת-ניצול.
+        </div>
+
+        <!-- TWO REPORTS -->
+        <h3 id="two-reports">שני הדוחות החשובים לבקרה תקציבית חודשית</h3>
+        <p>
+          חשוב להכיר שיש <strong>שני דוחות מרכזיים</strong> לבקרה תקציבית — לא
+          רק דוח התקצוב והתחשבנות.
+        </p>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>📊 דוח תקצוב התחשבנות</h4>
+            <p>
+              הדוח המרכזי, <strong>המפורט ביותר</strong>, בו ניתן לקבל תמונת מצב
+              על כל הסעיפים התקציביים בהיבטי תקצוב וניצול תקציבי, בין היתר פירוט
+              של מערכות הדיווח.
+            </p>
+            <div class="info-box info" style="margin-top: 12px">
+              <div class="box-title">בקרה חשובה</div>
+              בכל הנוגע להשמות (מס"ר), חשוב לבצע השוואה חודשית בין
+              <strong>דוח אחזקת חניכים</strong> לבין ההשמות הקלוטות בדוח תקצוב
+              התחשבנות.
+            </div>
+          </div>
+          <div class="compare-card">
+            <h4>📈 דוח הקצבה</h4>
+            <p>
+              דוח מרכזי לבקרה תקציבית, כולל בתוכו את כל סעיפי התקציב
+              <strong>עם התייחסות</strong>:
+            </p>
+            <ul>
+              <li>באילו סעיפים קיים <strong>תת-ניצול</strong></li>
+              <li>באילו סעיפים הניצול <strong>מיטבי</strong></li>
+              <li>באילו סעיפים קיים <strong>ניצול יתר (גירעון)</strong></li>
+            </ul>
+            <p
+              style="
+                margin-top: 8px;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+              "
+            >
+              <em
+                >זהו דוח שכדאי לבקש מהמועצה — הוא נותן תמונה מהירה יותר של מצב
+                הסעיפים.</em
+              >
+            </p>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION 6: PAYMENT TRACKS -->
+      <section class="section" id="payment-tracks">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 08</div>
+          <h2>מסלולי <span class="highlight">תשלום</span></h2>
+          <p class="section-desc">
+            ישנם שני מסלולים שונים לתזרים הכספי בין המשרד, הרשות והמסגרת. כל
+            סעיף בדוח מציין באיזה מסלול הוא מתנהל.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>🏛️ מסלול א': תשלומי ממשלה</h4>
+            <p>
+              המשרד משלם <strong>100%</strong> ישירות למסגרות. אחר כך, בדוח
+              ההתחשבנות, נגבה מהרשות <strong>25%</strong> + השתתפות פונים.
+            </p>
+            <div class="flow" style="margin-top: 16px">
+              <div class="flow-step">
+                <div class="step-icon">🏛️</div>
+                <div class="step-label">המשרד</div>
+                <div class="step-sub">משלם 100%</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="step-icon">🏢</div>
+                <div class="step-label">המסגרת</div>
+                <div class="step-sub">מקבלת תשלום</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="step-icon">📊</div>
+                <div class="step-label">התחשבנות</div>
+                <div class="step-sub">בדוח</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="step-icon">🏘️</div>
+                <div class="step-label">הרשות</div>
+                <div class="step-sub">מחזירה 25%</div>
+              </div>
+            </div>
+          </div>
+          <div class="compare-card">
+            <h4>🏘️ מסלול ב': תשלומי רשות</h4>
+            <p>
+              הרשות משלמת ישירות למסגרת/ספק ומקבלת חזרה
+              <strong>75%</strong> מהמשרד, כולל דיווחי רשות.
+            </p>
+            <div class="flow" style="margin-top: 16px">
+              <div class="flow-step">
+                <div class="step-icon">🏘️</div>
+                <div class="step-label">הרשות</div>
+                <div class="step-sub">משלמת 100%</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="step-icon">🏢</div>
+                <div class="step-label">הספק</div>
+                <div class="step-sub">מקבל תשלום</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="step-icon">📋</div>
+                <div class="step-label">דיווח</div>
+                <div class="step-sub">הרשות מדווחת</div>
+              </div>
+              <div class="flow-arrow">→</div>
+              <div class="flow-step">
+                <div class="step-icon">🏛️</div>
+                <div class="step-label">המשרד</div>
+                <div class="step-sub">מחזיר 75%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">💡 למה ההבחנה חשובה?</div>
+          המסלול משפיע ישירות על <strong>תזרים המזומנים</strong> של המועצה.
+          בתשלומי ממשלה — הכסף זורם ישירות מהמשרד, הרשות רק "מחזירה" 25%.
+          בתשלומי רשות — הרשות צריכה <strong>להקדים</strong> את הכסף ולחכות
+          להחזר 75%.
+        </div>
+      </section>
+
+      <!-- SECTION 6B: POWER OF ATTORNEY -->
+      <section class="section" id="poa">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 09</div>
+          <h2>ייפוי <span class="highlight">כוח</span></h2>
+          <p class="section-desc">
+            ייפוי כוח הוא הסמכה רשמית של הרשות המקומית למשרד הרווחה לשלם ישירות
+            לנותן השירות, במקום שהרשות תשלם ראשונה ואחר כך תקבל החזר. זה הופך את
+            כיוון הזרימה של הכסף.
+          </p>
+        </div>
+
+        <h3>השיטה המסורתית מול ייפוי כוח</h3>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>🔄 השיטה המסורתית</h4>
+            <p>
+              נותן השירות שולח חשבונית לרשות → הרשות בודקת, מאשרת ומשלמת
+              <strong>100%</strong> מקופתה → הרשות מדווחת למשרד → המשרד מחזיר
+              <strong>75%</strong> לרשות.
+            </p>
+            <div class="info-box info" style="margin-top: 12px">
+              <div class="box-title">יתרון</div>
+              שליטה מלאה — הרשות בודקת כל חשבונית ומאשרת.
+            </div>
+            <div class="info-box danger" style="margin-top: 8px">
+              <div class="box-title">חסרון</div>
+              <strong>תזרים מזומנים</strong> — הרשות מוציאה 100% ומחכה
+              חודשיים-שלושה להחזר 75%.
+            </div>
+          </div>
+          <div class="compare-card highlight">
+            <h4>📝 ייפוי כוח</h4>
+            <p>
+              הרשות <strong>מסמיכה</strong> את המשרד (במסמך רשמי) לשלם ישירות
+              לנותן השירות → המשרד משלם <strong>100%</strong> לספק → המשרד
+              <strong>מקזז</strong> מהרשות את ה-25% דרך מענקי איזון.
+            </p>
+            <div class="info-box success" style="margin-top: 12px">
+              <div class="box-title">יתרון לרשות</div>
+              שיפור משמעותי של תזרים — הרשות לא מקדימה 100%. מוציאה רק 25% (או
+              שמקוזז ממענקים).
+            </div>
+            <div class="info-box success" style="margin-top: 8px">
+              <div class="box-title">יתרון לספק</div>
+              מקבל כסף ישירות מהמשרד, מהר יותר ובלי תלות במצב הרשות.
+            </div>
+          </div>
+        </div>
+
+        <h3>זרימת הכסף בייפוי כוח</h3>
+        <div class="flow">
+          <div class="flow-step">
+            <div class="step-icon">🏘️</div>
+            <div class="step-label">הרשות</div>
+            <div class="step-sub">חותמת ייפוי כוח</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">🏛️</div>
+            <div class="step-label">המשרד</div>
+            <div class="step-sub">משלם 100% לספק</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">🏢</div>
+            <div class="step-label">נותן השירות</div>
+            <div class="step-sub">מקבל תשלום ישיר</div>
+          </div>
+          <div class="flow-arrow">→</div>
+          <div class="flow-step">
+            <div class="step-icon">📊</div>
+            <div class="step-label">קיזוז</div>
+            <div class="step-sub">25% מהרשות</div>
+          </div>
+        </div>
+
+        <h3>מה כולל מסמך ייפוי כוח</h3>
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon blue">📋</div>
+            <h4>הצהרת הרשות</h4>
+            <p>
+              "הרשות מייפה את כוחה של המדינה לשלם במקומה את
+              <strong>מלוא התשלומים</strong> ישירות לנותני השירותים, ולקזז
+              מהרשות את ההשתתפות המגיעה ממנה."
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon orange">⏰</div>
+            <h4>תקופה מוגדרת</h4>
+            <p>
+              ייפוי הכוח תקף לתקופה מוגדרת (בדרך כלל שנה). אחרי שפג — צריך לחתום
+              על חדש. <strong>אין תשלומים בדיעבד</strong> — השירות חייב להתחיל
+              אחרי האישור.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon purple">🏛️</div>
+            <h4>מופנה למינהל ספציפי</h4>
+            <p>
+              ייפוי הכוח מופנה למינהל הספציפי במשרד שאחראי על השירות: שירותים
+              אישיים וחברתיים, מוגבלויות, סיוע לבתי משפט, או אזרחים ותיקים.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-icon red">✋</div>
+            <h4>זכות עצירת תשלום</h4>
+            <p>
+              המשרד שומר לעצמו זכות <strong>להפסיק את התשלום</strong> אם הספק לא
+              עומד בתנאי ההסכם או בהוראות תע"ס. שכבת בקרה נוספת.
+            </p>
+          </div>
+        </div>
+
+        <h3>חתימות נדרשות</h3>
+        <p>
+          מסמך ייפוי כוח דורש חתימות של: <strong>ראש המועצה</strong>,
+          <strong>גזבר המועצה</strong>, ו<strong>היועץ המשפטי של הרשות</strong>.
+          חתימת היועמ"ש חיונית — היא מעידה שהמסמך נבדק ועומד בדרישות החוק.
+        </p>
+
+        <div class="info-box danger">
+          <div class="box-title">🔴 אזהרה חמורה — אין תשלומים בדיעבד</div>
+          אם הרשות התחילה לקבל שירותים מהספק <strong>לפני</strong> שייפוי הכוח
+          אושר במשרד — <strong>המשרד לא ישתתף במימון</strong>. הרשות תשלם 100%
+          לבד. חובה לוודא שייפוי הכוח חתום ומאושר <strong>לפני</strong> שהשירות
+          מתחיל.
+        </div>
+
+        <h3>השפעה על הדוח</h3>
+        <p>
+          סעיפים שמתנהלים בייפוי כוח מופיעים בדוח <strong>בצורה שונה</strong>.
+          במקום שתראו "הוצאה" של 100% ו"החזר" של 75% — תראו רק את ה-25% שלכם, או
+          רישום מיוחד שמראה שהמשרד שילם ישירות. המסלול יכול להופיע כ"תשלומי
+          ממשלה" או "ייפוי כוח".
+        </p>
+
+        <div class="info-box info">
+          <div class="box-title">💡 כתב התחייבות בנקאי של נותן השירות</div>
+          כדי שהמשרד ישלם ישירות, נותן השירות חייב לחתום על
+          <strong>כתב התחייבות</strong> — שאם ישולם ביתר, הוא יחזיר את הכסף תוך
+          14 יום. צריך גם <strong>אישור רואה חשבון</strong> ופרטי חשבון בנק
+          מאומתים.
+        </div>
+      </section>
+
+      <!-- NEW SECTION: REPORTING RULES -->
+      <section class="section" id="reporting-rules">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 10</div>
+          <h2>5 כללי <span class="highlight">דיווח רשות</span></h2>
+          <p class="section-desc">
+            כשמדווחים דיווח רשות, יש 5 קטגוריות שצריך למלא בקפידה. אי-דיוק באחת
+            מהן עלול לגרום לדחיית הדיווח על ידי המשרד.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card">
+            <div class="card-icon blue">👤</div>
+            <h4>1. פרטי ספק</h4>
+            <ul>
+              <li>
+                שם <strong>מדויק</strong> וסוג הזיהוי (עוסק מורשה, ח.פ וכו')
+              </li>
+              <li>מספר זיהוי לפי הסוג</li>
+              <li>בתשלום ישיר לפונה: שם הפונה, ת.ז של הפונה, ומספר אסמכתא</li>
+            </ul>
+            <p
+              style="
+                margin-top: 8px;
+                font-size: 0.85rem;
+                color: var(--accent-red);
+              "
+            >
+              <strong
+                >מספר אסמכתא מדויק הוא בסיס ונוהל הכרחי לאישור ההוצאה.</strong
+              >
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon orange">📅</div>
+            <h4>2. מועדי ביצוע</h4>
+            <ul>
+              <li>תאריך תחילת הפעולה</li>
+              <li>תאריך סיום הפעולה (לפי ביצוע בפועל)</li>
+              <li>תאריך התשלום (לפי המצוין באסמכתא)</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <div class="card-icon purple">🎯</div>
+            <h4>3. מהות עזרה</h4>
+            <p>
+              בחר את מהות העזרה <strong>המדויקת</strong> להוצאה המדווחת (לדוגמה:
+              הרצאה, שכר, וכו').
+            </p>
+            <p
+              style="
+                margin-top: 8px;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+              "
+            >
+              אם במסגרת הסעיף התקציבי הרלוונטי לא נמצאה מהות עזרה ייעודית — יש
+              לפנות במייל למשרד לבדיקה.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon red">🚫</div>
+            <h4>4. תקורה / דמי ניהול</h4>
+            <p>
+              <strong
+                >אין לדווח במערכת תשלום עבור הוצאות תקורה או דמי ניהול.</strong
+              >
+            </p>
+            <p
+              style="
+                margin-top: 8px;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+              "
+            >
+              אם האסמכתא כוללת תקורה / דמי ניהול — יש לנכות את הסכום ולדווח
+              בנומרטור את הסכום ללא תקורה.
+            </p>
+          </div>
+
+          <div class="card">
+            <div class="card-icon green">📤</div>
+            <h4>5. הגשת דיווחים</h4>
+            <p>
+              הדיווחים יוגשו <strong>באופן סדור</strong> ובצירוף האסמכתאות
+              הנדרשות בהתאם להוראת התע"ס, לנהלים ולהנחיות המקצועיות של המינהל
+              הרלוונטי.
+            </p>
+            <p
+              style="
+                margin-top: 8px;
+                font-size: 0.85rem;
+                color: var(--text-secondary);
+              "
+            >
+              <em
+                >דוגמה: נכים קשים בקהילה — אסמכתא בגין העברה בנקאית / המחאה
+                לפונה + אישור פיקוח.</em
+              >
+            </p>
+          </div>
+        </div>
+
+        <!-- ASMACHTA TYPES -->
+        <h3 id="asmachta-types">4 סוגי אסמכתאות מאושרות לדיווח</h3>
+        <p>
+          המשרד מקבל רק 4 סוגים של אסמכתאות.
+          <strong>חובה לציין מספר אסמכתא מלא</strong> כולל אותיות, סלשים, מקפים
+          וכל תו אחר. מספר אסמכתא לא מדויק ייאלץ את המשרד לדחות את הדיווח.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>סוג אסמכתא</th>
+                <th>על שם</th>
+                <th>מספר אסמכתא</th>
+                <th>הערות</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. קבלה</strong></td>
+                <td>הרשות</td>
+                <td>המספר המדויק של הקבלה</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td><strong>2. חשבונית מס</strong></td>
+                <td>הרשות</td>
+                <td>המספר המדויק של חשבונית המס</td>
+                <td>—</td>
+              </tr>
+              <tr>
+                <td><strong>3. תלוש שכר / דוח עלות מעביד</strong></td>
+                <td>—</td>
+                <td>חודש/שנה + ת.ז<br />(לדוגמה: 01/26 111111111)</td>
+                <td>
+                  חובה לציין <strong>אחוזי משרה</strong>. רלוונטי כשהעובד/ת
+                  מועסק ישירות על ידי הרשות.
+                </td>
+              </tr>
+              <tr>
+                <td><strong>4. המחאה / העברה בנקאית</strong></td>
+                <td>הפונה (בתשלום לפונה בלבד)</td>
+                <td>מספר ההמחאה / מספר ההעברה הבנקאית</td>
+                <td>רק כשמשלמים ישירות לפונה</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box danger">
+          <div class="box-title">🔴 קריטי: דיוק במספר האסמכתא</div>
+          יש לציין מספר אסמכתא מלא כולל אותיות, סלשים, מקפים ו/או כל תו אחר.
+          <strong>מספר אסמכתא לא מדויק ייאלץ את המשרד לדחות את הדיווח.</strong>
+        </div>
+
+        <!-- DEADLINES -->
+        <h3 id="reporting-deadlines">מועדי הגשת דיווחי רשות</h3>
+
+        <div class="compare-grid">
+          <div class="compare-card" style="border-color: var(--accent-orange)">
+            <h4>⏰ עד מתי יוגשו דיווחים</h4>
+            <p>
+              דיווחים יתקבלו <strong>עד ל-3 חודשים</strong> ממועד האסמכתא, הקבלה
+              / חשבונית המס על שם הרשות.
+            </p>
+            <p style="margin-top: 8px">
+              <strong
+                >לא נוכל לאשר דיווחים רטרו אשר בגינם חלפו למעלה מ-3
+                חודשים.</strong
+              >
+            </p>
+            <p style="margin-top: 8px; font-size: 0.9rem">
+              הנחיה זו תקפה לאורך כל השנה וכן לתקופת סוף השנה,
+              <strong>ללא החרגות</strong>.
+            </p>
+            <div class="info-box danger" style="margin-top: 12px">
+              <div class="box-title">🔴 הקפדת יתר ב-2026</div>
+              החל משנת 2026 תהיה הקפדת יתר על נושא הגשת הדיווחים בזמן.
+            </div>
+          </div>
+
+          <div class="compare-card" style="border-color: var(--accent-blue)">
+            <h4>🔄 עד מתי יוגשו תיקונים</h4>
+            <p>
+              תיקונים בגין דיווחים שנדחו ע"י המשרד — ניתן להגיש בתקופה של
+              <strong>עד 3 חודשים לאחר דחיית הדיווח המקורי</strong>.
+            </p>
+            <p style="margin-top: 8px">
+              יש להגיש דיווח חדש במערכת כולל <strong>כל החומר המקורי</strong>,
+              וכן לציין בהערה במערכת את <strong>מספר הנומרטור</strong> הקודם
+              שנדחה.
+            </p>
+            <div class="info-box info" style="margin-top: 12px">
+              <div class="box-title">💡 מה זה "נומרטור"?</div>
+              מספר ההפניה של הדיווח במערכת המשרד. כשתגיש דיווח, תקבל מספר
+              נומרטור. אם הוא נדחה ואתה רוצה לתקן — אתה מתייחס לאותו מספר.
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box tip">
+          <div class="box-title">💡 לוח זמנים פנימי של המשרד</div>
+          דיווחים שיוגשו <strong>עד ה-25 לחודש</strong>, ייבדקו עד ל-15 בחודש
+          העוקב. עיבוד מערכת מס"ר מתבצע בסביבות ה-20 לחודש. תכננו בהתאם — כל מה
+          שמוגש אחרי ה-25 לא ייבדק החודש הזה.
+        </div>
+      </section>
+
+      <!-- SECTION 7: SPECIAL MECHANISMS -->
+      <section class="section" id="special">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 11</div>
+          <h2>מנגנונים <span class="highlight">מיוחדים</span></h2>
+          <p class="section-desc">
+            שני מנגנונים מיוחדים שמסבכים את הדוח ויש להבין אותם: ילדי חוץ
+            והפרשים.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>👦 ילדי חוץ — הכנסות מתושבי רשויות אחרות</h4>
+            <p>
+              כשמסגרת שהרשות מפעילה מקבלת פונים מרשויות אחרות, הרשות שבה הילד
+              <strong>גר</strong> משלמת <strong>100% תעריף</strong> לרשות
+              הקולטת.
+            </p>
+            <ul>
+              <li>מקור הכנסה חשוב למועצות עם מסגרות איכותיות</li>
+              <li>100% תעריף — לא רק 75%</li>
+              <li>תמריץ להפעלת מסגרות איכותיות שמושכות פונים מבחוץ</li>
+            </ul>
+            <div class="info-box success" style="margin-top: 12px">
+              <div class="box-title">✅ דוגמה</div>
+              ילד מירושלים מגיע למועדונית באפרת → ירושלים משלמת 100% תעריף לגוש
+              עציון.
+            </div>
+          </div>
+          <div class="compare-card">
+            <h4>📐 הפרשים — מימון מכמה משרדים</h4>
+            <p>
+              כשיש מימון מיותר ממשרד ממשלתי אחד,
+              <strong>מערכת המרכבה מנכה אוטומטית</strong> כדי למנוע כפילות.
+            </p>
+            <ul>
+              <li>
+                <strong>מועדונית משותפת:</strong> חינוך נותן 686 ₪ → המרכבה
+                מפחיתה לפני חישוב חלק הרווחה
+              </li>
+              <li>
+                <strong>שירותי התמכרויות:</strong> בריאות משתתף → תיאום אוטומטי
+                עם רווחה
+              </li>
+              <li>שורות "הפרשים" בדוח = תיאומים בין-משרדיים</li>
+            </ul>
+            <div class="info-box warning" style="margin-top: 12px">
+              <div class="box-title">⚠️ שימו לב</div>
+              מספרים "מוזרים" בשורות הפרשים הם תקינים — הם משקפים מצב מימון
+              מורכב מכמה מקורות ממשלתיים.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: VISUT -->
+      <section class="section" id="visut">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 12</div>
+          <h2>מנגנון <span class="highlight">הוויסות</span></h2>
+          <p class="section-desc">
+            ויסות תקציבי = העברת תקציב לא מנוצל מרשות אחת לרשות אחרת. זה גם סכנה
+            וגם הזדמנות.
+          </p>
+        </div>
+
+        <div class="compare-grid">
+          <div class="compare-card" style="border-color: var(--accent-red)">
+            <h4 style="color: var(--accent-red)">
+              ⚠️ הסכנה: אתם יכולים להפסיד
+            </h4>
+            <p>
+              אם המועצה בתת-ניצול (יתרה גדולה) — ייתכן שבסוף השנה המשרד
+              <strong>יוויסת את היתרה לרשות אחרת</strong>. תאבדו את התקציב.
+            </p>
+          </div>
+          <div class="compare-card" style="border-color: var(--accent-green)">
+            <h4 style="color: var(--accent-green)">
+              ✅ ההזדמנות: אתם יכולים לקבל יותר
+            </h4>
+            <p>
+              אם רשות אחרת לא ניצלה ואתם זקוקים ליותר — ייתכן ש<strong
+                >תקבלו תוספת מהוויסות</strong
+              >. בתנאי שפניתם בזמן.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-box danger">
+          <div class="box-title">🔴 כלל זהב: אסור לחכות לסוף השנה!</div>
+          <ul>
+            <li>
+              חריגה? → <strong>בקשו תוספת מוקדם</strong>, לפני עונת הוויסותים
+            </li>
+            <li>
+              יתרה? → <strong>נצלו מהר</strong> או הסבירו למה זמני — כדי לא לאבד
+              תקציב
+            </li>
+            <li>
+              סעיפים בסטטוס "תת ביצוע" = <strong>התרעה</strong> שתקציב יכול ללכת
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SECTION: SUPERVISION STRUCTURE -->
+      <section class="section" id="supervision">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 13</div>
+          <h2>מבנה <span class="highlight">הפיקוח</span> במשרד</h2>
+          <p class="section-desc">
+            לכל תחום שירות יש מפקח/ת ייעודי/ת במשרד. הבנת מבנה הפיקוח חיונית
+            לתקשורת נכונה ולפתרון בעיות.
+          </p>
+        </div>
+
+        <h3>ארבעת המינהלים</h3>
+        <p>
+          משרד הרווחה מחולק לארבעה <strong>מינהלים</strong> מקצועיים. ייפוי כוח,
+          בקשות הרחבה, ושאלות מקצועיות — כולם צריכים להיות מופנים למינהל הנכון:
+        </p>
+        <div class="cards-grid">
+          <div class="card" style="border-top: 3px solid var(--accent-blue)">
+            <div class="card-icon blue">👥</div>
+            <h4>מינהל שירותים אישיים וחברתיים</h4>
+            <p>
+              המינהל הגדול ביותר. מטפל בילדים ונוער, משפחה, אלימות, פגיעות
+              מיניות, אומנה, פנימיות, תכניות קהילתיות.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-purple)">
+            <div class="card-icon purple">♿</div>
+            <h4>מינהל מוגבלויות</h4>
+            <p>
+              אנשים עם מוגבלות שכלית, אוטיזם, מוגבלות פיזית וחושית. מעונות, דיור
+              בקהילה, שיקום.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-orange)">
+            <div class="card-icon orange">⚖️</div>
+            <h4>מינהל סיוע לבתי משפט ותיקון</h4>
+            <p>עבריינות, נוער בסיכון בהליכים פליליים, שירותי מבחן.</p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-green)">
+            <div class="card-icon green">👴</div>
+            <h4>אגף אזרחים ותיקים</h4>
+            <p>קשישים, ניצולי שואה, מעונות יום, סיעוד, דיור מוגן.</p>
+          </div>
+        </div>
+
+        <h3>חלוקת מפקחים</h3>
+        <p>
+          בתוך כל מינהל יש <strong>שירותים</strong> מקצועיים, ובכל שירות — צוות
+          מפקחים. המפקחים מחולקים לפי שני קריטריונים:
+        </p>
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>🎯 התמחות מקצועית</h4>
+            <p>
+              מפקח/ת על אלימות במשפחה, מפקח/ת על פגיעות מיניות, מפקח/ת על אומנה
+              — כל אחד/ת מתמחה בתת-תחום ספציפי.
+            </p>
+          </div>
+          <div class="compare-card">
+            <h4>🗺️ חלוקה גיאוגרפית</h4>
+            <p>
+              לרוב יש מפקח/ת לכל מחוז (צפון, חיפה, ת"א, ירושלים, דרום, יו"ש).
+              מפקח/ת על אומנה בירושלים ≠ מפקח/ת על אומנה בצפון.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">💡 כמה מפקחים יש למועצה ממוצעת?</div>
+          מועצה אזורית מתנהלת מול בערך
+          <strong>6-12 מפקחים שונים</strong> מהמשרד. מ-שח"א: ילד ונוער, אומנה,
+          פנימיות, אלימות, פגיעות מיניות, מעונות יום. מ-מוגבלויות: מעונות, דיור
+          בקהילה, שיקום. מ-אזרחים ותיקים: שירותי קשישים.
+        </div>
+
+        <h3>היררכיה מעל המפקחים</h3>
+        <p>אם מפקח/ת לא מאשר/ת בקשה או יש מחלוקת, ניתן לפנות:</p>
+        <div class="steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>מפקח/ת ארצי/ת על התחום</h4>
+              <p>יושב/ת במטה המשרד בירושלים, אחראי/ת על התחום בכל הארץ.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>מנהל/ת המחוז</h4>
+              <p>מנהל/ת המחוז של המשרד באזור שלכם.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>מנהל/ת השירות הארצי</h4>
+              <p>למשל מנהלת השירות לרווחת הפרט והמשפחה.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>מנהל/ת המינהל ← מנכ"ל המשרד</h4>
+              <p>רמה עליונה — פניה חריגה בלבד, בד"כ דרך ראש המועצה.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box tip">
+          <div class="box-title">💡 מפת מפקחים — כלי חיוני</div>
+          כדאי שיהיה לכם רשימה מסודרת: שם הסעיף, שם המפקח/ת, פרטי קשר, מחוז.
+          <strong>מפקחים מתחלפים</strong> — עדכנו את המפה אחת לחצי שנה.
+          <strong>בניית מערכת יחסים אישית טובה</strong> עם המפקחים היא אולי
+          המשאב המקצועי הכי חשוב.
+        </div>
+      </section>
+
+      <!-- SECTION: MONTHLY CYCLE -->
+      <section class="section" id="monthly-cycle">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 14</div>
+          <h2>מחזור דיווח <span class="highlight">חודשי</span></h2>
+          <p class="section-desc">
+            הדוח לא מופק "מאליו" — מאחוריו תהליך עבודה חודשי. אם משלב כלשהו
+            נופל, הדוח החודש הבא יצא שגוי או חלקי.
+          </p>
+        </div>
+
+        <h3>תחילת החודש</h3>
+        <div class="info-box info">
+          <div class="box-title">📋 משימות</div>
+          <ul
+            style="
+              padding-right: 18px;
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+            "
+          >
+            <li>לוודא שכל הלקוחות במסגרות רשומים נכון במערכת</li>
+            <li>אם לקוח עזב מסגרת — לעדכן מיידית, אחרת ימשיכו לחייב</li>
+            <li>אם לקוח חדש נכנס — להזין פרטיו וקוד הסעיף הרלוונטי</li>
+            <li>לבדוק הרשאות תקציב לכל הלקוחות הפעילים</li>
+          </ul>
+        </div>
+
+        <h3>אמצע החודש</h3>
+        <div class="info-box info">
+          <div class="box-title">📋 משימות</div>
+          <ul
+            style="
+              padding-right: 18px;
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+            "
+          >
+            <li>קבלת חשבוניות מנותני השירות (מעונות, פנימיות, אומנות)</li>
+            <li>בקרה: האם החשבונית תואמת את החודש שדווח? את התעריף בהסכם?</li>
+            <li>אישור החשבוניות והעברתן לגזברות לתשלום</li>
+            <li>
+              גביית השתתפות צד ג' מההורים — מעקב אחרי הוראות קבע, גביית פערים
+            </li>
+          </ul>
+        </div>
+
+        <h3>סוף החודש — דדליין ה-25!</h3>
+        <div class="info-box warning">
+          <div class="box-title">⏰ דדליין קריטי: 25 לחודש</div>
+          דיווחים שיוגשו <strong>עד ה-25 לחודש</strong> ייבדקו עד ה-15 בחודש
+          העוקב. כל מה שעובר את התאריך — לא ייבדק החודש הזה. תכננו בהתאם.
+        </div>
+        <div class="info-box info">
+          <div class="box-title">📋 משימות</div>
+          <ul
+            style="
+              padding-right: 18px;
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+            "
+          >
+            <li>הזנת כל ההוצאות בפועל למערכת המשרד — לפי סעיף, לקוח, וסיווג</li>
+            <li>בדיקת התאמה בין מערכת המועצה (ERP) לבין הדיווח שמועבר למשרד</li>
+            <li>תיעוד חריגות וסטיות במסמך פנימי לבקרה</li>
+            <li>
+              הקפדה על 5 כללי דיווח רשות (פרטי ספק, מועדים, מהות, ללא תקורה,
+              אסמכתאות)
+            </li>
+          </ul>
+        </div>
+
+        <h3>תחילת החודש הבא</h3>
+        <div class="info-box info">
+          <div class="box-title">📋 משימות</div>
+          <ul
+            style="
+              padding-right: 18px;
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+            "
+          >
+            <li>הגשת הדיווח הסופי למשרד ("דיווח רשות")</li>
+            <li>בדיקת הדוח שמתקבל — האם המספרים תואמים?</li>
+            <li>מעקב אחר העברות שהמשרד מבצע לבנק (להצליב עם הגזברות)</li>
+            <li>תיעוד חיובים פתוחים שלא נסגרו, להמשך טיפול</li>
+            <li>השוואה בין דוח אחזקת חניכים להשמות במס"ר</li>
+          </ul>
+        </div>
+
+        <div class="info-box tip">
+          <div class="box-title">💡 יומן עבודה חודשי</div>
+          מומלץ לתחזק יומן של כל פעולות הדיווח, כולל תאריכים שבהם הוזנו נתונים,
+          מספרי נומרטור, וזיהוי בעיות. זה מציל אתכם בבדיקות בסוף שנה ובביקורות.
+        </div>
+
+        <h3>ציר הזמן של מקרה בודד</h3>
+        <div class="steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>פברואר 2026</h4>
+              <p>הילד נמצא במעון. השירות ניתן בפועל.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>סוף פברואר / תחילת מרץ</h4>
+              <p>המעון סוגר את חשבונית פברואר ושולח לרשות.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>מרץ 2026</h4>
+              <p>הרשות בודקת את החשבונית, מאשרת, ומעבירה תשלום למעון.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>סוף מרץ / תחילת אפריל</h4>
+              <p>הרשות מזינה את התשלום למערכת המשרד (דיווח רשות).</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>אפריל 2026</h4>
+              <p>המשרד מעבד את הדיווח, מחשב את חלקו, ומפיק את הדוח.</p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>אפריל-מאי 2026</h4>
+              <p>המשרד מעביר את הכסף לרשות.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION: CONTROL QUESTIONS -->
+      <section class="section" id="control-questions">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 15</div>
+          <h2>שאלות <span class="highlight">בקרה</span></h2>
+          <p class="section-desc">
+            רשימת בדיקה תפעולית — 7 בדיקות שיש לבצע בכל פעם שמגיע דוח חודשי.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>התאמת ההוצאה החודשית</h4>
+              <p>
+                האם "סה"כ הוצאה" בדוח תואם למה ששילמתם בפועל? הוציאו דוח מ-ERP
+                של המועצה לאותו חודש וסעיף, וודאו שהסכומים זהים.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>כמות יחידות (חודשי סידור)</h4>
+              <p>
+                מספר היחידות שדווחו צריך להתאים לחודשי הסידור הבפועל.
+                <strong>זוכרים — יחידות הן חודשי סידור, לא אנשים.</strong> כדי
+                לבדוק כמה אנשים בפועל — דוח אחזקת חניכים.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>השוואת שתי העמודות הקריטיות</h4>
+              <p>
+                השוו את "חלק המשרד בהוצאות מצטבר" מול "זיכוי / חיוב מצטבר". זהים
+                = תקין. שונים = יש בעיה.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>סטטוס תקצוב מצטבר</h4>
+              <p>
+                צריך להיות 0 או קרוב. חיובי גדול = יתרה לא מנוצלת (סכנה
+                לוויסות). שלילי = חריגה. בשני המקרים — לבדוק.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>התאמת קצב לאחוז השנה</h4>
+              <p>
+                אם 33% מהשנה עברו, הביצוע המצטבר ביחידות אמור להיות ~33% מהתקצוב
+                השנתי. סטייה משמעותית = בדיקה.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>שורות במינוס</h4>
+              <p>
+                אם רואים שורה במינוס — לבדוק האם זה תיקון אוטומטי של צ'ק שלא
+                נפדה (כלל 4 חודשים), או זיכוי על שירות שדווח בעבר.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">7</div>
+            <div class="step-content">
+              <h4>צד ג' ויתרת תקציב</h4>
+              <p>
+                הסכום בעמודת צד ג' תואם למה שגביתם בפועל? יתרת התקציב מספיקה
+                לחודשים שנשארו? אם פחות — בקשו הרחבה לפני עונת הוויסותים.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box success">
+          <div class="box-title">✅ דוח תקין נראה ככה</div>
+          המספרים בקבוצה A מתאימים ל-ERP, היחידות תואמות לחודשי הסידור, סטטוס
+          תקצוב = 0, ביצוע מצטבר תואם לאחוז השנה, חיובים מצטברים מתאזנים בהדרגה,
+          וצד ג' תואם לגבייה בפועל.
+        </div>
+      </section>
+
+      <!-- SECTION: CHECK STATUS -->
+      <section class="section" id="check-status">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 16</div>
+          <h2>בדיקת חריגה <span class="highlight">או יתרה</span></h2>
+          <p class="section-desc">
+            הכלי המרכזי לאבחון מצב תקציבי — השוואת שתי עמודות קריטיות בחלק השני
+            של הדוח.
+          </p>
+        </div>
+
+        <div class="info-box success">
+          <div class="box-title">📌 הכלל הפשוט</div>
+          <strong>השווה שתי עמודות:</strong><br />
+          1. חלק המשרד בהוצאות מצטבר<br />
+          2. זיכוי / חיוב מצטבר<br /><br />
+          <strong>זהים ושווים = תקין ✅</strong><br />
+          <strong>לא זהים = יש לבדוק ⚠️</strong>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card" style="border-color: var(--accent-green)">
+            <div class="card-icon green">✅</div>
+            <h4>הסכומים זהים — תקין</h4>
+            <p>
+              הרשות מקבלת את מה שהיא מוציאה. יש איזון מלא בין ההוצאה לזיכוי. אין
+              צורך בפעולה.
+            </p>
+          </div>
+          <div class="card" style="border-color: var(--accent-red)">
+            <div class="card-icon red">📈</div>
+            <h4>זיכוי נמוך מהוצאות — חריגה</h4>
+            <p>
+              הרשות הוציאה יותר מהתקציב. ייתכן שבחודשים הבאים החריגה תצומצם, אך
+              יש לעקוב ולבדוק אם נדרשת בקשת הרחבה.
+            </p>
+          </div>
+          <div class="card" style="border-color: var(--accent-orange)">
+            <div class="card-icon orange">📉</div>
+            <h4>זיכוי גבוה מהוצאות — יתרה</h4>
+            <p>
+              הרשות לא ניצלה את מלוא התקציב. <strong>שימו לב:</strong> אם קיימת
+              יתרה, ייתכן שבמועד ויסותים ניתן יהיה להעביר בין רשויות.
+            </p>
+          </div>
+        </div>
+
+        <h3>בדיקה נוספת — מעקב כמותי</h3>
+        <p>
+          ניתן גם לבדוק חריגה מבחינת מכסות. כל עוד הרשות
+          <strong>לא חורגת מחודשי הסידור</strong>, מקבלים את מלוא 75% מהתעריף.
+        </p>
+        <div class="formula">
+          <span class="formula-label">בדיקת ממוצע חודשי מול מכסה</span>
+          יחידות ביצוע מצטבר ÷ מספר חודשים = ממוצע חודשי<br />
+          ממוצע חודשי > (הקצבה שנתית ÷ 12) → מגמת חריגה!
+        </div>
+      </section>
+
+      <!-- SECTION 10: WORKFLOW -->
+      <section class="section" id="workflow">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 17</div>
+          <h2>סדר עבודה <span class="highlight">חודשי</span></h2>
+          <p class="section-desc">
+            כשמגיע דוח חודשי — הנה סדר העבודה המעשי המומלץ, צעד אחר צעד.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step-item">
+            <div class="step-num">1</div>
+            <div class="step-content">
+              <h4>סקירה כללית של הסטטוסים</h4>
+              <p>
+                רוץ עם העיניים על העמודה האחרונה. סמן כל מה שלא תקין — חריגות,
+                שורות מינוס, סטטוס "תת ביצוע".
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">2</div>
+            <div class="step-content">
+              <h4>בדיקת תקינות לכל סעיף</h4>
+              <p>
+                לכל סעיף, השווה: <strong>חלק המשרד בהוצאות מצטבר</strong> מול
+                <strong>זיכוי/חיוב מצטבר</strong>. זהים = תקין. שונים = לבדוק.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">3</div>
+            <div class="step-content">
+              <h4>ניתוח חריגות</h4>
+              <p>
+                לכל חריגה: מתי התחילה? אירוע חד-פעמי או מגמה? סיבה אובייקטיבית?
+                צריך בקשת הרחבת הרשאה?
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">4</div>
+            <div class="step-content">
+              <h4>ניתוח תת-ניצול</h4>
+              <p>
+                באמת תת-ניצול או טעות דיווח? הצורך פחת? בעיה בהפעלת השירות? סכנה
+                לוויסות בסוף השנה?
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">5</div>
+            <div class="step-content">
+              <h4>בדיקת שורות מינוס</h4>
+              <p>
+                תיקון צ'ק שלא נפדה (4 חודשים)? זיכוי על שירות שדווח בעבר ומתוקן?
+                לבדוק מול מחלקת גביה.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">6</div>
+            <div class="step-content">
+              <h4>השוואה לדוח הקצבה ולאחזקת חניכים</h4>
+              <p>
+                הצליבו עם דוח ההקצבה לראות תמונה רחבה של תת-ניצול / ניצול מיטבי
+                / גירעון. השוו דוח אחזקת חניכים להשמות במס"ר.
+              </p>
+            </div>
+          </div>
+          <div class="step-item">
+            <div class="step-num">7</div>
+            <div class="step-content">
+              <h4>תקשורת עם המפקחים</h4>
+              <p>
+                לפני שמטפלים בחריגה — ידעו את המפקח/ת הרלוונטי/ת. גם נימוס
+                מקצועי וגם הזדמנות לקבל עצה.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- SECTION 11: NUMERICAL EXAMPLE -->
+      <section class="section" id="example">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 18</div>
+          <h2>דוגמה מספרית <span class="highlight">מלאה</span></h2>
+          <p class="section-desc">
+            סעיף 242410 (אחזקה במעונות א.ותי) — חודש אפריל 2026. דוגמה מלאה עם
+            כל החישובים.
+          </p>
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">📋 הנתונים הבסיסיים</div>
+          סוג סיווג: <strong>כמותי לרשות</strong> (1/12 לחודש) &nbsp;|&nbsp;
+          הקצבה שנתית: <strong>12 חודשי סידור</strong> &nbsp;|&nbsp; הקצבה
+          כספית: <strong>140,772 ₪</strong> &nbsp;|&nbsp; מסלול:
+          <strong>תשלומי ממשלה</strong> &nbsp;|&nbsp; אחוז מצטבר באפריל:
+          <strong>33.33%</strong>
+        </div>
+
+        <h3>חלק ראשון — הוצאה חודשית (אפריל)</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>שדה</th>
+                <th>חישוב</th>
+                <th>תוצאה</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>יחידות שדווחו</td>
+                <td>1 חודש סידור</td>
+                <td class="num">1.0</td>
+              </tr>
+              <tr>
+                <td>סה"כ הוצאה</td>
+                <td>עלות השירות החודשית</td>
+                <td class="num">12,468 ₪</td>
+              </tr>
+              <tr>
+                <td>השתתפות צד ג'</td>
+                <td>חלק הפונים (לפי הוראות התע"ס)</td>
+                <td class="num">484 ₪</td>
+              </tr>
+              <tr>
+                <td>הוצאה להתחשבנות</td>
+                <td>12,468 − 484</td>
+                <td class="num"><strong>11,984 ₪</strong></td>
+              </tr>
+              <tr>
+                <td>חלק המשרד (75%)</td>
+                <td>11,984 × 75%</td>
+                <td class="num"><strong>8,988 ₪</strong></td>
+              </tr>
+              <tr>
+                <td>חלק הרשות (25%)</td>
+                <td>11,984 × 25%</td>
+                <td class="num"><strong>2,996 ₪</strong></td>
+              </tr>
+              <tr>
+                <td>סה"כ חלק הרשות בפועל</td>
+                <td>2,996 + 484 (צד ג')</td>
+                <td class="num"><strong>3,480 ₪</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h3>חלק שני — בקרה תקציבית</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>שדה</th>
+                <th>חישוב</th>
+                <th>תוצאה</th>
+                <th>סטטוס</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>חלק המשרד בתקציב מצטבר</td>
+                <td>140,772 × 33.33% × 75%</td>
+                <td class="num">35,193 ₪</td>
+                <td><span class="tag ok">—</span></td>
+              </tr>
+              <tr>
+                <td>חלק המשרד בהוצאות מצטבר</td>
+                <td>סיכום הוצאות בפועל</td>
+                <td class="num">35,193 ₪</td>
+                <td><span class="tag ok">—</span></td>
+              </tr>
+              <tr>
+                <td>זיכוי/חיוב מצטבר</td>
+                <td>מה שהרשות קיבלה בפועל</td>
+                <td class="num">35,193 ₪</td>
+                <td><span class="tag ok">תקין ✅</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="info-box success">
+          <div class="box-title">✅ שלושת המספרים זהים — 35,193 ₪</div>
+          כל שלושת הערכים שווים. זה מצב <strong>תקין מושלם</strong>: הרשות מקבלת
+          בדיוק את מה שמגיע לה לפי ההוצאה.
+        </div>
+
+        <h3>חלק שלישי — מעקב תקציבי</h3>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>שדה</th>
+                <th>ערך</th>
+                <th>הסבר</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>הקצבה ביחידות שנתי</td>
+                <td class="num">12</td>
+                <td>12 חודשי סידור (לא 12 ילדים!)</td>
+              </tr>
+              <tr>
+                <td>יחידות ביצוע מצטבר</td>
+                <td class="num">4</td>
+                <td>4 ח"ס באפריל — מתאים לצפוי</td>
+              </tr>
+              <tr>
+                <td>הוצאה להתחשבנות מצטברת</td>
+                <td class="num">45,924 ₪</td>
+                <td>4 × ~11,481 ₪ ממוצע</td>
+              </tr>
+              <tr>
+                <td>יתרת הקצבה כמותית</td>
+                <td class="num">8</td>
+                <td>12 − 4 = 8 חודשי סידור נותרו</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="chart-container">
+          <div class="chart-title">ניצול תקציב — סעיף 242410 באפריל</div>
+          <div class="bar-chart">
+            <div class="bar-row">
+              <span class="bar-label">ניצול כמותי</span>
+              <div class="bar-track">
+                <div class="bar-fill cyan" style="width: 33.33%">
+                  4/12 = 33%
+                </div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">ניצול כספי</span>
+              <div class="bar-track">
+                <div class="bar-fill green" style="width: 32.6%">
+                  45,924/140,772 = 33%
+                </div>
+              </div>
+            </div>
+            <div class="bar-row">
+              <span class="bar-label">אחוז מצטבר</span>
+              <div class="bar-track">
+                <div class="bar-fill purple" style="width: 33.33%">33.33%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="info-box success">
+          <div class="box-title">✅ סיכום: הסעיף בדיוק במקום הנכון</div>
+          כל המדדים — כמותיים, כספיים, ואחוז מצטבר — מיושרים ב-33%. ביצוע תקין
+          לחלוטין.
+        </div>
+      </section>
+
+      <!-- SECTION: LEGAL CONTEXT -->
+      <section class="section" id="legal">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 19</div>
+          <h2>ההקשר <span class="highlight">המשפטי</span></h2>
+          <p class="section-desc">
+            הדוח התקציבי אינו רק מסמך כספי, אלא ביטוי של מערכת יחסים חוקית
+            ומשפטית מורכבת בין המדינה, הרשות המקומית, ונותן השירות.
+          </p>
+        </div>
+
+        <h3>חוק שירותי הסעד, התשי"ח-1958</h3>
+        <p>
+          זהו חוק הבסיס המגדיר שכל רשות מקומית חייבת לקיים לשכת סעד (מחלקת
+          שירותים חברתיים). החוק קובע את חלוקת האחריות: המדינה קובעת מדיניות
+          ומתקצבת, הרשות מבצעת. זוהי חובה חוקית לספק את השירות, ולא בחירה
+          וולונטרית של הרשות.
+        </p>
+
+        <h3>תע"ס - תקנון עובדים סוציאליים</h3>
+        <p>
+          אלו הן ה"תקנות" של משרד הרווחה. התע"ס מגדיר את אמות המידה, התנאים
+          לזכאות, הסטנדרטים הנדרשים למתן שירות, וגם את העלויות המוכרות והתעריפים
+          שמותר לשלם או לגבות. התע"ס מהווה את הבסיס החוקי לכל קוד שמופיע בדוח
+          התקצוב. אם ספק לא עומד בהוראות תע"ס – המשרד רשאי לעצור תשלומים.
+        </p>
+
+        <div class="compare-grid">
+          <div class="compare-card">
+            <h4>⚖️ האחריות נשארת ברשות</h4>
+            <p>
+              גם במקרים של ייפוי כוח (כשהמשרד משלם ישירות לספק),
+              <strong>האחריות המקצועית והמשפטית נשארת על הרשות</strong>. אם
+              השירות שניתן ללקוח אינו טוב או גרם לנזק, התביעה תהיה נגד הרשות
+              שאחראית לפרקטיקה. ייפוי הכוח מסדיר רק את "הצינור הכספי".
+            </p>
+          </div>
+          <div class="compare-card">
+            <h4>📄 מכרז לעומת פטור ממכרז</h4>
+            <p>
+              במערכת הרווחה, ספקים לרוב נבחרים דרך מכרז פומבי של המועצה, או
+              נרשמים ל"מאגר ספקים" באמצעות הליך של "קול קורא". במקרים מסוימים של
+              התקשרויות מיוחדות, ייתכן אישור של "פטור ממכרז". כל ספק חייב להיות
+              מאושר כדין ברשות לפני שהמשרד יאשר להעביר אליו כספים.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-box danger">
+          <div class="box-title">⚠️ המשמעות החשבונאית של חוזים</div>
+          כל דיווח במערכת מתבסס על חוזים שנחתמו כדין. חובה על הרשות להבטיח שלכל
+          הוצאה יש גיבוי חוזי בתוקף, אישור יועמ"ש, ואישור תקציבי (הרשאה). תשלום
+          ללא גיבויים אלו עלול להוביל לבקשת החזר מהמדינה, ואף לחיוב אישי של
+          נושאי משרה ברשות המקומית.
+        </div>
+      </section>
+
+      <!-- NEW SECTION: CONTACTS -->
+      <section class="section" id="contacts">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 20</div>
+          <h2>אנשי <span class="highlight">קשר</span></h2>
+          <p class="section-desc">
+            פרטי הקשר החיוניים במשרד הרווחה — מי לפנות אליו ובאיזה נושאים.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card" style="border-top: 3px solid var(--accent-blue)">
+            <div class="card-icon blue">👤</div>
+            <h4>אושר גבריאלי יעקב</h4>
+            <p>
+              <strong>תפקיד:</strong> מנהלת תחום בכיר תקצוב רשויות מקומיות, מחוז
+              ירושלים
+            </p>
+            <p style="margin-top: 8px">
+              <strong>תחום:</strong> כל הסוגיות התקציביות של המועצה האזורית גוש
+              עציון מול המשרד
+            </p>
+            <div
+              style="
+                margin-top: 12px;
+                padding: 12px;
+                background: rgba(0, 0, 0, 0.05);
+                border-radius: 8px;
+              "
+            >
+              <p>📱 <strong>נייד:</strong> 054-3303371</p>
+              <p>📧 <strong>מייל:</strong> osherg@molsa.gov.il</p>
+            </div>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-purple)">
+            <div class="card-icon purple">📋</div>
+            <h4>מפקחי תחום</h4>
+            <p>
+              לכל סעיף תקציבי יש מפקח/ת ייעודי/ת לפי תחום והתמחות גיאוגרפית.
+            </p>
+            <p style="margin-top: 8px">
+              <strong>חשוב:</strong> בנו רשימה מסודרת של מפקחים לפי סעיף —
+              מפקחים מתחלפים, ויש לעדכן אחת לחצי שנה.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-green)">
+            <div class="card-icon green">🏛️</div>
+            <h4>מינהל תקצוב וכלכלה</h4>
+            <p><strong>אגף בכיר רשויות מקומיות, מחוז ירושלים</strong></p>
+            <p style="margin-top: 8px">
+              מקור עיקרי לחומרי הדרכה, תעריפים, ועדכונים שוטפים על נהלי דיווח.
+            </p>
+          </div>
+        </div>
+
+        <div class="info-box tip">
+          <div class="box-title">💡 מסמכים חיוניים שכדאי שיהיו ברשותכם</div>
+          <ul
+            style="
+              padding-right: 18px;
+              color: var(--text-secondary);
+              font-size: 0.9rem;
+              margin: 8px 0;
+            "
+          >
+            <li>שקופיות הדרכה של מינהל תקצוב וכלכלה (אושר גבריאלי)</li>
+            <li>דוח תקצוב והתחשבנות (חודשי)</li>
+            <li>דוח הקצבה (לבקרה תקציבית רחבה)</li>
+            <li>דוח אחזקת חניכים (לספירת אנשים בפועל)</li>
+            <li>הוראות תע"ס לסעיפים שאתם מטפלים בהם</li>
+            <li>הסכם הרשאה שנתי + ייפויי כוח</li>
+            <li>חוזרי מנכ"ל הרלוונטיים</li>
+            <li>כרטיסי פרויקט בפורמט החדש (כללי + אזרחים ותיקים)</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SECTION 16: SUMMARY -->
+      <section class="section" id="summary">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 21</div>
+          <h2>סיכום <span class="highlight">ותזכורות</span></h2>
+          <p class="section-desc">
+            שמונה דברים שחובה לזכור — העיקרי מכל מה שנלמד.
+          </p>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card" style="border-top: 3px solid var(--accent-blue)">
+            <div class="card-icon blue">1️⃣</div>
+            <h4>הדוח = 4 מקורות</h4>
+            <p>
+              הדוח משלב כ"א (פיגור חודשיים), מס"ר (חודש - השמות), מת"ס (התחשבנות
+              מיידית), ודיווח רשות (עדכני). לכל שורה עדכניות שונה.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-cyan)">
+            <div class="card-icon cyan">2️⃣</div>
+            <h4>יחידות ≠ אנשים</h4>
+            <p>
+              יחידות = חודשי סידור. 29 יחידות יכולים להיות 20 פונים + 9 חודשים
+              רטרו. לספירת אנשים → דוח אחזקת חניכים.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-purple)">
+            <div class="card-icon purple">3️⃣</div>
+            <h4>4 סוגי סיווג</h4>
+            <p>
+              כספי לרשות (~100 סעיפים, הנפוץ!), כספי שנתי (~10), כמותי ארצי (4
+              בלבד!), כמותי לרשות (~30, נפוץ).
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-green)">
+            <div class="card-icon green">4️⃣</div>
+            <h4>בדיקת תקינות = 2 עמודות</h4>
+            <p>
+              חלק המשרד בהוצאות מצטבר vs. זיכוי/חיוב מצטבר. שווים = תקין. שונים
+              = לבדוק.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-orange)">
+            <div class="card-icon orange">5️⃣</div>
+            <h4>ויסות = סכנה + הזדמנות</h4>
+            <p>
+              אסור לחכות לסוף השנה. חריגה? בקשו תוספת מוקדם. יתרה? נצלו מהר או
+              שתאבדו אותה.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-red)">
+            <div class="card-icon red">6️⃣</div>
+            <h4>3 חודשים — נקודת המוות</h4>
+            <p>
+              דיווחים יתקבלו עד 3 חודשים מתאריך האסמכתא. מ-2026 — הקפדת יתר. ללא
+              החרגות, גם בסוף שנה.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-pink)">
+            <div class="card-icon pink">7️⃣</div>
+            <h4>5 כללי דיווח רשות</h4>
+            <p>
+              פרטי ספק מדויקים, מועדי ביצוע, מהות עזרה ייעודית, ללא תקורה/דמי
+              ניהול, אסמכתאות מדויקות.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-blue)">
+            <div class="card-icon blue">8️⃣</div>
+            <h4>2 דוחות מרכזיים</h4>
+            <p>
+              דוח תקצוב התחשבנות (המפורט) + דוח הקצבה (סטטוס
+              תת-ניצול/מיטבי/גירעון). השוו ביניהם.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      // Animate elements on scroll
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("animate-in");
+            }
+          });
+        },
+        { threshold: 0.1 },
+      );
+
+      document
+        .querySelectorAll(".section-header, .card, .step-item")
+        .forEach((el) => {
+          observer.observe(el);
+        });
+
+      // Active sidebar link on scroll
+      const sections = document.querySelectorAll(".section[id]");
+      const navLinks = document.querySelectorAll('.sidebar a[href^="#"]');
+      window.addEventListener("scroll", () => {
+        let current = "";
+        sections.forEach((section) => {
+          const top = section.offsetTop - 100;
+          if (pageYOffset >= top) current = section.getAttribute("id");
+        });
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === "#" + current)
+            link.classList.add("active");
+        });
+      });
+
+      // Close sidebar on mobile when clicking a link
+      document.querySelectorAll(".sidebar a").forEach((link) => {
+        link.addEventListener("click", () => {
+          if (window.innerWidth <= 900) {
+            document.querySelector(".sidebar").classList.remove("open");
+          }
+        });
+      });
+    </script>
+  </body>
 </html>
