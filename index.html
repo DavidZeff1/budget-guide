@@ -70,6 +70,14 @@
       <a href="#fw-special" class="sub">צרכים מיוחדים</a>
       <a href="#fw-elderly" class="sub">קשישים</a>
       <a href="#fw-summer" class="sub">קיץ ומוגנות</a>
+      <div class="sidebar-section-title">כרטסת רשות מול סעיף משרד</div>
+      <a href="#ledger-vs-clause">המושגים והחיבור ביניהם</a>
+      <a href="#what-is-ledger" class="sub">כרטסת רשות — מהי?</a>
+      <a href="#what-is-clause" class="sub">סעיף משרד — מהו?</a>
+      <a href="#how-they-bind" class="sub">איך הם מתחברים</a>
+      <a href="#real-view" class="sub">איך זה נראה בפועל</a>
+      <a href="#using-them" class="sub">שימוש יומיומי</a>
+      <a href="#binding-pitfalls" class="sub">תקלות נפוצות</a>
       <div class="sidebar-section-title">מפת כרטסות וסעיפים</div>
       <a href="#ledger-map">מפה מפורטת</a>
       <a href="#lm-admin" class="sub">מינהל רווחה</a>
@@ -3201,10 +3209,569 @@
         </div>
       </section>
 
-      <!-- SECTION 21: LEDGER & CLAUSE MAP -->
-      <section class="section" id="ledger-map">
+      <!-- SECTION 21: LEDGER vs CLAUSE EXPLAINER -->
+      <section class="section" id="ledger-vs-clause">
         <div class="section-header animate-in">
           <div class="section-number">פרק 21</div>
+          <h2>כרטסת רשות מול <span class="highlight">סעיף משרד</span></h2>
+          <p class="section-desc">
+            לפני שצוללים למפת הכרטסות המפורטת — חיוני להבין את שני
+            המושגים ואת היחס ביניהם. זו הליבה של כל עבודת הדיווח: כל
+            ש"ח שיוצא ברשות חייב להיות מקושר לסעיף תקציבי במשרד, וכל
+            זיכוי שמגיע מהמשרד נכנס לכרטסת מסוימת ברשות. אם החיבור
+            הזה שגוי — ההכנסה לא תיכנס למקום הנכון, חישובי 75/25
+            יצאו עקומים, ויהיה גרעון מדומה.
+          </p>
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">💡 התמונה הגדולה במשפט אחד</div>
+          <strong>סעיף משרד</strong> חי במערכת מרכבה הממשלתית ואומר
+          "כמה הקצבתי לרשות הזאת לטיפול ב-X". <strong>כרטסת רשות</strong>
+          חיה במערכת הכספים של המועצה ואומרת "כמה בפועל הוצאתי / קיבלתי
+          על הסעיף הזה". <strong>דוח התקצוב והתחשבנות</strong> הוא הגשר
+          ביניהם — הוא מתרגם את ההוצאות בכרטסת לדיווח לסעיף, ומחזיר
+          את הזיכוי לכרטסת ההכנסות.
+        </div>
+
+        <h3 id="what-is-ledger">1. כרטסת רשות (כרטיס) — מהי?</h3>
+        <p>
+          <strong>כרטסת</strong> (או "כרטיס") היא יחידה החשבונאית הבסיסית
+          במערכת הכספים של המועצה. כל כרטסת היא רק שורה אחת מתוך מאות
+          שורות בספר התקציב של הרשות, אבל היא מרכזת בתוכה את כל ההוצאות
+          וההכנסות שקשורות לפעילות מסוימת.
+        </p>
+
+        <div class="cards-grid">
+          <div class="card" style="border-top: 3px solid var(--accent-blue)">
+            <div class="card-icon blue">📒</div>
+            <h4>מה היא מכילה?</h4>
+            <ul>
+              <li><strong>מספר ייחודי</strong> (למשל 1843502840)</li>
+              <li><strong>שם</strong> (למשל "טיפול בילד בקהילה")</li>
+              <li><strong>סוג</strong> — הוצאה (840) או הכנסה (930)</li>
+              <li><strong>תקציב שנתי</strong> מאושר במועצה</li>
+              <li><strong>היסטוריית תנועות</strong> — חיובים/זיכויים בפועל</li>
+              <li><strong>יתרה זמינה</strong></li>
+            </ul>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-cyan)">
+            <div class="card-icon cyan">🔢</div>
+            <h4>מבנה המספר</h4>
+            <p>
+              מספר הכרטסת בנוי מ-10 ספרות לפי מבנה תקצובי קבוע במועצה.
+              דוגמה לכרטסת הוצאה: <span class="num">1843502840</span>
+            </p>
+            <ul style="font-size:0.85rem;margin-top:8px;">
+              <li><strong>1</strong> — הוצאות</li>
+              <li><strong>84</strong> — אגף רווחה</li>
+              <li><strong>3502</strong> — תת-אגף ילדים</li>
+              <li><strong>840</strong> — סוג הסעיף (פעולות)</li>
+            </ul>
+            <p style="font-size:0.85rem;margin-top:8px;">
+              כרטסת ההכנסות המקבילה: <span class="num">343502930</span>
+              (אותו מבנה, אבל מתחיל ב-3 = הכנסות, ומסתיים ב-930).
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-purple)">
+            <div class="card-icon purple">🎯</div>
+            <h4>למה משמשת בפועל?</h4>
+            <p>
+              כל פעולה כספית במחלקה עוברת דרך כרטסת:
+            </p>
+            <ul>
+              <li>חשבונית של ספק → <strong>חיוב</strong> בכרטסת הוצאה</li>
+              <li>תשלום מהמשרד → <strong>זיכוי</strong> בכרטסת הכנסה</li>
+              <li>השתתפות פונה → <strong>זיכוי</strong> בכרטסת הכנסה</li>
+              <li>החזר הוצאה לעובד → חיוב</li>
+            </ul>
+            <p style="margin-top:6px;">
+              היתרה (תקציב מינוס חיובים פלוס זיכויים) =
+              <strong>מה זמין לכם להוציא עוד.</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="info-box tip">
+          <div class="box-title">📌 זוגות הכרטסות — הוצאה ↔ הכנסה</div>
+          לכל סעיף שמופעלת בו פעילות יש בדרך כלל
+          <strong>שתי כרטסות צמודות</strong>:
+          <ul style="padding-right:18px;color:var(--text-secondary);font-size:0.9rem;margin:8px 0;">
+            <li><strong>כרטסת הוצאות</strong> (מסתיימת ב-840 לרוב) — שם נכנסות החשבוניות.</li>
+            <li><strong>כרטסת הכנסות</strong> (מסתיימת ב-930 לרוב) — שם נכנס הזיכוי מהמשרד.</li>
+          </ul>
+          <strong>דוגמה:</strong> טיפול בילד בקהילה — הוצאות ב-1843502840,
+          הכנסות ב-343502930. <strong>הפער ביניהן</strong> בסוף השנה הוא
+          חלק הרשות בעלות (אמור להיות בערך 25% אם המסלול 75/25).
+        </div>
+
+        <h3 id="what-is-clause">2. סעיף תקציבי במשרד — מהו?</h3>
+        <p>
+          <strong>סעיף תקציבי</strong> הוא יחידת ההקצבה במערכת מרכבה
+          הממשלתית — בפרק 23 (משרד הרווחה) של חוק התקציב. כל סעיף מייצג
+          סוג שירות מסוים שהמשרד מאשר לרשות לתת לתושבים ומחזיר עליו
+          לרשות חלק מהעלות.
+        </p>
+
+        <div class="cards-grid">
+          <div class="card" style="border-top: 3px solid var(--accent-orange)">
+            <div class="card-icon orange">🏛️</div>
+            <h4>איפה הוא חי?</h4>
+            <p>
+              במערכת <strong>מרכבה</strong> — מערכת ה-ERP של ממשלת ישראל.
+              לכל רשות מקומית פתוחים מאות סעיפים ייעודיים. רק המשרד יכול
+              ליצור / להגדיל / לסגור סעיף.
+            </p>
+            <p style="margin-top:6px;font-size:0.85rem;">
+              גישה אליה: לרוב דרך <strong>אושר גבריאלי</strong> (תקצוב
+              רשויות) או דרך מפקח התחום הספציפי.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-pink)">
+            <div class="card-icon pink">🔢</div>
+            <h4>מבנה המספר</h4>
+            <p>
+              מספר הסעיף הוא 7 ספרות, לרוב 10xxxxx. דוגמה:
+              <span class="num">1039440</span>
+            </p>
+            <ul style="font-size:0.85rem;margin-top:8px;">
+              <li><strong>1</strong> — תחום פעולה</li>
+              <li><strong>03</strong> — מינהל ילדים ונוער</li>
+              <li><strong>9440</strong> — מספר התכנית הספציפית (טיפול בילד בקהילה / 440)</li>
+            </ul>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-green)">
+            <div class="card-icon green">📐</div>
+            <h4>מה הוא מגדיר?</h4>
+            <ul>
+              <li><strong>הקצבה שנתית</strong> לרשות (₪ או יחידות)</li>
+              <li><strong>סוג סיווג</strong> — כספי לרשות / כמותי לרשות / כספי שנתי / כמותי ארצי</li>
+              <li><strong>אחוז השתתפות המשרד</strong> (75% / 80% / 90% / 100%)</li>
+              <li><strong>קצב מימון</strong> — 1/12 לחודש או הכל בבת אחת</li>
+              <li><strong>הוראות תע"ס</strong> שחלות עליו</li>
+              <li><strong>מפקח אחראי</strong> מטעם המשרד</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="info-box warning">
+          <div class="box-title">⚠️ הבדל קריטי: סעיף ≠ כרטסת</div>
+          הסעיף לא רואה את הכסף שלכם. הוא רק יודע
+          <strong>מה הקצבתי</strong> ו<strong>מה דיווחתם</strong>. הוא
+          אינו יודע אם החשבוניות שולמו, אם יש לכם יתרה, או מה ההוצאה
+          האמיתית — הוא רואה רק את מה שהזנתם בדוח התקצוב והתחשבנות.
+          <strong>אם לא דיווחתם, מבחינת הסעיף — לא הוצאתם.</strong>
+        </div>
+
+        <h3 id="how-they-bind">3. איך כרטסת וסעיף מתחברים?</h3>
+        <p>
+          החיבור הוא <strong>מיפוי קבוע</strong> שמוגדר במועצה בתחילת
+          השנה. כל כרטסת מקושרת לסעיף משרד אחד או יותר. כשמדווחים את
+          הדוח החודשי, מערכת הכספים אוספת את ההוצאות מכל כרטסת ומפיקה
+          דיווח לפי הסעיף שאליו היא קשורה.
+        </p>
+
+        <div class="info-box info">
+          <div class="box-title">🔗 דיאגרמת חיבור — מודל בסיסי</div>
+          <pre style="font-family:'Rubik',monospace;direction:ltr;text-align:left;font-size:0.85rem;line-height:1.6;color:var(--text-secondary);background:rgba(0,0,0,0.2);padding:14px;border-radius:8px;overflow-x:auto;">
+   ┌─────────────────────────┐         ┌───────────────────────────┐
+   │   COUNCIL ERP (מועצה)   │         │      MERKAVA (משרד)       │
+   │                         │         │                           │
+   │  Ledger 1843502840 ─────┼────────▶│  Clause 1039440           │
+   │  (טיפול בילד בקהילה)    │ MAPPING │  (טיפול בילד בקהילה / 440)│
+   │  expenses               │         │  annual allocation        │
+   │                         │         │                           │
+   │  Ledger 343502930 ◀─────┼─────────┤  reimbursement (75%)      │
+   │  (income / זיכוי)       │ PAYMENT │                           │
+   └─────────────────────────┘         └───────────────────────────┘</pre>
+        </div>
+
+        <div class="cards-grid">
+          <div class="card" style="border-top: 3px solid var(--accent-blue)">
+            <div class="card-icon blue">1️⃣</div>
+            <h4>מיפוי 1 ל-1</h4>
+            <p>
+              המקרה הפשוט: כרטסת אחת מקושרת לסעיף אחד. רוב הסעיפים
+              הסטנדרטיים (כמו אומנה, מרכזי קשר) עובדים כך.
+            </p>
+            <p style="margin-top:6px;font-size:0.85rem;">
+              <strong>דוגמה:</strong> כרטסת 1843501840 ↔ סעיף 1038413 (אומנה).
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-purple)">
+            <div class="card-icon purple">🔀</div>
+            <h4>מיפוי 1 לרבים (מהכרטסת)</h4>
+            <p>
+              כרטסת אחת מפצלת דיווח לכמה סעיפים — כל הוצאה מסומנת לאיזה
+              סעיף היא שייכת.
+            </p>
+            <p style="margin-top:6px;font-size:0.85rem;">
+              <strong>דוגמה:</strong> 1842406840 (שח"א) — חלק נדווח לסעיף
+              1039810 (שח"א), חלק לסעיף 1039440 (440) לפי תכנית הטיפול.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-cyan)">
+            <div class="card-icon cyan">🔂</div>
+            <h4>מיפוי רבים ל-1</h4>
+            <p>
+              כמה כרטסות מזינות אותו סעיף משרד. נפוץ כשבמועצה מפרידים
+              שכר מפעולות בכרטסות נפרדות, אבל המשרד רואה הכל יחד.
+            </p>
+            <p style="margin-top:6px;font-size:0.85rem;">
+              <strong>דוגמה:</strong> 1842400110 (שכר אלמ"ב) +
+              1842400840 (פעולות אלמ"ב) → שניהם מדווחים לסעיף 1039730.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-green)">
+            <div class="card-icon green">🔗</div>
+            <h4>מי קובע את המיפוי?</h4>
+            <p>
+              המיפוי נקבע ב<strong>תחילת השנה התקציבית</strong> ע"י גזבר
+              המועצה בתיאום עם מנהלת הכספים של אגף הרווחה. הוא רשום
+              ב<strong>ספר התקציב</strong> ובמערכת הכספים.
+            </p>
+            <p style="margin-top:6px;font-size:0.85rem;color:var(--text-muted);">
+              ניתן לעדכן במהלך השנה רק בוויסות תקציבי רשמי.
+            </p>
+          </div>
+        </div>
+
+        <h3 id="real-view">4. איך זה נראה בפועל — שלוש מערכות, שלוש זוויות</h3>
+        <p>
+          לאותה פעילות יש שלוש "תצוגות" — אחת בכל מערכת. מי שלא מבין את
+          השלוש, מתקשה להבין למה המספרים לפעמים לא מסתדרים.
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>זווית</th>
+                <th>איפה רואים</th>
+                <th>מה רואים</th>
+                <th>על מה זה אומר</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. כרטסת ברשות</strong></td>
+                <td>מערכת הכספים של המועצה<br/>(קומג'וב / בינה / SAP)</td>
+                <td>תנועות חיוב/זיכוי לפי תאריך, ספק, סכום</td>
+                <td>מה <em>קרה בפועל</em> בקופת המועצה</td>
+              </tr>
+              <tr>
+                <td><strong>2. סעיף במרכבה</strong></td>
+                <td>פורטל מרכבה / דוחות תקצוב והתחשבנות</td>
+                <td>הקצבה שנתית, ניצול מצטבר, יתרה לפי קצב 1/12</td>
+                <td>מה המשרד <em>מוכן להחזיר</em></td>
+              </tr>
+              <tr>
+                <td><strong>3. דוח תקצוב והתחשבנות</strong></td>
+                <td>מסמך חודשי שמשרד שולח לרשות</td>
+                <td>הוצאה שדווחה, חלק המשרד, חלק הרשות, זיכוי בפועל</td>
+                <td><em>הגשר</em> בין השניים</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box success">
+          <div class="box-title">🔍 דוגמה ויזואלית — שלוש זוויות לאותו אירוע</div>
+          <p style="margin-bottom:8px;">
+            <strong>אירוע:</strong> הרשות שילמה למטפל זוגי 8,000 ₪ במאי על מסגרת "התחנה לטיפול זוגי" (סעיף 1039810).
+          </p>
+          <pre style="font-family:'Rubik',monospace;direction:ltr;text-align:left;font-size:0.82rem;line-height:1.5;color:var(--text-secondary);background:rgba(0,0,0,0.2);padding:14px;border-radius:8px;overflow-x:auto;">
+═══ COUNCIL LEDGER VIEW (1842406840 - שח"א) ═══
+  Date     Vendor          Type   Amount     Balance
+  -----    -------------   ----   --------   --------
+  10/05    Therapist X     EXP    -8,000     +52,000  (still positive)
+  Year-to-date expense: 48,000
+  Year-to-date income:  35,000   (from ministry)
+  Net council burden:   13,000
+
+═══ MERKAVA CLAUSE VIEW (1039810 - שח"א) ═══
+  Annual allocation:   120,000 ₪
+  Cumulative pace:    1/12 × 5 = 50,000 ₪  (May)
+  Reported expenses:   48,000 ₪
+  Status: ✅ within pace (under 50K)
+  Refund eligibility:  48,000 × 75% = 36,000 ₪
+
+═══ TIKTZUV REPORT (the bridge) ═══
+  Section 1 (חודשי):   8,000 spent in May
+  Section 2 (בקרה):    cumulative ministry share = 36,000
+                       cumulative ministry refund = 35,000  ← lag
+                       Δ = -1,000 (will catch up next month)
+  Section 3 (מעקב):    8 months remaining, ~72K still available</pre>
+        </div>
+
+        <h3 id="using-them">5. שימוש יומיומי — תזרים האירועים</h3>
+        <p>
+          הנה זרימה אופיינית של "אירוע" יחיד — מהשירות שניתן לתושב, ועד
+          לכסף שחוזר מהמשרד אל כרטסת ההכנסות. הבנת הזרימה הזו מסבירה
+          למה לפעמים הכסף "לא בא" כשמצפים, ולמה כל פספוס בכרטסת או
+          בסעיף מתורגם לפער כספי בפועל.
+        </p>
+
+        <div class="flow" style="display:flex;flex-wrap:wrap;gap:8px;align-items:center;justify-content:center;margin:24px 0;">
+          <div class="flow-step" style="background:var(--bg-card);border:1px solid var(--border-color);padding:12px 16px;border-radius:12px;min-width:150px;text-align:center;">
+            <div class="step-icon">👨‍⚕️</div>
+            <div class="step-label">השירות ניתן</div>
+            <div class="step-sub">מטפל / מסגרת / מועדון</div>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step" style="background:var(--bg-card);border:1px solid var(--border-color);padding:12px 16px;border-radius:12px;min-width:150px;text-align:center;">
+            <div class="step-icon">📄</div>
+            <div class="step-label">חשבונית מתקבלת</div>
+            <div class="step-sub">ספק שולח חשבון</div>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step" style="background:var(--bg-card);border:1px solid var(--border-color);padding:12px 16px;border-radius:12px;min-width:150px;text-align:center;">
+            <div class="step-icon">📒</div>
+            <div class="step-label">חיוב כרטסת הוצאה</div>
+            <div class="step-sub">למשל 1843502840</div>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step" style="background:var(--bg-card);border:1px solid var(--border-color);padding:12px 16px;border-radius:12px;min-width:150px;text-align:center;">
+            <div class="step-icon">💸</div>
+            <div class="step-label">תשלום לספק</div>
+            <div class="step-sub">חודש אחר כך לרוב</div>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step" style="background:var(--bg-card);border:1px solid var(--border-color);padding:12px 16px;border-radius:12px;min-width:150px;text-align:center;">
+            <div class="step-icon">📤</div>
+            <div class="step-label">דיווח חודשי</div>
+            <div class="step-sub">דוח תקצוב לסעיף</div>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step" style="background:var(--bg-card);border:1px solid var(--border-color);padding:12px 16px;border-radius:12px;min-width:150px;text-align:center;">
+            <div class="step-icon">🏛️</div>
+            <div class="step-label">אישור במשרד</div>
+            <div class="step-sub">חלק המשרד מחושב</div>
+          </div>
+          <div class="flow-arrow">←</div>
+          <div class="flow-step" style="background:var(--bg-card);border:1px solid var(--border-color);padding:12px 16px;border-radius:12px;min-width:150px;text-align:center;">
+            <div class="step-icon">💰</div>
+            <div class="step-label">זיכוי לכרטסת הכנסה</div>
+            <div class="step-sub">למשל 343502930</div>
+          </div>
+        </div>
+
+        <div class="info-box warning">
+          <div class="box-title">⏱️ הפיגור הטבעי — חודשיים-שלושה</div>
+          השירות ניתן בחודש 1 → חיוב בכרטסת חודש 1-2 → דיווח בחודש 2-3
+          → זיכוי לכרטסת ההכנסה חודש 3-4. <strong>זה אומר שתמיד יש פער
+          זמני בין הוצאה לזיכוי</strong>. אל תיבהלו מ"גרעון" של חודשיים —
+          זה הפיגור הרגיל.
+        </div>
+
+        <h3>5א. ארבע פעולות יומיומיות שדורשות הבנת הקשר</h3>
+        <div class="cards-grid">
+          <div class="card" style="border-top: 3px solid var(--accent-blue)">
+            <div class="card-icon blue">✏️</div>
+            <h4>1. הזמנת שירות חדש</h4>
+            <p>
+              לפני שמזמינים שירות, בודקים <strong>שתי שאלות</strong>:
+            </p>
+            <ol style="padding-right:18px;font-size:0.88rem;">
+              <li>איזו כרטסת ברשות תספוג את ההוצאה? יש בה יתרה?</li>
+              <li>לאיזה סעיף משרד היא מקושרת? יש בו מקום בקצב 1/12?</li>
+            </ol>
+            <p style="margin-top:6px;font-size:0.85rem;color:var(--text-muted);">
+              אם הסעיף מלא — ההוצאה תיכנס במלוא 100% על הרשות.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-cyan)">
+            <div class="card-icon cyan">🔍</div>
+            <h4>2. בדיקה חודשית</h4>
+            <p>
+              בכל סוף חודש משווים שלושה מספרים:
+            </p>
+            <ul style="font-size:0.88rem;padding-right:18px;">
+              <li>הוצאה שנצברה בכרטסת ברשות</li>
+              <li>הוצאה שדווחה בדוח לסעיף</li>
+              <li>זיכוי שנכנס לכרטסת ההכנסות</li>
+            </ul>
+            <p style="margin-top:6px;font-size:0.85rem;">
+              <strong>אם הראשון > השני</strong> = יש דיווח שנשכח.
+              <strong>אם השני > השלישי</strong> = יש פיגור זיכוי טבעי.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-purple)">
+            <div class="card-icon purple">🔄</div>
+            <h4>3. ויסות בין סעיפים</h4>
+            <p>
+              אם רואים שכרטסת מסוימת חורגת והשנייה לא מנוצלת —
+              <strong>יש שתי דרכים</strong>:
+            </p>
+            <ul style="font-size:0.88rem;padding-right:18px;">
+              <li><strong>ויסות פנימי במועצה</strong> — מעבירים תקציב מכרטסת לכרטסת (אישור גזבר).</li>
+              <li><strong>ויסות בין סעיפי משרד</strong> — בקשה רשמית למשרד להעביר הקצבה.</li>
+            </ul>
+            <p style="margin-top:6px;font-size:0.85rem;">
+              שני הוויסותים <strong>לא מתבצעים אוטומטית</strong>. גם אם הכרטסות מקושרות.
+            </p>
+          </div>
+          <div class="card" style="border-top: 3px solid var(--accent-green)">
+            <div class="card-icon green">📞</div>
+            <h4>4. דיון על גרעון/יתרה</h4>
+            <p>
+              לפני שיחה עם המפקח על חריגה, <strong>הצטיידו בשני
+              נתונים</strong>:
+            </p>
+            <ul style="font-size:0.88rem;padding-right:18px;">
+              <li>תמונה מהסעיף (ניצול שנתי במרכבה)</li>
+              <li>תמונה מהכרטסת (תקציב במועצה)</li>
+            </ul>
+            <p style="margin-top:6px;font-size:0.85rem;">
+              לפעמים הסעיף נראה תקין אבל הכרטסת בגרעון בגלל הוצאות שעוד
+              לא דווחו — או ההפך.
+            </p>
+          </div>
+        </div>
+
+        <h3 id="binding-pitfalls">6. תקלות נפוצות במיפוי כרטסת ↔ סעיף</h3>
+
+        <div class="info-box danger">
+          <div class="box-title">🚨 שש תקלות שראיתי בשטח</div>
+          <ol style="padding-right:18px;color:var(--text-secondary);font-size:0.9rem;line-height:1.9;">
+            <li>
+              <strong>חשבונית הוזנה לכרטסת הלא נכונה</strong> — ההוצאה
+              נכנסת לסעיף הלא נכון במשרד. לפעמים אפילו לסעיף שאין בו
+              הקצבה. תוצאה: גרעון מדומה במקום אחד, יתרה לא מנוצלת באחר.
+            </li>
+            <li>
+              <strong>זיכוי נכנס לכרטסת ישנה / שגויה</strong> — הכרטסת
+              נראית בגרעון אבל בעצם הכסף הגיע, רק לא רואים אותו. בודקים
+              דוח כרטסת היסטורי.
+            </li>
+            <li>
+              <strong>סעיף משרד הוחלף ולא עדכנו את המיפוי</strong> —
+              קורה כשהמשרד משנה מספר סעיף או מאחד שניים. הדיווחים
+              ממשיכים לזרום לסעיף ישן וננעלים.
+            </li>
+            <li>
+              <strong>חיוב שכר עבר לכרטסת פעולות (או ההפך)</strong> —
+              ההפרדה 110/840 קריטית. שכר ב-840 = הסעיף "ידחה" את
+              הדיווח כי לא מתאים לסיווג.
+            </li>
+            <li>
+              <strong>שתי כרטסות שמדווחות לאותו סעיף — אחת לא נספרת</strong> —
+              דיווח כפול / חסר. צריך לראות תמונה מאוחדת.
+            </li>
+            <li>
+              <strong>כרטסת חדשה נפתחה במועצה אבל בלי מיפוי לסעיף</strong> —
+              הוצאה זורמת אליה אבל לא מדווחת לאף סעיף. תוצאה: 100% על המועצה.
+            </li>
+          </ol>
+        </div>
+
+        <div class="info-box success">
+          <div class="box-title">✅ ארבע בדיקות שמונעות 80% מהתקלות</div>
+          <ol style="padding-right:18px;color:var(--text-secondary);font-size:0.9rem;line-height:1.9;">
+            <li>
+              <strong>בתחילת השנה — בדיקת מיפוי מלאה</strong>: עוברים על
+              כל הכרטסות הפעילות ומוודאים שכל אחת מקושרת לסעיף תקף ופעיל
+              במשרד.
+            </li>
+            <li>
+              <strong>בכל סוף חודש — השוואת 3 מספרים</strong>: הוצאת
+              כרטסת = הוצאה שדווחה לסעיף = הזיכוי שנכנס (במינוס פיגור 2 חודשים).
+            </li>
+            <li>
+              <strong>לפני כל חשבונית — אימות כרטסת</strong>: לפני שמאשרים
+              חשבונית לתשלום, מוודאים שיש הוצאה לכרטסת הנכונה ושהיא
+              מקושרת לסעיף שיש בו תקציב.
+            </li>
+            <li>
+              <strong>פעם בשנה — סקירה עם הגזבר</strong>: סוגרים כרטסות
+              לא פעילות, פותחים חדשות לפי הצורך, מאשררים את כל המיפויים.
+            </li>
+          </ol>
+        </div>
+
+        <h3>7. דוגמה אינטגרטיבית — נתיבים להורות בת עין (מ-A עד Z)</h3>
+        <p>
+          נצמיד את הכל למסגרת אמיתית מהמפה: <strong>נתיבים להורות —
+          בת עין</strong>, סמל מסגרת 209213, 40 השמות, סמל תעריף 9213
+          (696 ₪ לחודש).
+        </p>
+
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>שלב</th>
+                <th>פעולה</th>
+                <th>היכן רואים</th>
+                <th>מה צריך לבדוק</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>1. הקצבה שנתית</strong></td>
+                <td>המשרד מקצה תקציב לסעיף 1039440 (440)</td>
+                <td>מרכבה / דוח הקצבה</td>
+                <td>הסכום מספיק ל-40 השמות × 696 × 12 ≈ 334,080 ₪?</td>
+              </tr>
+              <tr>
+                <td><strong>2. תקצוב במועצה</strong></td>
+                <td>הגזבר מקצה כרטסת 1843502840 ומקשר אותה לסעיף 1039440</td>
+                <td>ספר התקציב במועצה</td>
+                <td>הכרטסת קיימת, מאוישת, ומקושרת בצורה נכונה?</td>
+              </tr>
+              <tr>
+                <td><strong>3. מתן השירות</strong></td>
+                <td>40 משפחות מקבלות ליווי בנתיבים</td>
+                <td>רשימות השמות / רחלי זינגר</td>
+                <td>40 בפועל? אינטייק חתום? ועדה אישרה?</td>
+              </tr>
+              <tr>
+                <td><strong>4. תשלום לספק</strong></td>
+                <td>חשבונית מהמפעיל מתקבלת — 696 × 40 = 27,840 ₪ לחודש</td>
+                <td>מערכת חשבונות ספקים</td>
+                <td>חיוב נכנס ל-1843502840 ולא בטעות לכרטסת אחרת?</td>
+              </tr>
+              <tr>
+                <td><strong>5. דיווח לסעיף</strong></td>
+                <td>בדוח תקצוב — שדווחו 40 השמות בסעיף 1039440</td>
+                <td>דוח תקצוב והתחשבנות (חודשי)</td>
+                <td>הכמות נכונה? אין השמות חסרות? הסעיף מקבל את הדיווח?</td>
+              </tr>
+              <tr>
+                <td><strong>6. חישוב חלק משרד</strong></td>
+                <td>27,840 × 75% = 20,880 ₪ זיכוי צפוי</td>
+                <td>חלק 2 בדוח התקצוב</td>
+                <td>חלק המשרד בהוצאות = חלק המשרד בתקציב המצטבר?</td>
+              </tr>
+              <tr>
+                <td><strong>7. זיכוי בכרטסת הכנסות</strong></td>
+                <td>20,880 ₪ נכנסים לכרטסת 343502930</td>
+                <td>מערכת הכספים — כרטסת הכנסות</td>
+                <td>הזיכוי הגיע? עם איזה אסמכתא? לכרטסת הנכונה?</td>
+              </tr>
+              <tr>
+                <td><strong>8. סגירת מעגל</strong></td>
+                <td>חלק הרשות בפועל = 27,840 − 20,880 = 6,960 ₪</td>
+                <td>הפרש בין הכרטסת הוצאות להכנסות</td>
+                <td>זה כ-25%? אם פחות / יותר → לבדוק מה השתבש.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box info">
+          <div class="box-title">💎 העיקרון לזכור</div>
+          <strong>הכרטסת היא איפה שהכסף יושב. הסעיף הוא איפה שההרשאה
+          לכסף יושבת. הדוח הוא הגשר.</strong> מי שמתעלם מאחד משלושתם —
+          תמיד יופתע. מי שעובד עם כל השלושה ביחד — יודע בדיוק איפה
+          הוא עומד בכל רגע.
+        </div>
+      </section>
+
+      <!-- SECTION 22: LEDGER & CLAUSE MAP -->
+      <section class="section" id="ledger-map">
+        <div class="section-header animate-in">
+          <div class="section-number">פרק 22</div>
           <h2>מפת כרטסות וסעיפים <span class="highlight">מפורטת</span></h2>
           <p class="section-desc">
             המפה השלמה: לכל סעיף תקציבי במשרד הרווחה — מספר הכרטסת
@@ -3694,10 +4261,10 @@
         </div>
       </section>
 
-      <!-- SECTION 22: GAP SNAPSHOT & COMMITTEES -->
+      <!-- SECTION 23: GAP SNAPSHOT & COMMITTEES -->
       <section class="section" id="gap-snapshot">
         <div class="section-header animate-in">
-          <div class="section-number">פרק 22</div>
+          <div class="section-number">פרק 23</div>
           <h2>תמונת פערים <span class="highlight">תקציבית</span></h2>
           <p class="section-desc">
             צילום מצב נקודתי של הסעיפים הגרעוניים בפועל — איפה ההכנסה
@@ -4100,10 +4667,10 @@
         </div>
       </section>
 
-      <!-- NEW SECTION: CONTACTS -->
+      <!-- SECTION 24: CONTACTS -->
       <section class="section" id="contacts">
         <div class="section-header animate-in">
-          <div class="section-number">פרק 23</div>
+          <div class="section-number">פרק 24</div>
           <h2>אנשי <span class="highlight">קשר</span></h2>
           <p class="section-desc">
             פרטי הקשר החיוניים במשרד הרווחה — מי לפנות אליו ובאיזה נושאים.
@@ -4177,10 +4744,10 @@
         </div>
       </section>
 
-      <!-- SECTION 24: SUMMARY -->
+      <!-- SECTION 25: SUMMARY -->
       <section class="section" id="summary">
         <div class="section-header animate-in">
-          <div class="section-number">פרק 24</div>
+          <div class="section-number">פרק 25</div>
           <h2>סיכום <span class="highlight">ותזכורות</span></h2>
           <p class="section-desc">
             שמונה דברים שחובה לזכור — העיקרי מכל מה שנלמד.
